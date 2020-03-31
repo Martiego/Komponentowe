@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 
 /**
  * In order to run this program you need to add XString library to your project. You can find it here: "http://x-stream.github.io/"
@@ -19,69 +20,65 @@ public class Main {
     private static String PATH_TO_FILE_XML = "C:\\Users\\Patryk\\Desktop\\Kompo\\pliczek1.xml";
 
     public static void main(String[] args) {
-        ArrayList<Movie> movies = new ArrayList<>();
-        movies.add(new Movie("Nazwa", 5, "sf", 5000));
-        movies.add(new Movie("Nazwa2", 15, "sf", 500));
-        movies.add(new Movie("Nazwa3", 3, "sf", 54000));
-        movies.add(new Movie("Nazwa4", 8, "sf", 66000));
+        ArrayList<Trip> trips = new ArrayList<>();
+        trips.add(new Trip(new Date((new Date()).getTime() - 10000000000L), 7.5, 55, 20, 22000020));
+        trips.add(new Trip(new Date((new Date()).getTime() - 2000000000), 9.5, 55, 80, 42030000));
+        trips.add(new Trip(new Date((new Date()).getTime() - 30000000000L), 2.5, 15, 30, 12032000));
 
-        System.out.println(movies.get(0) + "\n");
-        System.out.println(movies);
+        System.out.println(trips.get(0) + "\n");
+        System.out.println(trips);
 
-        Collections.sort(movies, new SortByBudget());
-        System.out.println(movies);
+        Collections.sort(trips, new SortByTime());
+        System.out.println(trips);
 
-        Collections.sort(movies, new SortByRate());
-        System.out.println(movies);
-
-        Collections.sort(movies, new SortByGenre());
-        System.out.println(movies);
+        Collections.sort(trips, new SortByAvgVelocity());
+        System.out.println(trips);
 
         // Zapis obiektów do pliku
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(PATH_TO_FILE_TXT))) {
-            outputStream.writeObject(movies);
+            outputStream.writeObject(trips);
         } catch (IOException io) {
             System.out.println(io.getMessage());
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
         }
 
-        ArrayList<Movie> movies1 = new ArrayList<>();
+        ArrayList<Trip> trips1 = new ArrayList<>();
 
         // Odczyt obiektów z pliku
         try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(PATH_TO_FILE_TXT))) {
-            movies1 = (ArrayList<Movie>) inputStream.readObject();
+            trips1 = (ArrayList<Trip>) inputStream.readObject();
         } catch (IOException io) {
             System.out.println(io.getMessage());
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
         }
 
-        System.out.println(movies1);
+        System.out.println(trips1);
 
-        Collections.sort(movies1, new SortByTitle());
+        Collections.sort(trips1, new SortByMaxVelocity());
 
         // Serializacja obiektów do xml
         XStream xStream = new XStream(new DomDriver());
-        xStream.alias("movie", Movie.class);
+        xStream.alias("trip", Trip.class);
 
         try (DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(PATH_TO_FILE_XML))) {
-            dataOutputStream.writeChars(xStream.toXML(movies1));
+            dataOutputStream.writeChars(xStream.toXML(trips1));
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
 
         // Deserializacja obiektów z xml
 
-        ArrayList<Movie> movies2 = new ArrayList<>();
+        ArrayList<Trip> trips2 = new ArrayList<>();
 
         try {
             String content = Files.readString( Paths.get(PATH_TO_FILE_XML), StandardCharsets.UTF_16);
-            movies2 = (ArrayList<Movie>) xStream.fromXML(content);
+            trips2 = (ArrayList<Trip>) xStream.fromXML(content);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
 
-        System.out.println(movies2);
+        System.out.println(trips2);
     }
 }
