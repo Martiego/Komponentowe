@@ -1,5 +1,8 @@
 package pl.martiego;
 
+import pl.martiego.exceptions.WrongDateException;
+import pl.martiego.exceptions.WrongValueException;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,23 +14,19 @@ public class Trip implements Serializable {
     private double maxVelocity;
     private long time;
 
-    public void setMaxVelocity(double maxVelocity) {
-        this.maxVelocity = maxVelocity;
-    }
-
     public Trip() {
         this.date = new Date();
     }
 
-    /**
-     *
-     * @param date
-     * @param avgFuelConsumption
-     * @param avgVelocity
-     * @param maxVelocity
-     * @param time - parameter in seconds
-     */
-    public Trip(Date date, double avgFuelConsumption, double avgVelocity, double maxVelocity, long time) {
+    public Trip(Date date, double avgFuelConsumption, double avgVelocity, double maxVelocity, long time) throws WrongValueException, WrongDateException {
+        if (date.getTime() > new Date().getTime()) {
+            throw new WrongDateException();
+        }
+
+        if (avgFuelConsumption < 0 || avgVelocity < 0 || maxVelocity < 0 || time < 0) {
+            throw new WrongValueException();
+        }
+
         this.date = date;
         this.avgFuelConsumption = avgFuelConsumption;
         this.avgVelocity = avgVelocity;
@@ -63,14 +62,46 @@ public class Trip implements Serializable {
         return time;
     }
 
+    public void setAvgFuelConsumption(double avgFuelConsumption) {
+        if (avgFuelConsumption < 0) {
+            throw new WrongValueException();
+        }
+
+        this.avgFuelConsumption = avgFuelConsumption;
+    }
+
+    public void setAvgVelocity(double avgVelocity) {
+        if (avgFuelConsumption < 0) {
+            throw new WrongValueException();
+        }
+
+        this.avgVelocity = avgVelocity;
+    }
+
+    public void setMaxVelocity(double maxVelocity) {
+        if (avgFuelConsumption < 0) {
+            throw new WrongValueException();
+        }
+
+        this.maxVelocity = maxVelocity;
+    }
+
+    public void setTime(long time) {
+        if (avgFuelConsumption < 0) {
+            throw new WrongValueException();
+        }
+
+        this.time = time;
+    }
+
     @Override
     public String toString() {
         String str = "";
         str += "Data: " + date + '\n';
-        str += "Średnie zużycie paliwa: " + avgFuelConsumption + '\n';
-        str += "Średnia prędkość: " + avgVelocity + '\n';
-        str += "Prędkość maksymalna: " + maxVelocity + '\n';
-        str += "Czas podróży: " + time + '\n' + '\n';
+        str += "Average Fuel Consumption: " + avgFuelConsumption + '\n';
+        str += "Average Velocity: " + avgVelocity + '\n';
+        str += "Max Velocity: " + maxVelocity + '\n';
+        str += "Time: " + time + '\n' + '\n';
         return str;
     }
 
