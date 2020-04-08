@@ -20,6 +20,7 @@ public class Main {
             System.out.println(ex.getMessage());
         } finally {
             int a = 5;
+            a = 6;
             System.out.println("End of adding trips");
         }
 
