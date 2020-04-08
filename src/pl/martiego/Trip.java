@@ -18,7 +18,7 @@ public class Trip implements Serializable {
         this.date = new Date();
     }
 
-    public Trip(Date date, double avgFuelConsumption, double avgVelocity, double maxVelocity, long time) throws WrongValueException, WrongDateException {
+    public Trip(Date date, double avgFuelConsumption, double avgVelocity, double maxVelocity, long time) throws WrongDateException, WrongValueException {
         if (date.getTime() > new Date().getTime()) {
             throw new WrongDateException();
         }
@@ -62,7 +62,7 @@ public class Trip implements Serializable {
         return time;
     }
 
-    public void setAvgFuelConsumption(double avgFuelConsumption) {
+    public void setAvgFuelConsumption(double avgFuelConsumption) throws WrongValueException {
         if (avgFuelConsumption < 0) {
             throw new WrongValueException();
         }
@@ -70,7 +70,7 @@ public class Trip implements Serializable {
         this.avgFuelConsumption = avgFuelConsumption;
     }
 
-    public void setAvgVelocity(double avgVelocity) {
+    public void setAvgVelocity(double avgVelocity) throws WrongValueException {
         if (avgFuelConsumption < 0) {
             throw new WrongValueException();
         }
@@ -78,7 +78,7 @@ public class Trip implements Serializable {
         this.avgVelocity = avgVelocity;
     }
 
-    public void setMaxVelocity(double maxVelocity) {
+    public void setMaxVelocity(double maxVelocity) throws WrongValueException {
         if (avgFuelConsumption < 0) {
             throw new WrongValueException();
         }
@@ -86,7 +86,7 @@ public class Trip implements Serializable {
         this.maxVelocity = maxVelocity;
     }
 
-    public void setTime(long time) {
+    public void setTime(long time) throws WrongValueException {
         if (avgFuelConsumption < 0) {
             throw new WrongValueException();
         }

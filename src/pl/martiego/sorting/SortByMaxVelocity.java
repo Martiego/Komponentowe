@@ -1,4 +1,6 @@
-package pl.martiego;
+package pl.martiego.sorting;
+
+import pl.martiego.Trip;
 
 import java.util.Comparator;
 
