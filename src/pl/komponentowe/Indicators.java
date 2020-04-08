@@ -1,4 +1,4 @@
-package pl.martiego;
+package pl.komponentowe;
 
 public enum Indicators implements Lights {
     LEFT,

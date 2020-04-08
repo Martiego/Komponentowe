@@ -7,7 +7,6 @@ import java.util.*;
  */
 
 public class Main {
-    private static String PATH_TO_FILE_TXT = "C:\\Users\\Patryk\\Desktop\\Semestr 4 2020\\Kompo\\pliczek1.txt";
     private static String PATH_TO_FILE_XML = "C:\\Users\\Patryk\\Desktop\\Semestr 4 2020\\Kompo\\pliczek1.xml";
 
     public static void main(String[] args) {
@@ -19,8 +18,6 @@ public class Main {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         } finally {
-            int a = 5;
-            a = 6;
             System.out.println("End of adding trips");
         }
 
