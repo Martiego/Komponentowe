@@ -1,13 +1,5 @@
-package pl.martiego;
+package pl.komponentowe;
 
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
-import pl.martiego.sorting.SortByMaxVelocity;
-
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 /**

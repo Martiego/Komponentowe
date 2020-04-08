@@ -1,7 +1,7 @@
-package pl.martiego;
+package pl.komponentowe;
 
-import pl.martiego.exceptions.WrongDateException;
-import pl.martiego.exceptions.WrongValueException;
+import pl.komponentowe.exceptions.WrongDateException;
+import pl.komponentowe.exceptions.WrongValueException;
 
 import java.io.Serializable;
 import java.util.Date;
