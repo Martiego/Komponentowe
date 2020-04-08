@@ -27,6 +27,7 @@ public class Main {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         } finally {
+            int a = 5;
             System.out.println("End of adding trips");
         }
 
