@@ -1,4 +1,4 @@
-package pl.martiego.exceptions;
+package pl.komponentowe.exceptions;
 
 public class WrongValueException extends Exception {
     @Override

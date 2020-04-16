@@ -1,6 +1,6 @@
-package pl.martiego.sorting;
+package pl.komponentowe.sorting;
 
-import pl.martiego.Trip;
+import pl.komponentowe.Trip;
 
 import java.util.Comparator;
 

@@ -1,4 +1,4 @@
-package pl.martiego.exceptions;
+package pl.komponentowe.exceptions;
 
 public class WrongDateException extends Exception {
     @Override

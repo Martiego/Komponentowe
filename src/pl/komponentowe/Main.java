@@ -33,5 +33,7 @@ public class Main {
 
         Indicators.RIGHT.turnOn();
         Indicators.RIGHT.turnOff();
+
+        new Window();
     }
 }
