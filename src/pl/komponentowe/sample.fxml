@@ -10,7 +10,7 @@
       <CheckBox layoutX="57.0" layoutY="262.0" mnemonicParsing="false" text="CheckBox" />
       <CheckBox layoutX="157.0" layoutY="262.0" mnemonicParsing="false" text="CheckBox" />
       <ColorPicker fx:id="colorPicker" layoutX="407.0" layoutY="175.0" />
-      <Polygon fill="#33803f" layoutX="388.0" layoutY="67.0" points="0.0, 50.0, 57.0, 15.0, 0.0, -25.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#02800e" layoutX="190.0" layoutY="67.0" points="0.0, 50.0, -57.0, 14.0, 0.0, -25.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="right" fill="#33803f" layoutX="388.0" layoutY="67.0" points="0.0, 50.0, 57.0, 15.0, 0.0, -25.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="left" fill="#02800e" layoutX="190.0" layoutY="67.0" points="0.0, 50.0, -57.0, 14.0, 0.0, -25.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </Pane>
