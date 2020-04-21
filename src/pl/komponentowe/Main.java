@@ -1,16 +1,22 @@
 package pl.komponentowe;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.awt.*;
 import java.util.*;
 
 /**
  * In order to run this program you need to add XStream library to your project. You can find it here: "http://x-stream.github.io/"
  */
 
-public class Main {
+public class Main extends Application {
     private static String PATH_TO_FILE_XML = "C:\\Users\\Patryk\\Desktop\\Semestr 4 2020\\Kompo\\pliczek1.xml";
 
     public static void main(String[] args) {
-        new Window();
         System.out.println("costam");
         ArrayList<Trip> trips = new ArrayList<>();
         try {
@@ -36,5 +42,15 @@ public class Main {
         Indicators.RIGHT.turnOn();
         Indicators.RIGHT.turnOff();
 
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        stage.setTitle("Brum brum");
+        stage.setResizable(false);
+        stage.setScene(new Scene(root, 600, 475));
+        stage.show();
     }
 }
