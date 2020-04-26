@@ -5,8 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pl.komponentowe.data.IOXml;
+import pl.komponentowe.logic.Indicators;
+import pl.komponentowe.logic.Trip;
 
-import java.awt.*;
 import java.util.*;
 
 /**
@@ -47,7 +49,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("presentation/sample.fxml"));
         stage.setTitle("Brum brum");
         stage.setResizable(false);
         stage.setScene(new Scene(root, 600, 475));

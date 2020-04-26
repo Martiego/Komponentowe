@@ -1,7 +1,7 @@
-package pl.komponentowe;
+package pl.komponentowe.logic;
 
-import pl.komponentowe.exceptions.WrongDateException;
-import pl.komponentowe.exceptions.WrongValueException;
+import pl.komponentowe.logic.exceptions.WrongDateException;
+import pl.komponentowe.logic.exceptions.WrongValueException;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -1,10 +1,13 @@
-package pl.komponentowe;
+package pl.komponentowe.presentation;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+
+import java.util.AbstractCollection;
+import java.util.Collection;
 
 public class Controller {
     @FXML
@@ -20,6 +23,8 @@ public class Controller {
     private Polygon right;
 
     public void method() {
+        
+
         System.out.println("test");
         if ("test".equals(button.getText())) {
             button.setText("test Testowy");
