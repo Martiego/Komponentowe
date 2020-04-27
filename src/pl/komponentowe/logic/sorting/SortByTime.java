@@ -1,6 +1,6 @@
-package pl.komponentowe.sorting;
+package pl.komponentowe.logic.sorting;
 
-import pl.komponentowe.Trip;
+import pl.komponentowe.logic.Trip;
 
 import java.util.Comparator;
 

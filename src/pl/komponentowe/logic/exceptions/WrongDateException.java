@@ -1,4 +1,4 @@
-package pl.komponentowe.exceptions;
+package pl.komponentowe.logic.exceptions;
 
 public class WrongDateException extends Exception {
     @Override
