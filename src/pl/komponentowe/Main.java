@@ -1,9 +1,11 @@
 package pl.komponentowe;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import pl.komponentowe.data.IOXml;
 import pl.komponentowe.logic.Indicators;
@@ -52,7 +54,14 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("presentation/sample.fxml"));
         stage.setTitle("Brum brum");
         stage.setResizable(false);
-        stage.setScene(new Scene(root, 600, 475));
+        Scene scene = new Scene(root, 600, 475);
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                System.out.println(keyEvent.getText());
+            }
+        });
+        stage.setScene(scene);
         stage.show();
     }
 }
