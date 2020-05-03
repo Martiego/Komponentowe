@@ -1,6 +1,6 @@
-package pl.komponentowe.logic;
+package pl.komponentowe.logic.lights;
 
-import pl.komponentowe.logic.Lights;
+import pl.komponentowe.logic.lights.Lights;
 
 public enum Indicators implements Lights {
     LEFT,

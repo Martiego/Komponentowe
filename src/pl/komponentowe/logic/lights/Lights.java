@@ -1,4 +1,4 @@
-package pl.komponentowe.logic;
+package pl.komponentowe.logic.lights;
 
 public interface Lights {
     void turnOn();

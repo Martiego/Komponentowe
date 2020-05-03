@@ -8,20 +8,20 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import pl.komponentowe.data.IOXml;
-import pl.komponentowe.logic.Indicators;
 import pl.komponentowe.logic.Trip;
 
 import java.util.*;
 
 /**
  * In order to run this program you need to add XStream library to your project. You can find it here: "http://x-stream.github.io/"
+ * Also you need JavaFX 14. You can find it here: https://gluonhq.com/products/javafx/
  */
 
 public class Main extends Application {
-    private static String PATH_TO_FILE_XML = "C:\\Users\\Patryk\\Desktop\\Semestr 4 2020\\Kompo\\pliczek1.xml";
+    private static String PATH_TO_FILE_XML = "C:\\Users\\Desktop\\Semestr 4 2020\\Komponentowe\\plik1.xml";
 
-    public static void main(String[] args) {
-        System.out.println("costam");
+    public static void main(String[] args)  {
+
         ArrayList<Trip> trips = new ArrayList<>();
         try {
             trips.add(new Trip(new Date((new Date()).getTime() - 10000000000L), 7.5, 55, 20, 22000020));
@@ -39,12 +39,6 @@ public class Main extends Application {
 
         ArrayList<Trip> trips1 = ioXml.load(PATH_TO_FILE_XML);
         System.out.println(trips1);
-
-        Indicators.LEFT.turnOn();
-        Indicators.LEFT.turnOff();
-
-        Indicators.RIGHT.turnOn();
-        Indicators.RIGHT.turnOff();
 
         launch(args);
     }
