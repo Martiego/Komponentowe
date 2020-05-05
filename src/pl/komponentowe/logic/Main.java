@@ -1,4 +1,4 @@
-package pl.komponentowe;
+package pl.komponentowe.logic;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -7,10 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import pl.komponentowe.data.IOXml;
-import pl.komponentowe.logic.Trip;
-
-import java.util.*;
 
 /**
  * In order to run this program you need to add XStream library to your project. You can find it here: "http://x-stream.github.io/"

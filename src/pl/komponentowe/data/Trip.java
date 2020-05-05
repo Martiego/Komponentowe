@@ -1,4 +1,4 @@
-package pl.komponentowe.logic;
+package pl.komponentowe.data;
 
 import java.io.Serializable;
 import java.util.Date;
