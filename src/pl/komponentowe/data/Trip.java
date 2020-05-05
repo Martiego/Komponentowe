@@ -1,8 +1,5 @@
 package pl.komponentowe.logic;
 
-import pl.komponentowe.logic.exceptions.WrongDateException;
-import pl.komponentowe.logic.exceptions.WrongValueException;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -18,15 +15,7 @@ public class Trip implements Serializable {
         this.date = new Date();
     }
 
-    public Trip(Date date, double avgFuelConsumption, double avgVelocity, double maxVelocity, long time) throws WrongDateException, WrongValueException {
-        if (date.getTime() > new Date().getTime()) {
-            throw new WrongDateException();
-        }
-
-        if (avgFuelConsumption < 0 || avgVelocity < 0 || maxVelocity < 0 || time < 0) {
-            throw new WrongValueException();
-        }
-
+    public Trip(Date date, double avgFuelConsumption, double avgVelocity, double maxVelocity, long time) {
         this.date = date;
         this.avgFuelConsumption = avgFuelConsumption;
         this.avgVelocity = avgVelocity;
@@ -62,35 +51,19 @@ public class Trip implements Serializable {
         return time;
     }
 
-    public void setAvgFuelConsumption(double avgFuelConsumption) throws WrongValueException {
-        if (avgFuelConsumption < 0) {
-            throw new WrongValueException();
-        }
-
+    public void setAvgFuelConsumption(double avgFuelConsumption) {
         this.avgFuelConsumption = avgFuelConsumption;
     }
 
-    public void setAvgVelocity(double avgVelocity) throws WrongValueException {
-        if (avgFuelConsumption < 0) {
-            throw new WrongValueException();
-        }
-
+    public void setAvgVelocity(double avgVelocity) {
         this.avgVelocity = avgVelocity;
     }
 
-    public void setMaxVelocity(double maxVelocity) throws WrongValueException {
-        if (avgFuelConsumption < 0) {
-            throw new WrongValueException();
-        }
-
+    public void setMaxVelocity(double maxVelocity) {
         this.maxVelocity = maxVelocity;
     }
 
-    public void setTime(long time) throws WrongValueException {
-        if (avgFuelConsumption < 0) {
-            throw new WrongValueException();
-        }
-
+    public void setTime(long time) {
         this.time = time;
     }
 
