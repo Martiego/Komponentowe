@@ -26,7 +26,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("../presentation/sample.fxml"));
         stage.setTitle("Brum brum");
         stage.setResizable(false);
-        Scene scene = new Scene(root, 600, 475);
+        Scene scene = new Scene(root, 960, 540);
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
