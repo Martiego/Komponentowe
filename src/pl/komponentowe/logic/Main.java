@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -27,12 +28,14 @@ public class Main extends Application {
         stage.setTitle("Brum brum");
         stage.setResizable(false);
         Scene scene = new Scene(root, 960, 540);
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                System.out.println(keyEvent.getText());
-            }
-        });
+
+//        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+//            @Override
+//            public void handle(KeyEvent keyEvent) {
+//                System.out.println(keyEvent.getCode());
+//            }
+//        });
+
         stage.setScene(scene);
         stage.show();
     }

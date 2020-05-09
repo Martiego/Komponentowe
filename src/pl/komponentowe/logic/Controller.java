@@ -1,49 +1,89 @@
 package pl.komponentowe.logic;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.layout.Pane;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import javafx.scene.text.Text;
 
 public class Controller {
     @FXML
-    public Button button;
+    private Polygon leftIndicator;
 
     @FXML
-    private Button button2;
+    protected Polygon rightIndicator;
 
     @FXML
-    private ColorPicker colorPicker;
+    protected Text speedometer;
 
-    @FXML
-    private Polygon left;
+    protected boolean isHold;
 
-    @FXML
-    private Polygon right;
+    private Dashboard dashboard;
 
-    @FXML
-    private Pane pane;
+    private Thread thread;
 
-    public void method() {
-        System.out.println("test");
-        if ("test".equals(button.getText())) {
-            button.setText("test Testowy");
-            left.setFill(Color.BLACK);
-            right.setFill(Color.BLACK);
+    public Controller() {
+        dashboard = new Dashboard();
 
-        } else {
-            button.setText("test");
-            left.setFill(Color.GREEN);
-            right.setFill(Color.GREEN);
-        }
+        thread = new Thread(() -> {
+            while (isHold) {
+                rightIndicator.setFill(Color.GREEN);
 
-        button.setTextFill(colorPicker.getValue());
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
+                rightIndicator.setFill(Color.BLACK);
+
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
-    public void onClickKey() {
-        button2.setText("Super!!!!");
+    @FXML
+    public void keyPressedController(KeyEvent event) {
+
+        if (KeyCode.RIGHT == event.getCode()) {
+            isHold = true;
+            if (!thread.isAlive()) {
+
+                thread = new Thread(() -> {
+                    while (isHold) {
+                        rightIndicator.setFill(Color.GREEN);
+
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        rightIndicator.setFill(Color.BLACK);
+
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+                thread.start();
+                System.out.println("New thread " + thread.getName());
+            }
+        }
+    }
+
+    @FXML
+    public void keyReleasedController(KeyEvent event) {
+        if (KeyCode.RIGHT == event.getCode()) {
+            isHold = false;
+        }
     }
 }
