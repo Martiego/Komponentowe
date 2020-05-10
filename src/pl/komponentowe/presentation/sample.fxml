@@ -43,7 +43,7 @@
       <TextField editable="false" layoutX="595.0" layoutY="410.0" prefHeight="37.0" prefWidth="101.0" />
       <TextField editable="false" layoutX="743.0" layoutY="410.0" prefHeight="37.0" prefWidth="101.0" />
       <ToggleButton layoutX="696.0" layoutY="294.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" prefHeight="37.0" prefWidth="112.0" text="ToggleButton" />
-      <Text fx:id="speedometer" layoutX="396.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km/h" textAlignment="CENTER" wrappingWidth="209.0">
+      <Text fx:id="speedometer" layoutX="363.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km/h" textAlignment="CENTER" wrappingWidth="276.0">
          <font>
             <Font size="48.0" />
          </font>

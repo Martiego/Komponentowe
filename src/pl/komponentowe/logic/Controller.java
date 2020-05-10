@@ -12,22 +12,59 @@ public class Controller {
     private Polygon leftIndicator;
 
     @FXML
-    protected Polygon rightIndicator;
+    private Polygon rightIndicator;
 
     @FXML
-    protected Text speedometer;
+    private Text speedometer;
 
-    protected boolean isHold;
+    private boolean isRightHold;
+    private boolean isLeftHold;
 
     private Dashboard dashboard;
 
-    private Thread thread;
+    private Thread rightIndicatorThread;
+    private Thread leftIndicatorThread;
 
     public Controller() {
         dashboard = new Dashboard();
 
-        thread = new Thread(() -> {
-            while (isHold) {
+        rightIndicatorThread = new Thread();
+        leftIndicatorThread = new Thread();
+    }
+
+    @FXML
+    public void keyPressedController(KeyEvent event) {
+
+        if (KeyCode.RIGHT == event.getCode()) {
+            isRightHold = true;
+
+            if (!rightIndicatorThread.isAlive()) {
+                turnRight();
+            }
+        } else if (KeyCode.LEFT == event.getCode()) {
+            isLeftHold = true;
+
+            if (!leftIndicatorThread.isAlive()) {
+                turnLeft();
+            }
+        } else if (KeyCode.UP == event.getCode()) {
+            dashboard.getSpeedometer().accelerate();
+            speedometer.setText(dashboard.getSpeedometer().getActualVelocity() + " km/h");
+        }
+    }
+
+    @FXML
+    public void keyReleasedController(KeyEvent event) {
+        if (KeyCode.RIGHT == event.getCode()) {
+            isRightHold = false;
+        } else if (KeyCode.LEFT == event.getCode()) {
+            isLeftHold = false;
+        }
+    }
+
+    private void turnRight() {
+        rightIndicatorThread = new Thread(() -> {
+            while (isRightHold) {
                 rightIndicator.setFill(Color.GREEN);
 
                 try {
@@ -45,45 +82,31 @@ public class Controller {
                 }
             }
         });
+
+        rightIndicatorThread.start();
     }
 
-    @FXML
-    public void keyPressedController(KeyEvent event) {
+    private void turnLeft() {
+        leftIndicatorThread = new Thread(() -> {
+            while (isLeftHold) {
+                leftIndicator.setFill(Color.GREEN);
 
-        if (KeyCode.RIGHT == event.getCode()) {
-            isHold = true;
-            if (!thread.isAlive()) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
-                thread = new Thread(() -> {
-                    while (isHold) {
-                        rightIndicator.setFill(Color.GREEN);
+                leftIndicator.setFill(Color.BLACK);
 
-                        try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        rightIndicator.setFill(Color.BLACK);
-
-                        try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-
-                thread.start();
-                System.out.println("New thread " + thread.getName());
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        }
-    }
+        });
 
-    @FXML
-    public void keyReleasedController(KeyEvent event) {
-        if (KeyCode.RIGHT == event.getCode()) {
-            isHold = false;
-        }
+        leftIndicatorThread.start();
     }
 }
