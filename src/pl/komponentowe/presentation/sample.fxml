@@ -10,17 +10,12 @@
    <children>
       <Polygon fx:id="rightIndicator" layoutX="831.0" layoutY="130.0" points="8.0, -50.0, 43.0, -25.0, 8.0, -1.0" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="leftIndicator" layoutX="101.0" layoutY="130.0" points="8.0, -50.0, -25.0, -25.0, 8.0, 0.0" stroke="BLACK" strokeType="INSIDE" />
-      <TextField editable="false" layoutX="156.0" layoutY="219.0" prefHeight="44.0" prefWidth="101.0" />
-      <TextField editable="false" layoutX="156.0" layoutY="277.0" prefHeight="44.0" prefWidth="101.0" />
       <Button layoutX="370.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="55.0" text="Button" />
       <Button layoutX="440.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="55.0" text="Button" />
       <Button layoutX="507.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="55.0" text="Button" />
       <Button layoutX="577.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="55.0" text="Button" />
-      <Button layoutX="276.0" layoutY="287.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" text="Button" />
-      <Button layoutX="76.0" layoutY="287.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" text="Button" />
-      <TextField editable="false" layoutX="160.0" layoutY="410.0" prefHeight="37.0" prefWidth="101.0" />
-      <TextField editable="false" layoutX="309.0" layoutY="410.0" prefHeight="37.0" prefWidth="101.0" />
-      <TextField editable="false" layoutX="450.0" layoutY="410.0" prefHeight="37.0" prefWidth="101.0" />
+      <Button layoutX="278.0" layoutY="282.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" text="Zmień" />
+      <Button layoutX="78.0" layoutY="282.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" text="Reset" />
       <MenuBar maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="25.0" prefWidth="960.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
@@ -40,12 +35,45 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TextField editable="false" layoutX="595.0" layoutY="410.0" prefHeight="37.0" prefWidth="101.0" />
-      <TextField editable="false" layoutX="743.0" layoutY="410.0" prefHeight="37.0" prefWidth="101.0" />
       <ToggleButton layoutX="696.0" layoutY="294.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" prefHeight="37.0" prefWidth="112.0" text="ToggleButton" />
       <Text fx:id="speedometer" layoutX="363.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km/h" textAlignment="CENTER" wrappingWidth="276.0">
          <font>
             <Font size="48.0" />
+         </font>
+      </Text>
+      <Text layoutX="148.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przebieg całkowity: 1241561351321" wrappingWidth="112.00000762939453">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="148.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przbieg dzienny 1: 2141" wrappingWidth="112.00000762939453">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="87.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prędkość średnia: 50 km/h" wrappingWidth="121.00000762939453">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="250.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prędkość maksymalna: 180 km/h" wrappingWidth="154.00000762939453">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="444.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Czas podróży: 200 min." wrappingWidth="101.00000381469727">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="589.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przejechany dystans: 28 000 m." wrappingWidth="144.00000762939453">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="778.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Średnie spalanie: 8 l. / 100 km" wrappingWidth="121.00001335144043">
+         <font>
+            <Font size="15.0" />
          </font>
       </Text>
    </children>
