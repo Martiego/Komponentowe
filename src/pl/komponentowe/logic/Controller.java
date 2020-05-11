@@ -7,6 +7,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 
+import java.text.DecimalFormat;
+
 public class Controller {
     @FXML
     private Polygon leftIndicator;
@@ -24,12 +26,34 @@ public class Controller {
 
     private Thread rightIndicatorThread;
     private Thread leftIndicatorThread;
+    private Thread slowThread;
+
+    private DecimalFormat decimalFormat;
 
     public Controller() {
         dashboard = new Dashboard();
 
         rightIndicatorThread = new Thread();
         leftIndicatorThread = new Thread();
+
+        decimalFormat = new DecimalFormat("#.##");
+
+        slowThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(200);
+                        dashboard.getSpeedometer().decelerate(1);
+                        speedometer.setText(String.format("%.1f", dashboard.getSpeedometer().getActualVelocity()) + " km/h");
+                    } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                    }
+                }
+            }
+        });
+
+        slowThread.start();
     }
 
     @FXML
@@ -49,7 +73,10 @@ public class Controller {
             }
         } else if (KeyCode.UP == event.getCode()) {
             dashboard.getSpeedometer().accelerate();
-            speedometer.setText(dashboard.getSpeedometer().getActualVelocity() + " km/h");
+            speedometer.setText(String.format("%.1f",dashboard.getSpeedometer().getActualVelocity()) + " km/h");
+        } else if (KeyCode.DOWN == event.getCode()) {
+            dashboard.getSpeedometer().decelerate(3);
+            speedometer.setText(String.format("%.1f", dashboard.getSpeedometer().getActualVelocity()) + " km/h");
         }
     }
 
