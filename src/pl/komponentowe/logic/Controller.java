@@ -47,7 +47,7 @@ public class Controller {
                         dashboard.getSpeedometer().decelerate(1);
                         speedometer.setText(String.format("%.1f", dashboard.getSpeedometer().getActualVelocity()) + " km/h");
                     } catch (Exception ex) {
-                        System.out.println(ex.getMessage());
+                        //ex.printStackTrace();
                     }
                 }
             }

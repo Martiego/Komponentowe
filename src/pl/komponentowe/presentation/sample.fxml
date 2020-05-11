@@ -6,7 +6,8 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.komponentowe.logic.Controller">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.komponentowe.logic.Controller"
+       style="-fx-background-color: #2e2e2e">
    <children>
       <Polygon fx:id="rightIndicator" layoutX="831.0" layoutY="130.0" points="8.0, -50.0, 43.0, -25.0, 8.0, -1.0" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="leftIndicator" layoutX="101.0" layoutY="130.0" points="8.0, -50.0, -25.0, -25.0, 8.0, 0.0" stroke="BLACK" strokeType="INSIDE" />
@@ -36,7 +37,7 @@
         </menus>
       </MenuBar>
       <ToggleButton layoutX="696.0" layoutY="294.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" prefHeight="37.0" prefWidth="112.0" text="ToggleButton" />
-      <Text fx:id="speedometer" layoutX="363.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km/h" textAlignment="CENTER" wrappingWidth="276.0">
+      <Text fx:id="speedometer" layoutX="363.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km/h" textAlignment="CENTER" wrappingWidth="276.0" >
          <font>
             <Font size="48.0" />
          </font>
