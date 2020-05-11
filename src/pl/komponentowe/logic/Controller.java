@@ -33,6 +33,12 @@ public class Controller {
     @FXML
     private Text avgFuelConsumption;
 
+    @FXML
+    private Text mileage;
+
+    @FXML
+    private Text odometer;
+
     private boolean isRightHold;
     private boolean isLeftHold;
 
@@ -43,11 +49,13 @@ public class Controller {
     private Thread mainThread;
 
     private String kmPerHour;
+    private String km;
 
     public Controller() {
         dashboard = new Dashboard();
 
         kmPerHour = " km/h";
+        km = " km";
 
         rightIndicatorThread = new Thread();
         leftIndicatorThread = new Thread();
@@ -63,8 +71,10 @@ public class Controller {
                         avgVelocity.setText(String.format("%.1f", dashboard.getOnBoardComputer().getAvgVelocity()) + kmPerHour);
                         maxVelocity.setText(String.format("%.1f", dashboard.getOnBoardComputer().getMaxVelocity()) + kmPerHour);
                         time.setText(String.format("%.2f", (double)(dashboard.getOnBoardComputer().getTime() / 1_000) / 100) + " min");
-                        street.setText(String.format("%.3f", dashboard.getOnBoardComputer().getStreet()) + " km");
+                        street.setText(String.format("%.3f", dashboard.getOnBoardComputer().getStreet()) + km);
                         avgFuelConsumption.setText(String.format("%.1f", dashboard.getOnBoardComputer().getAvgFuelConsumption()) + " l/km");
+                        mileage.setText(String.format("%.1f", dashboard.getOnBoardComputer().getMileage()) + km);
+                        odometer.setText(String.format("%.1f", dashboard.getOnBoardComputer().getOdometer()) + km);
                     } catch (Exception ex) {
                     }
                 }
@@ -107,9 +117,15 @@ public class Controller {
         }
     }
 
+    @FXML
     public void openSettings() throws Exception {
         Settings settings = new Settings();
         settings.start(new Stage());
+    }
+
+    @FXML
+    public void reset() {
+        dashboard.getOnBoardComputer().resetOdometer();
     }
 
     private void turnRight() {

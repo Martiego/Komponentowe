@@ -10,8 +10,7 @@ import java.util.ArrayList;
 
 public class Dashboard {
     private boolean highBeams;
-    private double odometer;
-    private double tripMeter;
+
 
     private Fuel fuel;
     private Oil oil;
@@ -34,14 +33,6 @@ public class Dashboard {
 
     public boolean isHighBeams() {
         return highBeams;
-    }
-
-    public double getOdometer() {
-        return odometer;
-    }
-
-    public double getTripMeter() {
-        return tripMeter;
     }
 
     public Indicators getIndicators() {

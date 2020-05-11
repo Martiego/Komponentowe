@@ -17,17 +17,24 @@ public class OnBoardComputer {
     private ArrayList<Trip> trips;
     private Thread thread;
 
+    private double odometer;
+    private double tripMeter;
+
 
     public OnBoardComputer() {
         date = new Date();
         thread = new Thread(new Runnable() {
             @Override
             public void run() {
+                double avgStreet;
                 while (true) {
                     try {
                         Thread.sleep(100);
-                        street += actualVelocity / 3_600_000 * 100;
-                        mileage += street;
+                        avgStreet = actualVelocity / 3_600_000 * 100;
+                        street += avgStreet;
+                        mileage += avgStreet;
+                        odometer += avgStreet;
+                        tripMeter += avgStreet;
                     } catch (Exception ex) {
                         System.out.println(ex.getMessage());
                     }
@@ -36,6 +43,10 @@ public class OnBoardComputer {
         });
 
         thread.start();
+    }
+
+    public double getMileage() {
+        return mileage;
     }
 
     public void accelerate() {
@@ -86,6 +97,10 @@ public class OnBoardComputer {
         return street;
     }
 
+    public double getOdometer() {
+        return odometer;
+    }
+
     public double getAvgVelocity() {
         // FIXME: 11.05.2020
         // najpierw zamiana na m/s, potem na km/h
@@ -99,5 +114,9 @@ public class OnBoardComputer {
 
     public double getAvgFuelConsumption() {
         return avgFuelConsumption;
+    }
+
+    public void resetOdometer() {
+        odometer = 0;
     }
 }

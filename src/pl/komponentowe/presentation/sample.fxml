@@ -15,7 +15,7 @@
       <Button layoutX="507.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="55.0" styleClass="fogLights" text="Button" />
       <Button layoutX="577.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="55.0" styleClass="runningLights" text="Button" />
       <Button layoutX="278.0" layoutY="282.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" text="Zmień" />
-      <Button layoutX="78.0" layoutY="282.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" text="Reset" />
+      <Button layoutX="78.0" layoutY="282.0" mnemonicParsing="false" onAction="#reset" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" text="Reset" />
       <MenuBar maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="25.0" prefWidth="960.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
@@ -41,12 +41,12 @@
             <Font size="48.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="148.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przebieg całkowity: 1241561351321" wrappingWidth="112.00000762939453">
+      <Text fill="WHITE" layoutX="148.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przebieg całkowity:" wrappingWidth="112.00000762939453">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="148.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przbieg dzienny 1: 2141" wrappingWidth="112.00000762939453">
+      <Text fill="WHITE" layoutX="148.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przbieg dzienny:" wrappingWidth="112.00000762939453">
          <font>
             <Font size="13.0" />
          </font>
@@ -99,6 +99,16 @@
       <Text fx:id="avgFuelConsumption" fill="WHITE" layoutX="778.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 l / km" textAlignment="CENTER" wrappingWidth="121.00001335144043">
          <font>
             <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fx:id="mileage" fill="WHITE" layoutX="148.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" 0 km" textAlignment="CENTER" wrappingWidth="112.00000762939453">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="odometer" fill="WHITE" layoutX="148.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km" textAlignment="CENTER" wrappingWidth="112.00000762939453">
+         <font>
+            <Font size="13.0" />
          </font>
       </Text>
    </children>
