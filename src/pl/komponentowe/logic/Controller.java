@@ -43,11 +43,11 @@ public class Controller {
             public void run() {
                 while (true) {
                     try {
-                        Thread.sleep(200);
-                        dashboard.getSpeedometer().decelerate(1);
-                        speedometer.setText(String.format("%.1f", dashboard.getSpeedometer().getActualVelocity()) + " km/h");
+                        Thread.sleep(100);
+                        dashboard.getOnBoardComputer().decelerate(1);
+                        speedometer.setText(String.format("%.1f", dashboard.getOnBoardComputer().getActualVelocity()) + " km/h");
+                        System.out.println(dashboard.getOnBoardComputer().getStreet());
                     } catch (Exception ex) {
-                        //ex.printStackTrace();
                     }
                 }
             }
@@ -72,11 +72,11 @@ public class Controller {
                 turnLeft();
             }
         } else if (KeyCode.UP == event.getCode()) {
-            dashboard.getSpeedometer().accelerate();
-            speedometer.setText(String.format("%.1f",dashboard.getSpeedometer().getActualVelocity()) + " km/h");
+            dashboard.getOnBoardComputer().accelerate();
+            speedometer.setText(String.format("%.1f",dashboard.getOnBoardComputer().getActualVelocity()) + " km/h");
         } else if (KeyCode.DOWN == event.getCode()) {
-            dashboard.getSpeedometer().decelerate(3);
-            speedometer.setText(String.format("%.1f", dashboard.getSpeedometer().getActualVelocity()) + " km/h");
+            dashboard.getOnBoardComputer().decelerate(3);
+            speedometer.setText(String.format("%.1f", dashboard.getOnBoardComputer().getActualVelocity()) + " km/h");
         }
     }
 
