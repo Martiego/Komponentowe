@@ -20,23 +20,13 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#openSettings" text="Settings" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
-      <ToggleButton  layoutX="696.0" layoutY="294.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" prefHeight="37.0" prefWidth="112.0" text="ToggleButton" />
-      <Text  fx:id="speedometer" layoutX="363.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km/h" textAlignment="CENTER" wrappingWidth="276.0">
+      <ToggleButton layoutX="696.0" layoutY="294.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" prefHeight="37.0" prefWidth="112.0" text="ToggleButton" />
+      <Text fx:id="speedometer" layoutX="363.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km/h" textAlignment="CENTER" wrappingWidth="276.0">
          <font>
             <Font size="48.0" />
          </font>

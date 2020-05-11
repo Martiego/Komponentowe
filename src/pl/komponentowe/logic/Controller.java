@@ -6,6 +6,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.text.DecimalFormat;
 
@@ -87,6 +88,11 @@ public class Controller {
         } else if (KeyCode.LEFT == event.getCode()) {
             isLeftHold = false;
         }
+    }
+
+    public void openSettings() throws Exception {
+        Settings settings = new Settings();
+        settings.start(new Stage());
     }
 
     private void turnRight() {

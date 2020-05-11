@@ -12,12 +12,30 @@ public class OnBoardComputer {
     private double maxVelocity;
     private double avgVelocity;
     private double street;
+    private double mileage;
     private long time;
     private ArrayList<Trip> trips;
+    private Thread thread;
 
 
     public OnBoardComputer() {
         date = new Date();
+        thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(100);
+                        street += actualVelocity / 3_600_000 * 100;
+                        mileage += street;
+                    } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                    }
+                }
+            }
+        });
+
+        thread.start();
     }
 
     public void accelerate() {
@@ -30,7 +48,7 @@ public class OnBoardComputer {
         } else if (90 < actualVelocity && 160 >= actualVelocity) {
             actualVelocity += 0.30;
         } else if (160 < actualVelocity && 186 >= actualVelocity) {
-            actualVelocity += 0.15;
+            actualVelocity += 0.20;
         }
 
         if (actualVelocity > maxVelocity) {

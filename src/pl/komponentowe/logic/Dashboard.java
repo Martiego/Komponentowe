@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 public class Dashboard {
     private boolean highBeams;
-    private double mileage;
     private double odometer;
     private double tripMeter;
 
@@ -35,10 +34,6 @@ public class Dashboard {
 
     public boolean isHighBeams() {
         return highBeams;
-    }
-
-    public double getMileage() {
-        return mileage;
     }
 
     public double getOdometer() {
