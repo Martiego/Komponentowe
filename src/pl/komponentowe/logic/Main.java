@@ -28,6 +28,7 @@ public class Main extends Application {
         stage.setTitle("Brum brum");
         stage.setResizable(false);
         Scene scene = new Scene(root, 960, 540);
+        scene.getStylesheets().add(getClass().getResource("../presentation/style.css").toExternalForm());
 
 //        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 //            @Override
