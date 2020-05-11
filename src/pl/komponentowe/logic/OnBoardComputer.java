@@ -10,10 +10,10 @@ public class OnBoardComputer {
     private double actualVelocity;
     private double avgFuelConsumption;
     private double maxVelocity;
-    private double avgVelocity;
+//    private double avgVelocity;
     private double street;
     private double mileage;
-    private long time;
+//    private long time;
     private ArrayList<Trip> trips;
     private Thread thread;
 
@@ -79,11 +79,25 @@ public class OnBoardComputer {
     }
 
     public long getTime() {
-        time = (new Date()).getTime() - date.getTime();
-        return time;
+        return System.currentTimeMillis() - date.getTime();
     }
 
     public double getStreet() {
         return street;
+    }
+
+    public double getAvgVelocity() {
+        // FIXME: 11.05.2020
+        // najpierw zamiana na m/s, potem na km/h
+        // no i skacze tak +/-, nawet jak cały czas przyspiesza
+        // w sensie wiesz, wtedy średnia powinna cały czas rosnąć
+        // hmmm
+        double meter = street * 1000;
+        double seconds = (double)(getTime() / 1_000);
+        return meter / seconds * 36 / 10;
+    }
+
+    public double getAvgFuelConsumption() {
+        return avgFuelConsumption;
     }
 }

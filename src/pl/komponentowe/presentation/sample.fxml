@@ -10,10 +10,10 @@
    <children>
       <Polygon fx:id="rightIndicator" layoutX="831.0" layoutY="130.0" points="8.0, -50.0, 43.0, -25.0, 8.0, -1.0" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="leftIndicator" layoutX="101.0" layoutY="130.0" points="8.0, -50.0, -25.0, -25.0, 8.0, 0.0" stroke="BLACK" strokeType="INSIDE" />
-      <Button layoutX="370.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="55.0" text="Button" styleClass="headlights"/>
-      <Button layoutX="440.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="55.0" text="Button" styleClass="highBeams"/>
-      <Button layoutX="507.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="55.0" text="Button" styleClass="fogLights"/>
-      <Button layoutX="577.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="55.0" text="Button" styleClass="runningLights"/>
+      <Button layoutX="370.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="55.0" styleClass="headlights" text="Button" />
+      <Button layoutX="440.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="55.0" styleClass="highBeams" text="Button" />
+      <Button layoutX="507.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="55.0" styleClass="fogLights" text="Button" />
+      <Button layoutX="577.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="55.0" styleClass="runningLights" text="Button" />
       <Button layoutX="278.0" layoutY="282.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" text="Zmień" />
       <Button layoutX="78.0" layoutY="282.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" text="Reset" />
       <MenuBar maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="25.0" prefWidth="960.0">
@@ -51,27 +51,52 @@
             <Font size="13.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="87.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prędkość średnia: 50 km/h" wrappingWidth="121.00000762939453">
+      <Text fill="WHITE" layoutX="87.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prędkość średnia:" wrappingWidth="121.00000762939453">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="250.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prędkość maksymalna: 180 km/h" wrappingWidth="154.00000762939453">
+      <Text fill="WHITE" layoutX="250.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prędkość maksymalna:" wrappingWidth="154.00000762939453">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="444.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Czas podróży: 200 min." wrappingWidth="101.00000381469727">
+      <Text fill="WHITE" layoutX="444.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Czas podróży: " wrappingWidth="101.00000381469727">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="589.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przejechany dystans: 28 000 m." wrappingWidth="144.00000762939453">
+      <Text fill="WHITE" layoutX="589.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przejechany dystans:" wrappingWidth="144.00000762939453">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="778.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Średnie spalanie: 8 l. / 100 km" wrappingWidth="121.00001335144043">
+      <Text fill="WHITE" layoutX="778.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Średnie spalanie:" wrappingWidth="121.00001335144043">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fx:id="avgVelocity" fill="WHITE" layoutX="87.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" 0 km/h" textAlignment="CENTER" wrappingWidth="121.00000762939453">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fx:id="maxVelocity" fill="WHITE" layoutX="250.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km / h" textAlignment="CENTER" wrappingWidth="154.00000762939453">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fx:id="time" fill="WHITE" layoutX="444.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 min" textAlignment="CENTER" wrappingWidth="101.00000381469727">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fx:id="street" fill="WHITE" layoutX="589.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km" textAlignment="CENTER" wrappingWidth="144.00000762939453">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fx:id="avgFuelConsumption" fill="WHITE" layoutX="778.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 l / km" textAlignment="CENTER" wrappingWidth="121.00001335144043">
          <font>
             <Font size="15.0" />
          </font>

@@ -8,8 +8,6 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.text.DecimalFormat;
-
 public class Controller {
     @FXML
     private Polygon leftIndicator;
@@ -20,6 +18,21 @@ public class Controller {
     @FXML
     private Text speedometer;
 
+    @FXML
+    private Text avgVelocity;
+
+    @FXML
+    private Text maxVelocity;
+
+    @FXML
+    private Text time;
+
+    @FXML
+    private Text street;
+
+    @FXML
+    private Text avgFuelConsumption;
+
     private boolean isRightHold;
     private boolean isLeftHold;
 
@@ -27,34 +40,38 @@ public class Controller {
 
     private Thread rightIndicatorThread;
     private Thread leftIndicatorThread;
-    private Thread slowThread;
+    private Thread mainThread;
 
-    private DecimalFormat decimalFormat;
+    private String kmPerHour;
 
     public Controller() {
         dashboard = new Dashboard();
 
+        kmPerHour = " km/h";
+
         rightIndicatorThread = new Thread();
         leftIndicatorThread = new Thread();
 
-        decimalFormat = new DecimalFormat("#.##");
-
-        slowThread = new Thread(new Runnable() {
+        mainThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 while (true) {
                     try {
                         Thread.sleep(200);
                         dashboard.getOnBoardComputer().decelerate(1);
-                        speedometer.setText(String.format("%.1f", dashboard.getOnBoardComputer().getActualVelocity()) + " km/h");
-                        System.out.println(dashboard.getOnBoardComputer().getStreet());
+                        speedometer.setText(String.format("%.1f", dashboard.getOnBoardComputer().getActualVelocity()) + kmPerHour);
+                        avgVelocity.setText(String.format("%.1f", dashboard.getOnBoardComputer().getAvgVelocity()) + kmPerHour);
+                        maxVelocity.setText(String.format("%.1f", dashboard.getOnBoardComputer().getMaxVelocity()) + kmPerHour);
+                        time.setText(String.format("%.2f", (double)(dashboard.getOnBoardComputer().getTime() / 1_000) / 100) + " min");
+                        street.setText(String.format("%.3f", dashboard.getOnBoardComputer().getStreet()) + " km");
+                        avgFuelConsumption.setText(String.format("%.1f", dashboard.getOnBoardComputer().getAvgFuelConsumption()) + " l/km");
                     } catch (Exception ex) {
                     }
                 }
             }
         });
 
-        slowThread.start();
+        mainThread.start();
     }
 
     @FXML

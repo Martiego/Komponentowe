@@ -37,6 +37,8 @@ public class Main extends Application {
 //            }
 //        });
 
+        // FIXME: 11.05.2020
+        // trzeba zrobić tak, że aplikacja się zamyka po kliknięciu w x
         stage.setScene(scene);
         stage.show();
     }
