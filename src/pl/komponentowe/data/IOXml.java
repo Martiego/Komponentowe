@@ -18,7 +18,6 @@ public class IOXml<T> implements Preservation<T> {
 
     @Override
     public void save(String path, T object) {
-
         try (DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(path))) {
             dataOutputStream.writeChars(xStream.toXML(object));
         } catch (Exception ex) {

@@ -1,8 +1,12 @@
 package pl.komponentowe.logic;
 
+import pl.komponentowe.data.IOXml;
+import pl.komponentowe.data.Trip;
 import pl.komponentowe.logic.fluids.Fuel;
 import pl.komponentowe.logic.fluids.Oil;
 import pl.komponentowe.logic.lights.Indicators;
+
+import java.util.ArrayList;
 
 public class Dashboard {
     private boolean highBeams;
@@ -10,21 +14,15 @@ public class Dashboard {
     private double odometer;
     private double tripMeter;
 
-    private Speedometer speedometer;
     private Fuel fuel;
     private Oil oil;
     private Indicators indicators;
     private OnBoardComputer onBoardComputer;
 
     public Dashboard() {
-        speedometer = new Speedometer();
         fuel = new Fuel(50);
         oil = new Oil(5);
         onBoardComputer = new OnBoardComputer();
-    }
-
-    public Speedometer getSpeedometer() {
-        return speedometer;
     }
 
     public Fuel getFuel() {
