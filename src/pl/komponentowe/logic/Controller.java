@@ -43,11 +43,11 @@ public class Controller {
             public void run() {
                 while (true) {
                     try {
-                        Thread.sleep(200);
+                        Thread.sleep(100);
                         dashboard.getOnBoardComputer().decelerate(1);
                         speedometer.setText(String.format("%.1f", dashboard.getOnBoardComputer().getActualVelocity()) + " km/h");
+                        System.out.println(dashboard.getOnBoardComputer().getStreet());
                     } catch (Exception ex) {
-                        //ex.printStackTrace();
                     }
                 }
             }

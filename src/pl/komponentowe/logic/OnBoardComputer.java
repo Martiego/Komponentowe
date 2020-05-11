@@ -36,8 +36,6 @@ public class OnBoardComputer {
         if (actualVelocity > maxVelocity) {
             maxVelocity = actualVelocity;
         }
-
-        street += actualVelocity / 3_600_000 * getTime();
     }
 
     public void decelerate(int value) {
@@ -63,7 +61,7 @@ public class OnBoardComputer {
     }
 
     public long getTime() {
-        time = date.getTime() - (new Date()).getTime();
+        time = (new Date()).getTime() - date.getTime();
         return time;
     }
 
