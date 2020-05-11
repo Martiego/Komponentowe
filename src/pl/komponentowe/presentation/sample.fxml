@@ -23,45 +23,55 @@
               <MenuItem mnemonicParsing="false" onAction="#openSettings" text="Settings" />
             </items>
           </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
         </menus>
       </MenuBar>
       <ToggleButton layoutX="696.0" layoutY="294.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" prefHeight="37.0" prefWidth="112.0" text="ToggleButton" />
-      <Text fx:id="speedometer" layoutX="363.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km/h" textAlignment="CENTER" wrappingWidth="276.0">
+      <Text fx:id="speedometer" fill="WHITE" layoutX="363.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km/h" textAlignment="CENTER" wrappingWidth="276.0">
          <font>
             <Font size="48.0" />
          </font>
       </Text>
-      <Text layoutX="148.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przebieg całkowity: 1241561351321" wrappingWidth="112.00000762939453">
+      <Text fill="WHITE" layoutX="148.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przebieg całkowity: 1241561351321" wrappingWidth="112.00000762939453">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
-      <Text layoutX="148.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przbieg dzienny 1: 2141" wrappingWidth="112.00000762939453">
+      <Text fill="WHITE" layoutX="148.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przbieg dzienny 1: 2141" wrappingWidth="112.00000762939453">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
-      <Text layoutX="87.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prędkość średnia: 50 km/h" wrappingWidth="121.00000762939453">
+      <Text fill="WHITE" layoutX="87.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prędkość średnia: 50 km/h" wrappingWidth="121.00000762939453">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="250.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prędkość maksymalna: 180 km/h" wrappingWidth="154.00000762939453">
+      <Text fill="WHITE" layoutX="250.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prędkość maksymalna: 180 km/h" wrappingWidth="154.00000762939453">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="444.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Czas podróży: 200 min." wrappingWidth="101.00000381469727">
+      <Text fill="WHITE" layoutX="444.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Czas podróży: 200 min." wrappingWidth="101.00000381469727">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="589.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przejechany dystans: 28 000 m." wrappingWidth="144.00000762939453">
+      <Text fill="WHITE" layoutX="589.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przejechany dystans: 28 000 m." wrappingWidth="144.00000762939453">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="778.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Średnie spalanie: 8 l. / 100 km" wrappingWidth="121.00001335144043">
+      <Text fill="WHITE" layoutX="778.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Średnie spalanie: 8 l. / 100 km" wrappingWidth="121.00001335144043">
          <font>
             <Font size="15.0" />
          </font>
