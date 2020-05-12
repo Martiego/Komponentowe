@@ -18,24 +18,20 @@
       <Button layoutX="78.0" layoutY="282.0" mnemonicParsing="false" onAction="#reset" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" text="Reset" />
       <MenuBar maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="25.0" prefWidth="960.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Plik">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#openSettings" text="Settings" />
+              <MenuItem mnemonicParsing="false" onAction="#openSettings" text="Ustawienia" />
+                  <MenuItem mnemonicParsing="false" onAction="#openTrips" text="Wycieczki" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Edytuj">
             <items>
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
         </menus>
       </MenuBar>
-      <ToggleButton layoutX="696.0" layoutY="294.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" prefHeight="37.0" prefWidth="112.0" text="ToggleButton" />
+      <ToggleButton layoutX="696.0" layoutY="294.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" prefHeight="37.0" prefWidth="112.0" text="Tempomat" />
       <Text fx:id="speedometer" fill="WHITE" layoutX="363.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km/h" textAlignment="CENTER" wrappingWidth="276.0">
          <font>
             <Font size="48.0" />
@@ -107,6 +103,12 @@
          </font>
       </Text>
       <Text fx:id="odometer" fill="WHITE" layoutX="148.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km" textAlignment="CENTER" wrappingWidth="112.00000762939453">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <ProgressBar fx:id="fuel" layoutX="696.0" layoutY="224.0" prefHeight="18.0" prefWidth="112.0" progress="0.0" />
+      <Text fill="WHITE" layoutX="696.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paliwo:" textAlignment="CENTER" wrappingWidth="112.00000762939453">
          <font>
             <Font size="13.0" />
          </font>

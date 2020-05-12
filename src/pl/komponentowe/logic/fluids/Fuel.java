@@ -10,7 +10,7 @@ public class Fuel implements Fluid {
 
     @Override
     public double checkLevel() {
-        return amount / 100;
+        return amount / maxAmount;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class Fuel implements Fluid {
     @Override
     public void update(boolean isMoving) {
         if (isMoving) {
-            amount -= 1;
+            amount -= 0.01;
         }
     }
 

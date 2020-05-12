@@ -1,6 +1,7 @@
 package pl.komponentowe.logic;
 
 import pl.komponentowe.data.Trip;
+import pl.komponentowe.logic.fluids.Fuel;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,8 +21,12 @@ public class OnBoardComputer {
     private double odometer;
     private double tripMeter;
 
+    private Fuel fuel;
+
 
     public OnBoardComputer() {
+        fuel = new Fuel(50);
+        fuel.fill(50);
         date = new Date();
         thread = new Thread(new Runnable() {
             @Override
@@ -65,6 +70,8 @@ public class OnBoardComputer {
         if (actualVelocity > maxVelocity) {
             maxVelocity = actualVelocity;
         }
+
+        fuel.update(true);
     }
 
     public void decelerate(int value) {
@@ -79,6 +86,10 @@ public class OnBoardComputer {
         } else if (0 >= actualVelocity) {
             actualVelocity = 0;
         }
+    }
+
+    public void resetOdometer() {
+        odometer = 0;
     }
 
     public double getActualVelocity() {
@@ -116,7 +127,7 @@ public class OnBoardComputer {
         return avgFuelConsumption;
     }
 
-    public void resetOdometer() {
-        odometer = 0;
+    public Fuel getFuel() {
+        return fuel;
     }
 }

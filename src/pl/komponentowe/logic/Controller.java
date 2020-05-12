@@ -1,6 +1,7 @@
 package pl.komponentowe.logic;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -39,6 +40,9 @@ public class Controller {
     @FXML
     private Text odometer;
 
+    @FXML
+    private ProgressBar fuel;
+
     private boolean isRightHold;
     private boolean isLeftHold;
 
@@ -70,11 +74,14 @@ public class Controller {
                         speedometer.setText(String.format("%.1f", dashboard.getOnBoardComputer().getActualVelocity()) + kmPerHour);
                         avgVelocity.setText(String.format("%.1f", dashboard.getOnBoardComputer().getAvgVelocity()) + kmPerHour);
                         maxVelocity.setText(String.format("%.1f", dashboard.getOnBoardComputer().getMaxVelocity()) + kmPerHour);
+                        // FIXME: 12.05.2020
+                        // time
                         time.setText(String.format("%.2f", (double)(dashboard.getOnBoardComputer().getTime() / 1_000) / 100) + " min");
                         street.setText(String.format("%.3f", dashboard.getOnBoardComputer().getStreet()) + km);
                         avgFuelConsumption.setText(String.format("%.1f", dashboard.getOnBoardComputer().getAvgFuelConsumption()) + " l/km");
                         mileage.setText(String.format("%.1f", dashboard.getOnBoardComputer().getMileage()) + km);
                         odometer.setText(String.format("%.1f", dashboard.getOnBoardComputer().getOdometer()) + km);
+                        fuel.setProgress(dashboard.getOnBoardComputer().getFuel().checkLevel());
                     } catch (Exception ex) {
                     }
                 }
@@ -121,6 +128,12 @@ public class Controller {
     public void openSettings() throws Exception {
         Settings settings = new Settings();
         settings.start(new Stage());
+    }
+
+    @FXML
+    public void openTrips() throws Exception {
+        Trips trips = new Trips();
+        trips.start(new Stage());
     }
 
     @FXML
