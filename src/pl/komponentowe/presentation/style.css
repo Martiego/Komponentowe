@@ -3,5 +3,26 @@
 }
 
 .headlights {
-    -fx-graphic: url("./graphics/swiatlaPozycyjne.png");
+    -fx-background-image: url("./graphics/swiatlaMijania.png");
+    -fx-background-color: transparent;
+}
+
+.headlights2 {
+    -fx-background-image: url("./graphics/swiatlaPozycyjne.png");
+    -fx-background-color: transparent;
+}
+
+.highBeams {
+    -fx-background-image: url("./graphics/swiatlaDrogowe.png");
+    -fx-background-color: transparent;
+}
+
+.fogLights {
+    -fx-background-image: url("./graphics/swiatlaPrzeciwmgielne.png");
+    -fx-background-color: transparent;
+}
+
+.runningLights {
+    -fx-background-image: url("./graphics/swiatlaPozycyjne.png");
+    -fx-background-color: transparent;
 }

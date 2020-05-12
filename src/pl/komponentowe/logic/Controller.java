@@ -1,15 +1,24 @@
 package pl.komponentowe.logic;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Controller {
+    @FXML
+    public Button headlights;
+
     @FXML
     private Polygon leftIndicator;
 
@@ -74,9 +83,7 @@ public class Controller {
                         speedometer.setText(String.format("%.1f", dashboard.getOnBoardComputer().getActualVelocity()) + kmPerHour);
                         avgVelocity.setText(String.format("%.1f", dashboard.getOnBoardComputer().getAvgVelocity()) + kmPerHour);
                         maxVelocity.setText(String.format("%.1f", dashboard.getOnBoardComputer().getMaxVelocity()) + kmPerHour);
-                        // FIXME: 12.05.2020
-                        // time
-                        time.setText(String.format("%.2f", (double)(dashboard.getOnBoardComputer().getTime() / 1_000) / 100) + " min");
+                        time.setText(String.format("%.2f", (double)(dashboard.getOnBoardComputer().getTime() / 1_000) / 60) + " min");
                         street.setText(String.format("%.3f", dashboard.getOnBoardComputer().getStreet()) + km);
                         avgFuelConsumption.setText(String.format("%.1f", dashboard.getOnBoardComputer().getAvgFuelConsumption()) + " l/km");
                         mileage.setText(String.format("%.1f", dashboard.getOnBoardComputer().getMileage()) + km);
@@ -89,6 +96,9 @@ public class Controller {
         });
 
         mainThread.start();
+
+//        headlights.getStylesheets().add("headlights2");
+
     }
 
     @FXML
