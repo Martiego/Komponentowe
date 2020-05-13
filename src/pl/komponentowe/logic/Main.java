@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import pl.komponentowe.data.IODataBase;
+import pl.komponentowe.data.Trip;
 
 /**
  * In order to run this program you need to add XStream library to your project. You can find it here: "http://x-stream.github.io/"
@@ -18,8 +20,9 @@ public class Main extends Application {
     private static String PATH_TO_FILE_XML = "C:\\Users\\Desktop\\Semestr 4 2020\\Komponentowe\\plik1.xml";
 
     public static void main(String[] args)  {
+        IODataBase<Trip> ioDataBase = new IODataBase<>();
         // Fragment responsible for 
-        launch(args);
+//        launch(args);
     }
 
     @Override
