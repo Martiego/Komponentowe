@@ -3,32 +3,36 @@ package pl.komponentowe.data;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class IODataBase<T> implements Preservation<T> {
-    private String url       = "jdbc:mysql://localhost:3306/trips";
+    private String url       = "jdbc:mysql://localhost:3306/";
     private String user      = "root";
     private String password  = "";
 
-    private Connection conn;
 
-    public IODataBase() {
-        try {
-            conn = DriverManager.getConnection(url, user, password);
-            if (conn != null) {
-                System.out.println("Hurra");
-            } else {
-                System.out.println("Przykro mi, włącz najpierw xamppa, potem mysql, następnie stwórz bazę dancyh trips");
-                System.out.println("...");
-                System.out.println("Hurra");
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+    public IODataBase(String user, String password) {
+        this.user = user;
+        this.password = password;
     }
 
     @Override
     public void save(String path, T object) {
-        // Method responsible for save to database
+        try (Connection conn = DriverManager.getConnection(url + path, user, password);){
+            if (conn.isValid(5)) {
+                Statement statement = conn.createStatement();
+                Trip trip = (Trip) object;
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                statement.execute("INSERT INTO trips (date, avgFuelConsumption, avgVelocity, maxVelocity, time) " +
+                        "VALUES ('" + dateFormat.format(trip.getDate()) + "', " + trip.getAvgFuelConsumption() + ", "
+                        + trip.getAvgVelocity() + ", " + trip.getMaxVelocity() + ", " + trip.getTime() + ");");
+            }
+
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
     }
 
     @Override
@@ -36,4 +40,6 @@ public class IODataBase<T> implements Preservation<T> {
         // Method responsible for save to database
         return null;
     }
+
+
 }
