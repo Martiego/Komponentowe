@@ -5,6 +5,7 @@ import java.util.Date;
 
 
 public class Trip implements Serializable {
+    private int id;
     private Date date;
     private double avgFuelConsumption;
     private double avgVelocity;
@@ -23,12 +24,25 @@ public class Trip implements Serializable {
         this.time = time;
     }
 
+    public Trip(int id, long date, double avgFuelConsumption, double avgVelocity, double maxVelocity, long time) {
+        this.id = id;
+        this.date = new Date(date);
+        this.avgFuelConsumption = avgFuelConsumption;
+        this.avgVelocity = avgVelocity;
+        this.maxVelocity = maxVelocity;
+        this.time = time;
+    }
+
     public Trip(Object o) {
         this.date = ((Trip) o).getDate();
         this.avgFuelConsumption = ((Trip) o).getAvgFuelConsumption();
         this.avgVelocity = ((Trip) o).getAvgVelocity();
         this.maxVelocity = ((Trip) o).getMaxVelocity();
         this.time = ((Trip) o).getTime();
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Date getDate() {
@@ -49,6 +63,10 @@ public class Trip implements Serializable {
 
     public long getTime() {
         return time;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setAvgFuelConsumption(double avgFuelConsumption) {

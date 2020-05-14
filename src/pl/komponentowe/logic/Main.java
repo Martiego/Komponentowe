@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import pl.komponentowe.data.IODataBase;
 import pl.komponentowe.data.Trip;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -22,8 +24,20 @@ public class Main extends Application {
     private static String PATH_TO_FILE_XML = "C:\\Users\\Desktop\\Semestr 4 2020\\Komponentowe\\plik1.xml";
 
     public static void main(String[] args)  {
-        IODataBase<Trip> ioDataBase = new IODataBase<>("root", "");
-        ioDataBase.save("trips", new Trip(new Date(), 12.0, 20.0, 50.0, 724543));
+        IODataBase ioDataBase = new IODataBase("root", "");
+        ArrayList<Trip> trips = new ArrayList<>();
+
+        trips.add(new Trip(new Date(), 12.0, 20.0, 50.0, 724543));
+        trips.add(new Trip(new Date(), 2.0, 203.0, 503.0, 4543));
+
+//        ioDataBase.save("trips", trips);
+
+        ioDataBase.concatRows("trips", 24, 25);
+//        ioDataBase.delete("trips", 5);
+
+        ArrayList<Trip> test = ioDataBase.load("trips");
+
+        System.out.println(test);
         // Fragment responsible for 
 //        launch(args);
     }
@@ -35,13 +49,6 @@ public class Main extends Application {
         stage.setResizable(false);
         Scene scene = new Scene(root, 960, 540);
         scene.getStylesheets().add(getClass().getResource("../presentation/style.css").toExternalForm());
-
-//        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-//            @Override
-//            public void handle(KeyEvent keyEvent) {
-//                System.out.println(keyEvent.getCode());
-//            }
-//        });
 
         // FIXME: 11.05.2020
         // trzeba zrobić tak, że aplikacja się zamyka po kliknięciu w x

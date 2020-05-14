@@ -1,6 +1,8 @@
 package pl.komponentowe.data;
 
-public interface Preservation<T> {
-    void save(String path, T object);
-    T load(String path);
+import java.util.ArrayList;
+
+public interface Preservation {
+    void save(String path, ArrayList<Trip> object);
+    ArrayList<Trip> load(String path);
 }

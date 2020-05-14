@@ -8,8 +8,9 @@ import java.io.FileOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
-public class IOXml<T> implements Preservation<T> {
+public class IOXml implements Preservation {
     private XStream xStream;
 
     public IOXml() {
@@ -17,7 +18,7 @@ public class IOXml<T> implements Preservation<T> {
     }
 
     @Override
-    public void save(String path, T object) {
+    public void save(String path, ArrayList<Trip> object) {
         try (DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(path))) {
             dataOutputStream.writeChars(xStream.toXML(object));
         } catch (Exception ex) {
@@ -26,12 +27,12 @@ public class IOXml<T> implements Preservation<T> {
     }
 
     @Override
-    public T load(String path) {
-        T result = null;
+    public ArrayList<Trip> load(String path) {
+        ArrayList<Trip> result = new ArrayList<>();
 
         try {
             String content = Files.readString(Paths.get(path), StandardCharsets.UTF_16);
-            result = (T) xStream.fromXML(content);
+            result = (ArrayList<Trip>) xStream.fromXML(content);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
