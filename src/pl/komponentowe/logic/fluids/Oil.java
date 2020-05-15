@@ -30,14 +30,8 @@ public class Oil implements Fluid {
     }
 
     @Override
-    public void update(boolean isMoving) {
-        if (isMoving) {
-            temperature += 2;
-            amount -= 0.1;
-        } else {
-            temperature -= 1;
-        }
-
+    public void update(double amount) {
+        this.amount -= amount;
     }
 
     public double getTemperature() {
