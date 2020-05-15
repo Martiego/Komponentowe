@@ -31,7 +31,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <ToggleButton layoutX="696.0" layoutY="294.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" prefHeight="37.0" prefWidth="112.0" text="Tempomat" />
+      <ToggleButton fx:id="cruiseControl" layoutX="696.0" layoutY="294.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" prefHeight="37.0" prefWidth="112.0" text="Tempomat" />
       <Text fx:id="speedometer" fill="WHITE" layoutX="363.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km/h" textAlignment="CENTER" wrappingWidth="276.0">
          <font>
             <Font size="48.0" />

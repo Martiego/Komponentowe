@@ -30,16 +30,16 @@ public class Main extends Application {
         trips.add(new Trip(new Date(), 12.0, 20.0, 50.0, 724543));
         trips.add(new Trip(new Date(), 2.0, 203.0, 503.0, 4543));
 
-//        ioDataBase.save("trips", trips);
+        ioDataBase.save("trips", trips);
 
-        ioDataBase.concatRows("trips", 24, 25);
-//        ioDataBase.delete("trips", 5);
+//        ioDataBase.concatRows("trips", 24, 25);
+//        ioDataBase.deleteAll("trips");
 
-        ArrayList<Trip> test = ioDataBase.load("trips");
+//        ArrayList<Trip> test = ioDataBase.load("trips");
 
-        System.out.println(test);
+//        System.out.println(test);
         // Fragment responsible for 
-//        launch(args);
+        launch(args);
     }
 
     @Override

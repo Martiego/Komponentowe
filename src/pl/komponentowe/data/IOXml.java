@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-public class IOXml implements Preservation {
+public class IOXml<T> implements Preservation<T> {
     private XStream xStream;
 
     public IOXml() {
@@ -18,7 +18,7 @@ public class IOXml implements Preservation {
     }
 
     @Override
-    public void save(String path, ArrayList<Trip> object) {
+    public void save(String path, ArrayList<T> object) {
         try (DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(path))) {
             dataOutputStream.writeChars(xStream.toXML(object));
         } catch (Exception ex) {
@@ -27,12 +27,12 @@ public class IOXml implements Preservation {
     }
 
     @Override
-    public ArrayList<Trip> load(String path) {
-        ArrayList<Trip> result = new ArrayList<>();
+    public ArrayList<T> load(String path) {
+        ArrayList<T> result = new ArrayList<>();
 
         try {
             String content = Files.readString(Paths.get(path), StandardCharsets.UTF_16);
-            result = (ArrayList<Trip>) xStream.fromXML(content);
+            result = (ArrayList<T>) xStream.fromXML(content);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

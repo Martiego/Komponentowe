@@ -3,10 +3,10 @@ package pl.komponentowe.data;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class IODataBase implements Preservation {
+public class IODataBase implements Preservation<Trip> {
     private String url       = "jdbc:mysql://localhost:3306/";
-    private String user      = "root";
-    private String password  = "";
+    private String user;
+    private String password;
 
 
     public IODataBase(String user, String password) {

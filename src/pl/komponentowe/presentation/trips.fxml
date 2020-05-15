@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<Pane fx:id="tripDate" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/">
+<Pane fx:id="trip" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.komponentowe.logic.TripsController">
    <children>
-      <Text layoutX="37.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wycieczki:" />
-      <Text layoutX="37.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data:" />
-      <Text fx:id="tr" layoutX="37.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="08.05.2020" />
-      <Button layoutX="37.0" layoutY="25.0" mnemonicParsing="false" text="Poprzednia" />
-      <Button layoutX="129.0" layoutY="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="Następna" />
-      <Text layoutX="37.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Średnie zużycie paliwa:" />
-      <Text fx:id="tripAvgFuelConsumption" layoutX="37.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 l / km" />
-      <Text layoutX="211.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Średnia prędkość:" />
-      <Text fx:id="tripAvgVelocity" layoutX="211.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km / h" />
-      <Text layoutX="211.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Czas:" />
-      <Text fx:id="tripTime" layoutX="211.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 min" />
-      <Text layoutX="345.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maksymalna prędkość:" />
-      <Text fx:id="tripMaxVelocity" layoutX="345.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km / h" />
+      <Text layoutX="38.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Wycieczki: " />
+      <Text layoutX="244.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data:" />
+      <Text fx:id="tripDate" layoutX="244.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brak" />
+      <Button fx:id="previous" layoutX="37.0" layoutY="25.0" mnemonicParsing="false" onAction="#previous" text="Poprzednia" />
+      <Button fx:id="next" layoutX="129.0" layoutY="25.0" mnemonicParsing="false" onAction="#next" prefHeight="25.0" prefWidth="76.0" text="Następna" />
+      <Text layoutX="37.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Średnie zużycie paliwa:" />
+      <Text fx:id="tripAvgFuelConsumption" layoutX="37.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 l / km" />
+      <Text layoutX="244.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Średnia prędkość:" />
+      <Text fx:id="tripAvgVelocity" layoutX="244.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km / h" />
+      <Text layoutX="444.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Czas:" />
+      <Text fx:id="tripTime" layoutX="444.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 min" />
+      <Text layoutX="444.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maksymalna prędkość:" />
+      <Text fx:id="tripMaxVelocity" layoutX="444.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km / h" />
+      <Text fx:id="tripID" layoutX="37.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brak zarchiwizowanych wycieczek" wrappingWidth="183.74805450439453" />
+      <Button fx:id="delete" layoutX="39.0" layoutY="309.0" mnemonicParsing="false" text="Usuń wycieczkę o numerze ID" />
+      <Button fx:id="deleteAll" layoutX="244.0" layoutY="309.0" mnemonicParsing="false" text="Usuń wszystkie wycieczki" />
+      <Button fx:id="concat" layoutX="437.0" layoutY="309.0" mnemonicParsing="false" text="Połącz wycieczki o numerach ID" />
+      <TextField fx:id="concatSecondID" layoutX="537.0" layoutY="265.0" prefHeight="25.0" prefWidth="57.0" />
+      <TextField fx:id="concatFirstID" layoutX="458.0" layoutY="265.0" prefHeight="25.0" prefWidth="57.0" />
+      <TextField fx:id="deleteID" layoutX="97.0" layoutY="265.0" prefHeight="25.0" prefWidth="57.0" />
    </children>
 </Pane>

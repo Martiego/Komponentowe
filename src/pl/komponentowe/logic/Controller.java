@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.ProgressBar;
@@ -18,6 +19,9 @@ import javafx.stage.Stage;
 public class Controller {
     @FXML
     public Button headlights;
+
+    @FXML
+    public ToggleButton cruiseControl;
 
     @FXML
     private Polygon leftIndicator;
