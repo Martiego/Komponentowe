@@ -2,6 +2,7 @@ package pl.komponentowe.logic;
 
 import pl.komponentowe.data.Trip;
 import pl.komponentowe.logic.fluids.Fuel;
+import pl.komponentowe.logic.fluids.Oil;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,11 +23,17 @@ public class OnBoardComputer {
     private double tripMeter;
 
     private Fuel fuel;
+    private Oil oil;
+
+    private double fuelConsumption;
+    private double timeFuelConsumption;
 
 
     public OnBoardComputer() {
         fuel = new Fuel(50);
         fuel.fill(50);
+        oil = new Oil(5);
+        oil.fill(5);
         date = new Date();
         thread = new Thread(new Runnable() {
             @Override
@@ -36,6 +43,7 @@ public class OnBoardComputer {
                     try {
                         Thread.sleep(100);
                         avgStreet = actualVelocity / 3_600_000 * 100;
+                        // droga w km
                         street += avgStreet;
                         mileage += avgStreet;
                         odometer += avgStreet;
@@ -71,7 +79,11 @@ public class OnBoardComputer {
             maxVelocity = actualVelocity;
         }
 
-        fuel.update(true);
+        timeFuelConsumption = Math.random() / 100;
+        fuelConsumption += timeFuelConsumption;
+
+        fuel.update(timeFuelConsumption);
+        oil.update(0.001);
     }
 
     public void decelerate(int value) {
@@ -113,18 +125,13 @@ public class OnBoardComputer {
     }
 
     public double getAvgVelocity() {
-        // FIXME: 11.05.2020
-        // najpierw zamiana na m/s, potem na km/h
-        // no i skacze tak +/-, nawet jak cały czas przyspiesza
-        // w sensie wiesz, wtedy średnia powinna cały czas rosnąć
-        // hmmm
         double meter = street * 1000;
         double seconds = (double)(getTime() / 1_000);
         return meter / seconds * 36 / 10;
     }
 
     public double getAvgFuelConsumption() {
-        return avgFuelConsumption;
+        return fuelConsumption / street;
     }
 
     public Fuel getFuel() {

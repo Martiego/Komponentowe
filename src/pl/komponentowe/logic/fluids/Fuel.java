@@ -28,10 +28,8 @@ public class Fuel implements Fluid {
     }
 
     @Override
-    public void update(boolean isMoving) {
-        if (isMoving) {
-            amount -= 0.01;
-        }
+    public void update(double amount) {
+        this.amount -= amount;
     }
 
 
