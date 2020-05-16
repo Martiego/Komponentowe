@@ -110,7 +110,6 @@ public class IODataBase implements Preservation<Trip> {
                         resultSet.updateDouble(4, (trips.get(0).getAvgVelocity() * trips.get(0).getTime() + trips.get(1).getAvgVelocity() * trips.get(1).getTime()) / (trips.get(0).getTime() + trips.get(1).getTime()));
                         resultSet.updateDouble(5, Math.max(trips.get(0).getMaxVelocity(), trips.get(1).getMaxVelocity()));
                         resultSet.updateLong(6, trips.get(0).getTime() + trips.get(1).getTime());
-                        System.out.println(trips.get(0).getTime() + trips.get(1).getTime());
                         resultSet.insertRow();
                     } else {
                         System.out.println("Wyjatek");
