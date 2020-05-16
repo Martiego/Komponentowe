@@ -7,28 +7,28 @@ import pl.komponentowe.logic.fluids.Oil;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class OnBoardComputer {
+public class Dashboard {
     private Date date;
+
     private double actualVelocity;
     private double avgFuelConsumption;
     private double maxVelocity;
-//    private double avgVelocity;
+    //    private double avgVelocity;
     private double street;
     private double mileage;
-//    private long time;
+    //    private long time;
     private Thread thread;
-
     private double odometer;
+
     private double tripMeter;
-
     private Fuel fuel;
-    private Oil oil;
 
+    private Oil oil;
     private double fuelConsumption;
+
     private double timeFuelConsumption;
 
-
-    public OnBoardComputer() {
+    public Dashboard() {
         fuel = new Fuel(50);
         fuel.fill(50);
         oil = new Oil(5);
@@ -127,6 +127,10 @@ public class OnBoardComputer {
         double meter = street * 1000;
         double seconds = (double)(getTime() / 1_000);
         return meter / seconds * 36 / 10;
+    }
+
+    public Date getDate() {
+        return date;
     }
 
     public double getAvgFuelConsumption() {

@@ -27,24 +27,22 @@ public class Main extends Application {
         IODataBase ioDataBase = new IODataBase("root", "");
         ArrayList<Trip> trips = new ArrayList<>();
 
-        trips.add(new Trip(new Date(), 12.0, 20.0, 50.0, 724543));
-        trips.add(new Trip(new Date(), 2.0, 203.0, 503.0, 4543));
 
-        ioDataBase.save("trips", trips);
 
 //        ioDataBase.concatRows("trips", 24, 25);
-//        ioDataBase.deleteAll("trips");
+        ioDataBase.deleteAll("trips");
 
 //        ArrayList<Trip> test = ioDataBase.load("trips");
 
 //        System.out.println(test);
-        // Fragment responsible for 
+        // Fragment responsible for
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../presentation/sample.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../presentation/sample.fxml"));
+        Parent root = fxmlLoader.load();
         stage.setTitle("Brum brum");
         stage.setResizable(false);
         Scene scene = new Scene(root, 960, 540);
@@ -54,5 +52,13 @@ public class Main extends Application {
         // trzeba zrobić tak, że aplikacja się zamyka po kliknięciu w x
         stage.setScene(scene);
         stage.show();
+        stage.setOnCloseRequest(event -> {
+            Trip trip = ((Controller)fxmlLoader.getController()).makeTrip();
+            IODataBase ioDataBase = new IODataBase("root", "");
+            ArrayList<Trip> arrayList = new ArrayList<>();
+            arrayList.add(trip);
+            ioDataBase.save("trips", arrayList);
+        });
     }
+
 }

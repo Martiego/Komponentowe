@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import pl.komponentowe.data.Trip;
 
 public class Controller {
     @FXML
@@ -83,16 +84,16 @@ public class Controller {
                 while (true) {
                     try {
                         Thread.sleep(200);
-                        dashboard.getOnBoardComputer().decelerate(1);
-                        speedometer.setText(String.format("%.1f", dashboard.getOnBoardComputer().getActualVelocity()) + kmPerHour);
-                        avgVelocity.setText(String.format("%.1f", dashboard.getOnBoardComputer().getAvgVelocity()) + kmPerHour);
-                        maxVelocity.setText(String.format("%.1f", dashboard.getOnBoardComputer().getMaxVelocity()) + kmPerHour);
-                        time.setText(String.format("%.2f", (double)(dashboard.getOnBoardComputer().getTime() / 1_000) / 60) + " min");
-                        street.setText(String.format("%.3f", dashboard.getOnBoardComputer().getStreet()) + km);
-                        avgFuelConsumption.setText(String.format("%.1f", dashboard.getOnBoardComputer().getAvgFuelConsumption()) + " l/km");
-                        mileage.setText(String.format("%.1f", dashboard.getOnBoardComputer().getMileage()) + km);
-                        odometer.setText(String.format("%.1f", dashboard.getOnBoardComputer().getOdometer()) + km);
-                        fuel.setProgress(dashboard.getOnBoardComputer().getFuel().checkLevel());
+                        dashboard.decelerate(1);
+                        speedometer.setText(String.format("%.1f", dashboard.getActualVelocity()) + kmPerHour);
+                        avgVelocity.setText(String.format("%.1f", dashboard.getAvgVelocity()) + kmPerHour);
+                        maxVelocity.setText(String.format("%.1f", dashboard.getMaxVelocity()) + kmPerHour);
+                        time.setText(String.format("%.2f", (double)(dashboard.getTime() / 1_000) / 60) + " min");
+                        street.setText(String.format("%.3f", dashboard.getStreet()) + km);
+                        avgFuelConsumption.setText(String.format("%.1f", dashboard.getAvgFuelConsumption()) + " l/km");
+                        mileage.setText(String.format("%.1f", dashboard.getMileage()) + km);
+                        odometer.setText(String.format("%.1f", dashboard.getOdometer()) + km);
+                        fuel.setProgress(dashboard.getFuel().checkLevel());
                     } catch (Exception ex) {
                     }
                 }
@@ -121,11 +122,11 @@ public class Controller {
                 turnLeft();
             }
         } else if (KeyCode.UP == event.getCode()) {
-            dashboard.getOnBoardComputer().accelerate();
-            speedometer.setText(String.format("%.1f",dashboard.getOnBoardComputer().getActualVelocity()) + " km/h");
+            dashboard.accelerate();
+            speedometer.setText(String.format("%.1f",dashboard.getActualVelocity()) + " km/h");
         } else if (KeyCode.DOWN == event.getCode()) {
-            dashboard.getOnBoardComputer().decelerate(3);
-            speedometer.setText(String.format("%.1f", dashboard.getOnBoardComputer().getActualVelocity()) + " km/h");
+            dashboard.decelerate(3);
+            speedometer.setText(String.format("%.1f", dashboard.getActualVelocity()) + " km/h");
         }
     }
 
@@ -152,7 +153,7 @@ public class Controller {
 
     @FXML
     public void reset() {
-        dashboard.getOnBoardComputer().resetOdometer();
+        dashboard.resetOdometer();
     }
 
     private void turnRight() {
@@ -200,6 +201,11 @@ public class Controller {
             }
         });
 
+
         leftIndicatorThread.start();
+    }
+
+    public Trip makeTrip() {
+        return new  Trip(dashboard.getDate(), dashboard.getAvgFuelConsumption(), dashboard.getAvgVelocity(), dashboard.getMaxVelocity(), dashboard.getTime());
     }
 }
