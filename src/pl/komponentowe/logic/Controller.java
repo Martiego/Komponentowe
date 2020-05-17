@@ -62,8 +62,7 @@ public class Controller {
 
     private Dashboard dashboard;
 
-    private Thread rightIndicatorThread;
-    private Thread leftIndicatorThread;
+    private Thread indicatorThread;
     private Thread mainThread;
 
     private String kmPerHour;
@@ -75,13 +74,12 @@ public class Controller {
         kmPerHour = " km/h";
         km = " km";
 
-        rightIndicatorThread = new Thread();
-        leftIndicatorThread = new Thread();
+        indicatorThread = new Thread();
 
         mainThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (true) {
+                while (dashboard.isRunning()) {
                     try {
                         Thread.sleep(200);
                         dashboard.decelerate(1);
@@ -109,24 +107,22 @@ public class Controller {
     @FXML
     public void keyPressedController(KeyEvent event) {
 
-        if (KeyCode.RIGHT == event.getCode()) {
-            isRightHold = true;
-
-            if (!rightIndicatorThread.isAlive()) {
-                turnRight();
+        if (!indicatorThread.isAlive()) {
+            if (KeyCode.RIGHT == event.getCode()) {
+                isRightHold = true;
+                turn('r');
+            } else if (KeyCode.LEFT == event.getCode()) {
+                isLeftHold = true;
+                turn('l');
             }
-        } else if (KeyCode.LEFT == event.getCode()) {
-            isLeftHold = true;
+        }
 
-            if (!leftIndicatorThread.isAlive()) {
-                turnLeft();
-            }
-        } else if (KeyCode.UP == event.getCode()) {
+        if (KeyCode.UP == event.getCode()) {
             dashboard.accelerate();
-            speedometer.setText(String.format("%.1f",dashboard.getActualVelocity()) + " km/h");
+            speedometer.setText(String.format("%.1f",dashboard.getActualVelocity()) + kmPerHour);
         } else if (KeyCode.DOWN == event.getCode()) {
             dashboard.decelerate(3);
-            speedometer.setText(String.format("%.1f", dashboard.getActualVelocity()) + " km/h");
+            speedometer.setText(String.format("%.1f", dashboard.getActualVelocity()) + kmPerHour);
         }
     }
 
@@ -156,10 +152,19 @@ public class Controller {
         dashboard.resetOdometer();
     }
 
-    private void turnRight() {
-        rightIndicatorThread = new Thread(() -> {
-            while (isRightHold) {
-                rightIndicator.setFill(Color.GREEN);
+    private void turn(char direction) {
+        indicatorThread = new Thread(() -> {
+
+            Polygon indicator = new Polygon();
+            if ('r' == direction) {
+                indicator = rightIndicator;
+            } else if ('l' == direction) {
+                indicator = leftIndicator;
+            }
+
+            while (isRightHold || isLeftHold) {
+
+                indicator.setFill(Color.GREEN);
 
                 try {
                     Thread.sleep(500);
@@ -167,7 +172,7 @@ public class Controller {
                     e.printStackTrace();
                 }
 
-                rightIndicator.setFill(Color.BLACK);
+                indicator.setFill(Color.BLACK);
 
                 try {
                     Thread.sleep(500);
@@ -175,37 +180,18 @@ public class Controller {
                     e.printStackTrace();
                 }
             }
+
         });
 
-        rightIndicatorThread.start();
+        indicatorThread.start();
     }
 
-    private void turnLeft() {
-        leftIndicatorThread = new Thread(() -> {
-            while (isLeftHold) {
-                leftIndicator.setFill(Color.GREEN);
-
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                leftIndicator.setFill(Color.BLACK);
-
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-
-        leftIndicatorThread.start();
-    }
 
     public Trip makeTrip() {
-        return new  Trip(dashboard.getDate(), dashboard.getAvgFuelConsumption(), dashboard.getAvgVelocity(), dashboard.getMaxVelocity(), dashboard.getTime());
+        return new Trip(dashboard.getDate(), dashboard.getAvgFuelConsumption(), dashboard.getAvgVelocity(), dashboard.getMaxVelocity(), dashboard.getTime());
+    }
+
+    public void stop() {
+        dashboard.stop();
     }
 }

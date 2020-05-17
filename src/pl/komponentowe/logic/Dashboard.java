@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Dashboard {
+    private boolean isRunning;
+
     private Date date;
 
     private double actualVelocity;
@@ -29,6 +31,7 @@ public class Dashboard {
     private double timeFuelConsumption;
 
     public Dashboard() {
+        isRunning = true;
         fuel = new Fuel(50);
         fuel.fill(50);
         oil = new Oil(5);
@@ -38,7 +41,7 @@ public class Dashboard {
             @Override
             public void run() {
                 double avgStreet;
-                while (true) {
+                while (isRunning) {
                     try {
                         Thread.sleep(100);
                         avgStreet = actualVelocity / 3_600_000 * 100;
@@ -55,6 +58,14 @@ public class Dashboard {
         });
 
         thread.start();
+    }
+
+    public void stop() {
+        isRunning = false;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
     }
 
     public double getMileage() {

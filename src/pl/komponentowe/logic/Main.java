@@ -53,11 +53,14 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
         stage.setOnCloseRequest(event -> {
-            Trip trip = ((Controller)fxmlLoader.getController()).makeTrip();
+            Controller controller = (Controller)fxmlLoader.getController();
+            Trip trip = controller.makeTrip();
             IODataBase ioDataBase = new IODataBase("root", "");
             ArrayList<Trip> arrayList = new ArrayList<>();
             arrayList.add(trip);
             ioDataBase.save("trips", arrayList);
+
+            controller.stop();
         });
     }
 
