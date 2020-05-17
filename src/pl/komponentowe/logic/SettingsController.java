@@ -41,16 +41,16 @@ public class SettingsController {
 
     @FXML
     public void saveSettings() {
-//        Settings settings = new Settings();
-//        settings.setMileage(((Controller)fxmlLoader.getController()).getDashboard().getMileage());
-//        settings.setMaxFuel(((Controller)fxmlLoader.getController()).getDashboard().getMaxFuel());
-//        settings.setMaxOil(((Controller)fxmlLoader.getController()).getDashboard().getMaxOil());
-//
-//
-//        ArrayList<pl.komponentowe.data.Settings> settingsArrayList = new ArrayList<>();
-//        settingsArrayList.add(settings);
-//
-//        ioXml.save(file.getAbsolutePath(), settingsArrayList);
+        Settings settings = new Settings();
+        settings.setMileage(((Controller)fxmlLoader.getController()).getDashboard().getMileage());
+        settings.setMaxFuel(((Controller)fxmlLoader.getController()).getDashboard().getMaxFuel());
+        settings.setMaxOil(((Controller)fxmlLoader.getController()).getDashboard().getMaxOil());
+
+
+        ArrayList<pl.komponentowe.data.Settings> settingsArrayList = new ArrayList<>();
+        settingsArrayList.add(settings);
+
+        ioXml.save(file.getAbsolutePath(), settingsArrayList);
 
     }
 }
