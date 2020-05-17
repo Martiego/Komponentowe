@@ -47,7 +47,7 @@ public class SettingsController {
         settings.setMaxOil(((Controller)fxmlLoader.getController()).getDashboard().getMaxOil());
 
 
-        ArrayList<pl.komponentowe.data.Settings> settingsArrayList = new ArrayList<>();
+        ArrayList<Settings> settingsArrayList = new ArrayList<>();
         settingsArrayList.add(settings);
 
         ioXml.save(file.getAbsolutePath(), settingsArrayList);
@@ -56,6 +56,9 @@ public class SettingsController {
 
     @FXML
     public void loadSettings() {
+        ArrayList<Settings> settingsArrayList = new ArrayList<>();
+        settingsArrayList = ioXml.load(file.getAbsolutePath());
 
+//        settingsArrayList.get(0);
     }
 }
