@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import pl.komponentowe.data.IOXml;
+import pl.komponentowe.data.Settings;
 
 import java.io.File;
 
@@ -16,9 +18,11 @@ public class SettingsController {
 
     private Stage stage;
     private FXMLLoader fxmlLoader;
+    private IOXml<Settings> ioXml;
 
     public SettingsController() {
         fxmlLoader = new FXMLLoader(getClass().getResource("../presentation/sample.fxml"));
+        ioXml = new IOXml<>();
     }
 
     @FXML
@@ -36,6 +40,8 @@ public class SettingsController {
 
     @FXML
     public void saveSettings() {
-        ((Controller)fxmlLoader.getController()).getDashboard();
+        Settings settings = new Settings();
+        settings.setMileage(((Controller)fxmlLoader.getController()).getDashboard().getMileage());
+//        settings.setMaxFuel((Controller)fxmlLoader.getController()).getDashboard().;
     }
 }
