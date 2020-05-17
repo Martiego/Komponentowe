@@ -56,8 +56,8 @@ public class SettingsController {
 
     @FXML
     public void loadSettings() {
-        ArrayList<Settings> settingsArrayList = new ArrayList<>();
-        settingsArrayList = ioXml.load(file.getAbsolutePath());
+//        ArrayList<Settings> settingsArrayList = new ArrayList<>();
+//        settingsArrayList = ioXml.load(file.getAbsolutePath());
 
 //        settingsArrayList.get(0);
     }
