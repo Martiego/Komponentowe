@@ -4,19 +4,20 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="405.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.komponentowe.logic.Controller">
+<AnchorPane fx:id="settings" prefHeight="405.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.komponentowe.logic.SettingsController">
    <children>
       <Text layoutX="55.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wybierz ścieżkę do pliku z kopią zapasową XML:" wrappingWidth="264.13671875" />
-      <Button layoutX="336.0" layoutY="158.0" mnemonicParsing="false" text="Wybierz plik" />
+      <Button layoutX="336.0" layoutY="158.0" mnemonicParsing="false" onAction="#openFile" text="Wybierz plik" />
       <Button layoutX="348.0" layoutY="114.0" mnemonicParsing="false" text="Wczytaj" />
       <Text layoutX="55.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wczytaj kopię zapasową danych:" wrappingWidth="264.13671875" />
       <Text layoutX="55.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zapisz kopię zapasową danych:" wrappingWidth="264.13671875" />
-      <Button layoutX="352.0" layoutY="68.0" mnemonicParsing="false" text="Zapisz" />
+      <Button layoutX="352.0" layoutY="68.0" mnemonicParsing="false" onAction="#saveSettings" text="Zapisz" />
       <Text layoutX="70.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zmień maksymalną ilość paliwa w pojeździe:" wrappingWidth="264.13671875" />
       <Button layoutX="293.0" layoutY="330.0" mnemonicParsing="false" text="Zmień" />
       <TextField layoutX="201.0" layoutY="330.0" prefHeight="25.0" prefWidth="69.0" />
       <Text layoutX="376.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zmień maksymalną ilość oleju w pojeździe:" wrappingWidth="264.13671875" />
       <Button layoutX="599.0" layoutY="334.0" mnemonicParsing="false" text="Zmień" />
       <TextField layoutX="507.0" layoutY="334.0" prefHeight="25.0" prefWidth="69.0" />
+      <Text fx:id="path" layoutX="458.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Path" />
    </children>
 </AnchorPane>
