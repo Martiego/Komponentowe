@@ -53,4 +53,9 @@ public class SettingsController {
         ioXml.save(file.getAbsolutePath(), settingsArrayList);
 
     }
+
+    @FXML
+    public void loadSettings() {
+
+    }
 }
