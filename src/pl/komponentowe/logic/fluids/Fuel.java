@@ -32,5 +32,7 @@ public class Fuel implements Fluid {
         this.amount -= amount;
     }
 
-
+    public double getMaxAmount() {
+        return maxAmount;
+    }
 }

@@ -140,4 +140,12 @@ public class Dashboard {
     public Fuel getFuel() {
         return fuel;
     }
+
+    public double getMaxFuel() {
+        return fuel.getMaxAmount();
+    }
+
+    public double getMaxOil() {
+        return oil.getMaxAmount();
+    }
 }

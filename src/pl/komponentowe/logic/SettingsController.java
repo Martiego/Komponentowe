@@ -9,6 +9,7 @@ import pl.komponentowe.data.IOXml;
 import pl.komponentowe.data.Settings;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class SettingsController {
     @FXML
@@ -42,6 +43,14 @@ public class SettingsController {
     public void saveSettings() {
         Settings settings = new Settings();
         settings.setMileage(((Controller)fxmlLoader.getController()).getDashboard().getMileage());
-//        settings.setMaxFuel((Controller)fxmlLoader.getController()).getDashboard().;
+        settings.setMaxFuel(((Controller)fxmlLoader.getController()).getDashboard().getMaxFuel());
+        settings.setMaxOil(((Controller)fxmlLoader.getController()).getDashboard().getMaxOil());
+
+
+        ArrayList<pl.komponentowe.data.Settings> settingsArrayList = new ArrayList<>();
+        settingsArrayList.add(settings);
+        
+        ioXml.save(file.getAbsolutePath(), settingsArrayList);
+
     }
 }
