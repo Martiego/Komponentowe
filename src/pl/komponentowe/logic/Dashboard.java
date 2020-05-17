@@ -1,10 +1,8 @@
 package pl.komponentowe.logic;
 
-import pl.komponentowe.data.Trip;
 import pl.komponentowe.logic.fluids.Fuel;
 import pl.komponentowe.logic.fluids.Oil;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class Dashboard {
@@ -13,18 +11,12 @@ public class Dashboard {
     private Date date;
 
     private double actualVelocity;
-    private double avgFuelConsumption;
     private double maxVelocity;
-    //    private double avgVelocity;
-    private double street;
+    private double distance;
     private double mileage;
-    //    private long time;
     private Thread thread;
     private double odometer;
-
-    private double tripMeter;
     private Fuel fuel;
-
     private Oil oil;
     private double fuelConsumption;
 
@@ -40,16 +32,15 @@ public class Dashboard {
         thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                double avgStreet;
+                double avgDistance;
                 while (isRunning) {
                     try {
                         Thread.sleep(100);
-                        avgStreet = actualVelocity / 3_600_000 * 100;
+                        avgDistance = actualVelocity / 3_600_000 * 100;
                         // droga w km
-                        street += avgStreet;
-                        mileage += avgStreet;
-                        odometer += avgStreet;
-                        tripMeter += avgStreet;
+                        distance += avgDistance;
+                        mileage += avgDistance;
+                        odometer += avgDistance;
                     } catch (Exception ex) {
                         System.out.println(ex.getMessage());
                     }
@@ -126,8 +117,8 @@ public class Dashboard {
         return System.currentTimeMillis() - date.getTime();
     }
 
-    public double getStreet() {
-        return street;
+    public double getDistance() {
+        return distance;
     }
 
     public double getOdometer() {
@@ -135,7 +126,7 @@ public class Dashboard {
     }
 
     public double getAvgVelocity() {
-        double meter = street * 1000;
+        double meter = distance * 1000;
         double seconds = (double)(getTime() / 1_000);
         return meter / seconds * 36 / 10;
     }
@@ -145,7 +136,9 @@ public class Dashboard {
     }
 
     public double getAvgFuelConsumption() {
-        return fuelConsumption / street;
+        if (distance != 0)
+            return fuelConsumption / distance;
+        return 0;
     }
 
     public Fuel getFuel() {

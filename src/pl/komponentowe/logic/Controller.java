@@ -1,24 +1,16 @@
 package pl.komponentowe.logic;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import pl.komponentowe.data.Trip;
-
-import java.io.File;
 
 public class Controller {
     @FXML
@@ -85,12 +77,14 @@ public class Controller {
                 while (dashboard.isRunning()) {
                     try {
                         Thread.sleep(200);
-                        dashboard.decelerate(1);
+                        if (!cruiseControl.isSelected()) {
+                            dashboard.decelerate(1);
+                        }
                         speedometer.setText(String.format("%.1f", dashboard.getActualVelocity()) + kmPerHour);
                         avgVelocity.setText(String.format("%.1f", dashboard.getAvgVelocity()) + kmPerHour);
                         maxVelocity.setText(String.format("%.1f", dashboard.getMaxVelocity()) + kmPerHour);
                         time.setText(String.format("%.2f", (double)(dashboard.getTime() / 1_000) / 60) + " min");
-                        street.setText(String.format("%.3f", dashboard.getStreet()) + km);
+                        street.setText(String.format("%.3f", dashboard.getDistance()) + km);
                         avgFuelConsumption.setText(String.format("%.1f", dashboard.getAvgFuelConsumption()) + " l/km");
                         mileage.setText(String.format("%.1f", dashboard.getMileage()) + km);
                         odometer.setText(String.format("%.1f", dashboard.getOdometer()) + km);

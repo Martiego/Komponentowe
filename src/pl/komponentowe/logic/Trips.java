@@ -13,6 +13,7 @@ public class Trips extends Application {
         stage.setTitle("Wycieczki");
         stage.setResizable(false);
         Scene scene = new Scene(root, 720, 405);
+        scene.getStylesheets().add(getClass().getResource("../presentation/style.css").toExternalForm());
 
         stage.setScene(scene);
         stage.show();
