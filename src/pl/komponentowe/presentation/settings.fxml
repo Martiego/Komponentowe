@@ -8,9 +8,9 @@
    <children>
       <Text fill="WHITE" layoutX="55.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wybierz ścieżkę do pliku z kopią zapasową XML:" wrappingWidth="264.13671875" />
       <Button layoutX="336.0" layoutY="158.0" mnemonicParsing="false" onAction="#openFile" text="Wybierz plik" />
-      <Button layoutX="348.0" layoutY="114.0" mnemonicParsing="false" text="Wczytaj" />
       <Text fill="WHITE" layoutX="55.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wczytaj kopię zapasową danych:" wrappingWidth="264.13671875" />
       <Text fill="WHITE" layoutX="55.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zapisz kopię zapasową danych:" wrappingWidth="264.13671875" />
+      <Button layoutX="348.0" layoutY="114.0" mnemonicParsing="false" onAction="#loadSettings" text="Wczytaj" />
       <Button layoutX="352.0" layoutY="68.0" mnemonicParsing="false" onAction="#saveSettings" text="Zapisz" />
       <Text fill="WHITE" layoutX="70.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zmień maksymalną ilość paliwa w pojeździe:" wrappingWidth="264.13671875" />
       <Button layoutX="293.0" layoutY="330.0" mnemonicParsing="false" text="Zmień" />

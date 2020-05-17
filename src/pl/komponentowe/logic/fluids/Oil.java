@@ -38,5 +38,7 @@ public class Oil implements Fluid {
         return temperature;
     }
 
-
+    public double getMaxAmount() {
+        return maxAmount;
+    }
 }
