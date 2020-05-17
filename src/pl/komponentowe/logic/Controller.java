@@ -14,8 +14,11 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import pl.komponentowe.data.Trip;
+
+import java.io.File;
 
 public class Controller {
     @FXML
@@ -207,5 +210,13 @@ public class Controller {
 
     public Trip makeTrip() {
         return new  Trip(dashboard.getDate(), dashboard.getAvgFuelConsumption(), dashboard.getAvgVelocity(), dashboard.getMaxVelocity(), dashboard.getTime());
+    }
+
+    public void setDashboard(Dashboard dashboard) {
+        this.dashboard = dashboard;
+    }
+
+    public Dashboard getDashboard() {
+        return dashboard;
     }
 }
