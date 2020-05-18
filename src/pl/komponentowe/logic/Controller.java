@@ -1,11 +1,13 @@
 package pl.komponentowe.logic;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
@@ -13,8 +15,15 @@ import javafx.stage.Stage;
 import pl.komponentowe.data.Trip;
 
 public class Controller {
+
     @FXML
-    public Button headlights;
+    public ToggleButton headlights;
+    @FXML
+    public ToggleButton highBeams;
+    @FXML
+    public ToggleButton fogLights;
+    @FXML
+    public ToggleButton runningLights;
 
     @FXML
     public ToggleButton cruiseControl;
@@ -198,5 +207,45 @@ public class Controller {
 
     public Dashboard getDashboard() {
         return dashboard;
+    }
+
+    public void headlightsClick(ActionEvent actionEvent) {
+        if (headlights.isSelected()) {
+            headlights.getStyleClass().clear();
+            headlights.getStyleClass().add("headlightsOn");
+        } else {
+            headlights.getStyleClass().clear();
+            headlights.getStyleClass().add("headlights");
+        }
+    }
+
+    public void highBeamsClick(ActionEvent actionEvent) {
+        if (highBeams.isSelected()) {
+            highBeams.getStyleClass().clear();
+            highBeams.getStyleClass().add("highBeamsOn");
+        } else {
+            highBeams.getStyleClass().clear();
+            highBeams.getStyleClass().add("highBeams");
+        }
+    }
+
+    public void fogLightsClick(ActionEvent actionEvent) {
+        if (fogLights.isSelected()) {
+            fogLights.getStyleClass().clear();
+            fogLights.getStyleClass().add("fogLightsOn");
+        } else {
+            fogLights.getStyleClass().clear();
+            fogLights.getStyleClass().add("fogLights");
+        }
+    }
+
+    public void runningLightsClick(ActionEvent actionEvent) {
+        if (runningLights.isSelected()) {
+            runningLights.getStyleClass().clear();
+            runningLights.getStyleClass().add("runningLightsOn");
+        } else {
+            runningLights.getStyleClass().clear();
+            runningLights.getStyleClass().add("runningLights");
+        }
     }
 }

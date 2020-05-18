@@ -10,10 +10,10 @@
    <children>
       <Polygon fx:id="rightIndicator" layoutX="831.0" layoutY="130.0" points="8.0, -50.0, 43.0, -25.0, 8.0, -1.0" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="leftIndicator" layoutX="101.0" layoutY="130.0" points="8.0, -50.0, -25.0, -25.0, 8.0, 0.0" stroke="BLACK" strokeType="INSIDE" />
-      <Button fx:id="headlights" layoutX="370.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="50.0" styleClass="headlights" />
-      <Button layoutX="440.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="50.0" styleClass="highBeams" />
-      <Button layoutX="507.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="50.0" styleClass="fogLights" />
-      <Button layoutX="577.0" layoutY="80.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="50.0" styleClass="runningLights" />
+      <ToggleButton fx:id="headlights" layoutX="305.0" layoutY="80.0" mnemonicParsing="false" onAction="#headlightsClick" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="50.0" styleClass="headlights" />
+      <ToggleButton fx:id="highBeams" layoutX="405.0" layoutY="80.0" mnemonicParsing="false" onAction="#highBeamsClick" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="50.0" styleClass="highBeams" />
+      <ToggleButton fx:id="fogLights" layoutX="505.0" layoutY="80.0" mnemonicParsing="false" onAction="#fogLightsClick" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="50.0" styleClass="fogLights" />
+      <ToggleButton fx:id="runningLights" layoutX="605.0" layoutY="80.0" mnemonicParsing="false" onAction="#runningLightsClick" onKeyPressed="#keyPressedController" prefHeight="50.0" prefWidth="50.0" styleClass="runningLights" />
       <Button layoutX="278.0" layoutY="282.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" text="Zmień" />
       <Button layoutX="78.0" layoutY="282.0" mnemonicParsing="false" onAction="#reset" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" text="Reset" />
       <MenuBar maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="25.0" prefWidth="960.0">
