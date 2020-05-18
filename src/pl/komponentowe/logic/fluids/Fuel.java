@@ -2,7 +2,7 @@ package pl.komponentowe.logic.fluids;
 
 public class Fuel implements Fluid {
     private double amount;
-    private final double maxAmount;
+    private double maxAmount;
 
     public Fuel(double maxAmount) {
         this.maxAmount = maxAmount;
@@ -34,5 +34,9 @@ public class Fuel implements Fluid {
 
     public double getMaxAmount() {
         return maxAmount;
+    }
+
+    public void setMaxAmount(double maxAmount) {
+        this.maxAmount = maxAmount;
     }
 }

@@ -13,11 +13,11 @@
       <Button layoutX="348.0" layoutY="114.0" mnemonicParsing="false" onAction="#loadSettings" text="Wczytaj" />
       <Button layoutX="352.0" layoutY="68.0" mnemonicParsing="false" onAction="#saveSettings" text="Zapisz" />
       <Text fill="WHITE" layoutX="70.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zmień maksymalną ilość paliwa w pojeździe:" wrappingWidth="264.13671875" />
-      <Button layoutX="293.0" layoutY="330.0" mnemonicParsing="false" text="Zmień" />
-      <TextField layoutX="201.0" layoutY="330.0" prefHeight="25.0" prefWidth="69.0" />
+      <Button layoutX="293.0" layoutY="330.0" mnemonicParsing="false" onAction="#setMaxFuel" text="Zmień" />
+      <TextField fx:id="maxFuel" layoutX="201.0" layoutY="330.0" prefHeight="25.0" prefWidth="69.0" />
       <Text fill="WHITE" layoutX="376.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zmień maksymalną ilość oleju w pojeździe:" wrappingWidth="264.13671875" />
-      <Button layoutX="599.0" layoutY="334.0" mnemonicParsing="false" text="Zmień" />
-      <TextField layoutX="507.0" layoutY="334.0" prefHeight="25.0" prefWidth="69.0" />
+      <Button layoutX="599.0" layoutY="334.0" mnemonicParsing="false" onAction="#setMaxOil" text="Zmień" />
+      <TextField fx:id="maxOil" layoutX="507.0" layoutY="334.0" prefHeight="25.0" prefWidth="69.0" />
       <Text fx:id="path" fill="WHITE" layoutX="458.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Path" />
    </children>
 </AnchorPane>

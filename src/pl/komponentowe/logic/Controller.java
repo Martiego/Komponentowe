@@ -134,7 +134,7 @@ public class Controller {
 
     @FXML
     public void openSettings() throws Exception {
-        Settings settings = new Settings();
+        Settings settings = new Settings(this);
         settings.start(new Stage());
     }
 

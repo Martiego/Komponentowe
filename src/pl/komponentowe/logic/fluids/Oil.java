@@ -2,7 +2,7 @@ package pl.komponentowe.logic.fluids;
 
 public class Oil implements Fluid {
     private double amount;
-    private final double maxAmount;
+    private double maxAmount;
     private double temperature;
 
     public Oil(double maxAmount) {
@@ -40,5 +40,9 @@ public class Oil implements Fluid {
 
     public double getMaxAmount() {
         return maxAmount;
+    }
+
+    public void setMaxAmount(double maxAmount) {
+        this.maxAmount = maxAmount;
     }
 }

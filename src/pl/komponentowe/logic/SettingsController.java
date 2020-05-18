@@ -2,6 +2,7 @@ package pl.komponentowe.logic;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -16,11 +17,18 @@ public class SettingsController {
     @FXML
     private Text path;
 
+    @FXML
+    private TextField maxFuel;
+
+    @FXML
+    private TextField maxOil;
+
     private File file;
 
-    private Stage stage;
     private FXMLLoader fxmlLoader;
     private IOXml ioXml;
+
+    private Controller controller;
 
     public SettingsController() {
         fxmlLoader = new FXMLLoader(getClass().getResource("../presentation/sample.fxml"));
@@ -34,13 +42,17 @@ public class SettingsController {
         ioXml = new IOXml();
     }
 
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+
     @FXML
     public void openFile() {
         FileChooser fileChooser = new FileChooser();
 
         fileChooser.setTitle("Wybierz plik");
 
-        file = fileChooser.showOpenDialog(stage);
+        file = fileChooser.showOpenDialog(new Stage());
 
         if (file != null) {
             path.setText(file.getAbsolutePath());
@@ -49,23 +61,41 @@ public class SettingsController {
 
     @FXML
     public void saveSettings() {
-        Settings settings = new Settings();
-        settings.setMileage(((Controller)fxmlLoader.getController()).getDashboard().getMileage());
-        settings.setMaxFuel(((Controller)fxmlLoader.getController()).getDashboard().getMaxFuel());
-        settings.setMaxOil(((Controller)fxmlLoader.getController()).getDashboard().getMaxOil());
+        if (null != file) {
+            Settings settings = new Settings();
+            settings.setMileage(controller.getDashboard().getMileage());
+            settings.setMaxFuel(controller.getDashboard().getMaxFuel());
+            settings.setMaxOil(controller.getDashboard().getMaxOil());
 
-        System.out.println();
-        System.out.println(settings.getMileage());
-
-        ioXml.save(file.getAbsolutePath(), settings);
-
+            ioXml.save(file.getAbsolutePath(), settings);
+        }
     }
 
     @FXML
     public void loadSettings() {
-        Settings settings = (Settings) ioXml.load(file.getAbsolutePath());
+        if (null != file) {
+            Settings settings = (Settings) ioXml.load(file.getAbsolutePath());
+            controller.getDashboard().setMileage(settings.getMileage());
+        }
+    }
 
-        Controller  controller = (Controller) (fxmlLoader.getController());
-        controller.getDashboard().setMileage(settings.getMileage());
+
+    public void setMaxFuel() {
+        try {
+            controller.getDashboard().getFuel().setMaxAmount(Integer.parseInt(maxFuel.getText()));
+            maxFuel.setText("");
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void setMaxOil() {
+        try {
+            controller.getDashboard().getOil().setMaxAmount(Integer.parseInt(maxOil.getText()));
+            maxOil.setText("");
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
     }
 }
