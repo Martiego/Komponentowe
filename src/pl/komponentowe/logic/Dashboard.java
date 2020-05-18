@@ -145,6 +145,14 @@ public class Dashboard {
         return fuel;
     }
 
+    public Oil getOil() {
+        return oil;
+    }
+
+    public void setMileage(double mileage) {
+        this.mileage = mileage;
+    }
+
     public double getMaxFuel() {
         return fuel.getMaxAmount();
     }

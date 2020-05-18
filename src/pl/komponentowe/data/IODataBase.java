@@ -3,7 +3,7 @@ package pl.komponentowe.data;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class IODataBase implements Preservation<Trip> {
+public class IODataBase implements Preservation {
     private String url       = "jdbc:mysql://localhost:3306/";
     private String user;
     private String password;
@@ -15,12 +15,12 @@ public class IODataBase implements Preservation<Trip> {
     }
 
     @Override
-    public void save(String path, ArrayList<Trip> object) {
+    public void save(String path, Object object) {
         try (Connection conn = DriverManager.getConnection(url + path, user, password)) {
             if (conn.isValid(5)) {
                 Statement statement = conn.createStatement();
 
-                for (Trip t: object) {
+                for (Trip t: (ArrayList<Trip>)object) {
                     statement.execute("INSERT INTO trips (date, avgFuelConsumption, avgVelocity, maxVelocity, time) " +
                             "VALUES ('" + t.getDate().getTime() + "', " + t.getAvgFuelConsumption() + ", "
                             + t.getAvgVelocity() + ", " + t.getMaxVelocity() + ", " + t.getTime() + ");");
@@ -34,7 +34,7 @@ public class IODataBase implements Preservation<Trip> {
     }
 
     @Override
-    public ArrayList<Trip> load(String path) {
+    public Object load(String path) {
         ArrayList result = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(url + path, user, password); Statement statement = conn.createStatement()) {

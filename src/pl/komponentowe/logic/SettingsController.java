@@ -9,6 +9,7 @@ import pl.komponentowe.data.IOXml;
 import pl.komponentowe.data.Settings;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class SettingsController {
@@ -19,11 +20,18 @@ public class SettingsController {
 
     private Stage stage;
     private FXMLLoader fxmlLoader;
-    private IOXml<Settings> ioXml;
+    private IOXml ioXml;
 
     public SettingsController() {
         fxmlLoader = new FXMLLoader(getClass().getResource("../presentation/sample.fxml"));
-        ioXml = new IOXml<>();
+
+        try {
+            fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ioXml = new IOXml();
     }
 
     @FXML
@@ -46,19 +54,18 @@ public class SettingsController {
         settings.setMaxFuel(((Controller)fxmlLoader.getController()).getDashboard().getMaxFuel());
         settings.setMaxOil(((Controller)fxmlLoader.getController()).getDashboard().getMaxOil());
 
+        System.out.println();
+        System.out.println(settings.getMileage());
 
-        ArrayList<Settings> settingsArrayList = new ArrayList<>();
-        settingsArrayList.add(settings);
-
-        ioXml.save(file.getAbsolutePath(), settingsArrayList);
+        ioXml.save(file.getAbsolutePath(), settings);
 
     }
 
     @FXML
     public void loadSettings() {
-//        ArrayList<Settings> settingsArrayList = new ArrayList<>();
-//        settingsArrayList = ioXml.load(file.getAbsolutePath());
+        Settings settings = (Settings) ioXml.load(file.getAbsolutePath());
 
-//        settingsArrayList.get(0);
+        Controller  controller = (Controller) (fxmlLoader.getController());
+        controller.getDashboard().setMileage(settings.getMileage());
     }
 }

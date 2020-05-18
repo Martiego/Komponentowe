@@ -43,7 +43,7 @@ public class TripsController {
         path = "trips";
         trips = new ArrayList<>();
         i = 0;
-        trips = ioDataBase.load(path);
+        trips = (ArrayList<Trip>) ioDataBase.load(path);
         if (trips.size() > 0) {
             display(i);
         }
@@ -74,7 +74,7 @@ public class TripsController {
 
     public void deleteAll() {
         ioDataBase.deleteAll(path);
-        trips = ioDataBase.load(path);
+        trips = (ArrayList<Trip>) ioDataBase.load(path);
         i = 0;
 
         clean();
@@ -83,7 +83,7 @@ public class TripsController {
     public void deleteByID() {
         try {
             ioDataBase.delete(path, Integer.parseInt(deleteID.getText()));
-            trips = ioDataBase.load(path);
+            trips = (ArrayList<Trip>) ioDataBase.load(path);
             i = 0;
 
             if (trips.size() > 0) {
@@ -99,7 +99,7 @@ public class TripsController {
     public void concatTripsByID() {
         try {
             ioDataBase.concatRows(path, Integer.parseInt(concatFirstID.getText()), Integer.parseInt(concatSecondID.getText()));
-            trips = ioDataBase.load(path);
+            trips = (ArrayList<Trip>) ioDataBase.load(path);
             i = 0;
 
             if (trips.size() > 0) {
