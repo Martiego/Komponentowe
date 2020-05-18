@@ -3,26 +3,41 @@
 }
 
 .headlights {
+    -fx-background-image: url("./graphics/swiatlaMijaniaOff.png");
+    -fx-background-color: transparent;
+}
+
+.headlightsOn {
     -fx-background-image: url("./graphics/swiatlaMijania.png");
     -fx-background-color: transparent;
 }
 
-.headlights2 {
-    -fx-background-image: url("./graphics/swiatlaPozycyjne.png");
+.highBeams {
+    -fx-background-image: url("./graphics/swiatlaDrogoweOff.png");
     -fx-background-color: transparent;
 }
 
-.highBeams {
+.highBeamsOn {
     -fx-background-image: url("./graphics/swiatlaDrogowe.png");
     -fx-background-color: transparent;
 }
 
 .fogLights {
+    -fx-background-image: url("./graphics/swiatlaPrzeciwmgielneOff.png");
+    -fx-background-color: transparent;
+}
+
+.fogLightsOn {
     -fx-background-image: url("./graphics/swiatlaPrzeciwmgielne.png");
     -fx-background-color: transparent;
 }
 
 .runningLights {
+    -fx-background-image: url("./graphics/swiatlaPozycyjneOff.png");
+    -fx-background-color: transparent;
+}
+
+.runningLightsOn {
     -fx-background-image: url("./graphics/swiatlaPozycyjne.png");
     -fx-background-color: transparent;
 }
