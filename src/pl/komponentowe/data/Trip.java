@@ -3,19 +3,40 @@ package pl.komponentowe.data;
 import java.io.Serializable;
 import java.util.Date;
 
-
+/**
+ * Klasa warstwy danych, realizujaca zadanie przechowywania informacji o podrozach.
+ *
+ * @author Patryk Kolanek
+ * @author Kacper Swiercz
+ */
 public class Trip implements Serializable {
+    /** Id wycieczki w bazie danych */
     private int id;
+
+    /** Data rozpoczecia wycieczki */
     private Date date;
+
+    /** Srednie zuzycie paliwa w <b>l/km</b> */
     private double avgFuelConsumption;
+
+    /** Sredni predkosc podczas podrozy w <b>km/h</b> */
     private double avgVelocity;
+
+    /** Maksymalna predkosc podczas podrozy w  <b>km/h</b> */
     private double maxVelocity;
+
+    /** Czas, ktory uplynal od poczatku podrozy w <b>ms</b> */
     private long time;
 
-    public Trip() {
-        this.date = new Date();
-    }
-
+    /**
+     * Konstruktor wykorzystywany do utworzenia wycieczki.
+     *
+     * @param date Data przekazywana jako instancja obiektu klasy Date.
+     * @param avgFuelConsumption Srednie zuzycie paliwa liczone jako <b>l/km</b>.
+     * @param avgVelocity Srednia predkosc osiągnieta w czasie podrozy w <b>km/h</b>.
+     * @param maxVelocity Maksymalna predkosc osiagnieta w czasie podrozy w <b>km/h</b>.
+     * @param time Czas liczony od poczatku podrozy w <b>ms</b>.
+     */
     public Trip(Date date, double avgFuelConsumption, double avgVelocity, double maxVelocity, long time) {
         this.date = date;
         this.avgFuelConsumption = avgFuelConsumption;
@@ -24,6 +45,16 @@ public class Trip implements Serializable {
         this.time = time;
     }
 
+    /**
+     * Konstruktor wykorzystywany do tworzenia wycieczki pobranej z bazy danych.
+     *
+     * @param id Wartosc atrybutu id w bazie danych.
+     * @param date Data przekazywana jako instancja obiektu klasy Date.
+     * @param avgFuelConsumption Srednie zuzycie paliwa liczone jako <b>l/km</b>.
+     * @param avgVelocity Srednia predkosc osiągnieta w czasie podrozy w <b>km/h</b>.
+     * @param maxVelocity Maksymalna predkosc osiagnieta w czasie podrozy w <b>km/h</b>.
+     * @param time Czas liczony od poczatku podrozy w <b>ms</b>.
+     */
     public Trip(int id, long date, double avgFuelConsumption, double avgVelocity, double maxVelocity, long time) {
         this.id = id;
         this.date = new Date(date);
@@ -31,14 +62,6 @@ public class Trip implements Serializable {
         this.avgVelocity = avgVelocity;
         this.maxVelocity = maxVelocity;
         this.time = time;
-    }
-
-    public Trip(Object o) {
-        this.date = ((Trip) o).getDate();
-        this.avgFuelConsumption = ((Trip) o).getAvgFuelConsumption();
-        this.avgVelocity = ((Trip) o).getAvgVelocity();
-        this.maxVelocity = ((Trip) o).getMaxVelocity();
-        this.time = ((Trip) o).getTime();
     }
 
     public int getId() {

@@ -11,13 +11,29 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Set;
 
-public class IOXml implements Preservation{
+/**
+ * Klasa odpowiedzialna za zapisywanie ustawien do pliku XML.
+ * Do poprawnego dzialania klasy, potrzebne sa biblioteki XStream.
+ *
+ * @author Patryk Kolanek
+ * @author Kacper Swiercz
+ *
+ * @see <a href="http://x-stream.github.io/">XStream</a>
+ */
+public class IOXml implements Preservation {
+    /** Pole XStream */
     private XStream xStream;
 
     public IOXml() {
         this.xStream = new XStream(new DomDriver());
     }
 
+    /**
+     * Metoda wykonujaca zapis ustawien do pliku xml.
+     *
+     * @param path Sciezka do pliku xml.
+     * @param object Obiekt zapisywany do pliku xml.
+     */
     @Override
     public void save(String path, Object object) {
         try (DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(path))) {
@@ -27,6 +43,12 @@ public class IOXml implements Preservation{
         }
     }
 
+    /**
+     * Metoda wykonujaca odczyt z pliku xml.
+     *
+     * @param path Sciezka do pliku xml.
+     * @return Ustawienia.
+     */
     @Override
     public Object load(String path) {
         Settings result = new Settings();

@@ -2,6 +2,12 @@ package pl.komponentowe.data;
 
 import java.io.Serializable;
 
+/**
+ * Klasa odpowiedzialna za przechowywanie ustawien samochodu.
+ *
+ * @author Patryk Kolanek
+ * @author Kacper Swiercz
+ */
 public class Settings implements Serializable {
     private double mileage;
     private double maxFuel;
@@ -10,6 +16,13 @@ public class Settings implements Serializable {
     public Settings() {
     }
 
+    /**
+     * Konstruktor przyjmujacy jako parametr wszystkie pola.
+     *
+     * @param mileage Przebieg calkowity samochodu w <b>metrach</b>.
+     * @param maxFuel Maksymalna pojemnosc paliwa w <b>litrach</b>.
+     * @param maxOil Maksymalna pojmnosc oleju w <b>litrach</b>.
+     */
     public Settings(double mileage, double maxFuel, double maxOil) {
         this.mileage = mileage;
         this.maxFuel = maxFuel;
