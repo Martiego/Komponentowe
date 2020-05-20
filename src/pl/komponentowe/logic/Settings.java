@@ -4,14 +4,13 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Control;
 import javafx.stage.Stage;
 
 public class Settings extends Application {
-    private Controller controller;
+    private MainController mainController;
 
-    public Settings(Controller controller) {
-        this.controller = controller;
+    public Settings(MainController mainController) {
+        this.mainController = mainController;
     }
 
     @Override
@@ -23,7 +22,7 @@ public class Settings extends Application {
         stage.setResizable(false);
 
         SettingsController settingsController = loader.getController();
-        settingsController.setController(controller);
+        settingsController.setController(mainController);
 
         Scene scene = new Scene(root, 720, 405);
         scene.getStylesheets().add(getClass().getResource("../presentation/style.css").toExternalForm());

@@ -2,19 +2,17 @@ package pl.komponentowe.logic;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import pl.komponentowe.data.Trip;
 
-public class Controller {
+public class MainController {
 
     @FXML
     public ToggleButton headlights;
@@ -72,7 +70,7 @@ public class Controller {
     private String kmPerHour;
     private String km;
 
-    public Controller() {
+    public MainController() {
         dashboard = new Dashboard();
 
         kmPerHour = " km/h";
@@ -94,7 +92,7 @@ public class Controller {
                         maxVelocity.setText(String.format("%.1f", dashboard.getMaxVelocity()) + kmPerHour);
                         time.setText(String.format("%.2f", (double)(dashboard.getTime() / 1_000) / 60) + " min");
                         street.setText(String.format("%.3f", dashboard.getDistance()) + km);
-                        avgFuelConsumption.setText(String.format("%.1f", dashboard.getAvgFuelConsumption()) + " l/km");
+                        avgFuelConsumption.setText(String.format("%.2f", dashboard.getAvgFuelConsumption()) + " l/km");
                         mileage.setText(String.format("%.1f", dashboard.getMileage()) + km);
                         odometer.setText(String.format("%.1f", dashboard.getOdometer()) + km);
                         fuel.setProgress(dashboard.getFuel().checkLevel());
@@ -158,6 +156,8 @@ public class Controller {
         dashboard.resetOdometer();
     }
 
+
+    // FIXME: 20.05.2020 !!! nie wylacza sie kierunkowskaz !!!
     private void turn(char direction) {
         indicatorThread = new Thread(() -> {
 
@@ -191,7 +191,7 @@ public class Controller {
 
         indicatorThread.start();
     }
-
+    // FIXME: 20.05.2020 Patrz wyzej
 
     public Trip makeTrip() {
         return new Trip(dashboard.getDate(), dashboard.getAvgFuelConsumption(), dashboard.getAvgVelocity(), dashboard.getMaxVelocity(), dashboard.getTime());

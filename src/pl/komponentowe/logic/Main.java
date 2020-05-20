@@ -1,19 +1,14 @@
 package pl.komponentowe.logic;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import pl.komponentowe.data.IODataBase;
 import pl.komponentowe.data.Trip;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
 
 /**
  * In order to run this program you need to add XStream library to your project. You can find it here: "http://x-stream.github.io/"
@@ -41,7 +36,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../presentation/sample.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../presentation/main.fxml"));
         Parent root = fxmlLoader.load();
         stage.setTitle("Brum brum");
         stage.setResizable(false);
@@ -51,7 +46,7 @@ public class Main extends Application {
         stage.show();
 
         stage.setOnCloseRequest(event -> {
-            Controller controller = (Controller)fxmlLoader.getController();
+            MainController controller = (MainController)fxmlLoader.getController();
             Trip trip = controller.makeTrip();
             IODataBase ioDataBase = new IODataBase("root", "");
             ArrayList<Trip> arrayList = new ArrayList<>();
