@@ -2,6 +2,9 @@ package pl.komponentowe.logic;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.KeyCode;
@@ -195,6 +198,22 @@ public class MainController {
 
     public Trip makeTrip() {
         return new Trip(dashboard.getDate(), dashboard.getAvgFuelConsumption(), dashboard.getAvgVelocity(), dashboard.getMaxVelocity(), dashboard.getTime());
+    }
+    
+    public void aboutProgram() {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("../presentation/aboutProgram.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("O programie");
+            Scene scene = new Scene(root, 480, 270);
+            scene.getStylesheets().add(getClass().getResource("../presentation/style.css").toExternalForm());
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     public void stop() {
