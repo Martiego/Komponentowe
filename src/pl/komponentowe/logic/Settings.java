@@ -6,13 +6,31 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * @author Patryk Kolanek
+ * @author Kacper Swiercz
+ *
+ * Klasa odpowiedzialna za uruchamianie okna z widokiem ustawien aplikacji.
+ */
 public class Settings extends Application {
+    /**
+     * Pole reprezentuje kontroler glownego okna aplikacji
+     */
     private MainController mainController;
 
+    /**
+     * Konstruktor klasy, używany do inicjalizacji pola controller.
+     * @param mainController Inicjalizuje pole controller
+     */
     public Settings(MainController mainController) {
         this.mainController = mainController;
     }
 
+    /**
+     * Metoda wymagana przez implementacje interfejsu Application z biblioteki JavaFX
+     * @param stage
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../presentation/settings.fxml"));

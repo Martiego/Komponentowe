@@ -22,15 +22,6 @@ public class Main extends Application {
         IODataBase ioDataBase = new IODataBase("root", "");
         ArrayList<Trip> trips = new ArrayList<>();
 
-
-
-//        ioDataBase.concatRows("trips", 24, 25);
-        ioDataBase.deleteAll("trips");
-
-//        ArrayList<Trip> test = ioDataBase.load("trips");
-
-//        System.out.println(test);
-        // Fragment responsible for
         launch(args);
     }
 

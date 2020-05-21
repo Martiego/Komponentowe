@@ -8,8 +8,6 @@ import java.io.FileOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Set;
 
 /**
  * Klasa odpowiedzialna za zapisywanie ustawien do pliku XML.
