@@ -41,6 +41,7 @@ public class Settings extends Application {
 
         SettingsController settingsController = loader.getController();
         settingsController.setController(mainController);
+        settingsController.updateText();
 
         Scene scene = new Scene(root, 720, 405);
         scene.getStylesheets().add(getClass().getResource("../presentation/style.css").toExternalForm());

@@ -5,10 +5,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import pl.komponentowe.data.IODataBase;
 import pl.komponentowe.data.IOXml;
 import pl.komponentowe.data.Settings;
+import pl.komponentowe.data.Trip;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class SettingsController {
     @FXML
@@ -25,6 +28,12 @@ public class SettingsController {
 
     @FXML
     private TextField oilAmount;
+
+    @FXML
+    private Text actualMaxFuel;
+
+    @FXML
+    private Text actualMaxOil;
 
     private File file;
 
@@ -70,6 +79,9 @@ public class SettingsController {
         if (null != file) {
             Settings settings = (Settings) ioXml.load(file.getAbsolutePath());
             mainController.getDashboard().setMileage(settings.getMileage());
+            mainController.getDashboard().getFuel().setMaxAmount(settings.getMaxFuel());
+            mainController.getDashboard().getOil().setMaxAmount(settings.getMaxOil());
+            updateText();
         }
     }
 
@@ -78,6 +90,7 @@ public class SettingsController {
         try {
             mainController.getDashboard().getFuel().setMaxAmount(Integer.parseInt(maxFuel.getText()));
             maxFuel.setText("");
+            updateText();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -87,6 +100,7 @@ public class SettingsController {
         try {
             mainController.getDashboard().getOil().setMaxAmount(Integer.parseInt(maxOil.getText()));
             maxOil.setText("");
+            updateText();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -107,5 +121,10 @@ public class SettingsController {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    public void updateText() {
+        actualMaxFuel.setText(mainController.getDashboard().getFuel().getMaxAmount() + " l");
+        actualMaxOil.setText(mainController.getDashboard().getOil().getMaxAmount() + " l");
     }
 }
