@@ -65,6 +65,8 @@ public class MainController {
     private boolean isRightHold;
     private boolean isLeftHold;
 
+    private double actualVelocity;
+
     private Dashboard dashboard;
 
     private Thread indicatorThread;
@@ -87,7 +89,11 @@ public class MainController {
                 while (dashboard.isRunning()) {
                     try {
                         Thread.sleep(200);
-                        if (!cruiseControl.isSelected()) {
+                        if (cruiseControl.isSelected()) {
+                            if (dashboard.getActualVelocity() > actualVelocity) {
+                                dashboard.decelerate(1);
+                            }
+                        } else {
                             dashboard.decelerate(1);
                         }
                         speedometer.setText(String.format("%.1f", dashboard.getActualVelocity()) + kmPerHour);
@@ -126,10 +132,9 @@ public class MainController {
 
         if (KeyCode.UP == event.getCode()) {
             dashboard.accelerate();
-            speedometer.setText(String.format("%.1f",dashboard.getActualVelocity()) + kmPerHour);
         } else if (KeyCode.DOWN == event.getCode()) {
             dashboard.decelerate(3);
-            speedometer.setText(String.format("%.1f", dashboard.getActualVelocity()) + kmPerHour);
+            cruiseControl.setSelected(false);
         }
     }
 
@@ -159,8 +164,10 @@ public class MainController {
         dashboard.resetOdometer1();
     }
 
+    public void setActualVelocity() {
+        actualVelocity = dashboard.getActualVelocity();
+    }
 
-    // FIXME: 20.05.2020 !!! nie wylacza sie kierunkowskaz !!!
     private void turn(char direction) {
         indicatorThread = new Thread(() -> {
 
@@ -194,7 +201,6 @@ public class MainController {
 
         indicatorThread.start();
     }
-    // FIXME: 20.05.2020 Patrz wyzej
 
     public Trip makeTrip() {
         return new Trip(dashboard.getDate(), dashboard.getAvgFuelConsumption(), dashboard.getAvgVelocity(), dashboard.getMaxVelocity(), dashboard.getTime());
