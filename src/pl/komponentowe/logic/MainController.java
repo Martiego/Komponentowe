@@ -97,7 +97,7 @@ public class MainController {
                         street.setText(String.format("%.3f", dashboard.getDistance()) + km);
                         avgFuelConsumption.setText(String.format("%.2f", dashboard.getAvgFuelConsumption()) + " l/km");
                         mileage.setText(String.format("%.1f", dashboard.getMileage()) + km);
-                        odometer.setText(String.format("%.1f", dashboard.getOdometer()) + km);
+                        odometer.setText(String.format("%.1f", dashboard.getOdometer1()) + km);
                         fuel.setProgress(dashboard.getFuel().checkLevel());
                     } catch (Exception ex) {
                     }
@@ -156,7 +156,7 @@ public class MainController {
 
     @FXML
     public void reset() {
-        dashboard.resetOdometer();
+        dashboard.resetOdometer1();
     }
 
 
