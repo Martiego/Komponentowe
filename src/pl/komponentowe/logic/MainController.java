@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -16,6 +18,8 @@ import javafx.stage.Stage;
 import pl.komponentowe.data.IOXml;
 import pl.komponentowe.data.Trip;
 import pl.komponentowe.data.Settings;
+
+import java.io.File;
 
 public class MainController {
 
@@ -64,6 +68,12 @@ public class MainController {
     @FXML
     private ProgressBar fuel;
 
+    @FXML
+    private ProgressBar temperature;
+
+    @FXML
+    private ToggleButton checkEngine;
+
     private boolean isRightHold;
     private boolean isLeftHold;
 
@@ -78,7 +88,7 @@ public class MainController {
     private String km;
 
     public MainController() {
-        Settings settings = (Settings)(new IOXml().load("setting.xml"));
+        Settings settings = (Settings)(new IOXml().load("settings.xml"));
 
         if (null == settings) {
             dashboard = new Dashboard(0,30, 30, 5, 5);
@@ -97,13 +107,19 @@ public class MainController {
                 while (dashboard.isRunning()) {
                     try {
                         Thread.sleep(200);
+
+                        checkEngine(!dashboard.getOil().isEnough());
+
                         if (cruiseControl.isSelected()) {
                             if (dashboard.getActualVelocity() > actualVelocity) {
-                                dashboard.decelerate(1);
+                                dashboard.decelerate(2);
+                            } else {
+                                dashboard.getOil().update(0.0002, true);
                             }
                         } else {
                             dashboard.decelerate(1);
                         }
+
                         speedometer.setText(String.format("%.1f", dashboard.getActualVelocity()) + kmPerHour);
                         avgVelocity.setText(String.format("%.1f", dashboard.getAvgVelocity()) + kmPerHour);
                         maxVelocity.setText(String.format("%.1f", dashboard.getMaxVelocity()) + kmPerHour);
@@ -113,6 +129,8 @@ public class MainController {
                         mileage.setText(String.format("%.1f", dashboard.getMileage()) + km);
                         odometer.setText(String.format("%.1f", dashboard.getOdometer1()) + km);
                         fuel.setProgress(dashboard.getFuel().checkLevel());
+                        temperature.setProgress(dashboard.getOil().getTemperature());
+
                     } catch (Exception ex) {
                     }
                 }
@@ -120,9 +138,6 @@ public class MainController {
         });
 
         mainThread.start();
-
-//        headlights.getStylesheets().add("headlights2");
-
     }
 
     @FXML
@@ -279,6 +294,16 @@ public class MainController {
         } else {
             runningLights.getStyleClass().clear();
             runningLights.getStyleClass().add("runningLights");
+        }
+    }
+
+    public void checkEngine(boolean turn) {
+        if (turn) {
+            checkEngine.getStyleClass().clear();
+            checkEngine.getStyleClass().add("checkEngineOn");
+        } else {
+            checkEngine.getStyleClass().clear();
+            checkEngine.getStyleClass().add("checkEngineOff");
         }
     }
 }

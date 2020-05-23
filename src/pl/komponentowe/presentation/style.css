@@ -41,3 +41,12 @@
     -fx-background-image: url("./graphics/swiatlaPozycyjne.png");
     -fx-background-color: transparent;
 }
+
+.checkEngineOn {
+    -fx-background-image: url("./graphics/checkEngine.png");
+    -fx-background-color: transparent;
+}
+
+.checkEngineOff {
+    -fx-background-color: #2e2e2e;
+}

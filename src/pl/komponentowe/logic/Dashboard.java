@@ -123,27 +123,29 @@ public class Dashboard {
      * Maksymalna predkosc do jakiej mozemy przyspieszyc to <b>186 km/h</b>.
      */
     public void accelerate() {
-        if (0 <= actualVelocity && 30 >= actualVelocity) {
-            actualVelocity += 0.50;
-        } else if (30 < actualVelocity && 60 >= actualVelocity) {
-            actualVelocity += 0.40;
-        } else if (60 < actualVelocity && 90 >= actualVelocity) {
-            actualVelocity += 0.35;
-        } else if (90 < actualVelocity && 160 >= actualVelocity) {
-            actualVelocity += 0.30;
-        } else if (160 < actualVelocity && 186 >= actualVelocity) {
-            actualVelocity += 0.20;
+        if (fuel.isEnough() && oil.isEnough()) {
+            if (0 <= actualVelocity && 30 >= actualVelocity) {
+                actualVelocity += 0.50;
+            } else if (30 < actualVelocity && 60 >= actualVelocity) {
+                actualVelocity += 0.40;
+            } else if (60 < actualVelocity && 90 >= actualVelocity) {
+                actualVelocity += 0.35;
+            } else if (90 < actualVelocity && 160 >= actualVelocity) {
+                actualVelocity += 0.30;
+            } else if (160 < actualVelocity && 186 >= actualVelocity) {
+                actualVelocity += 0.20;
+            }
+
+            if (actualVelocity > maxVelocity) {
+                maxVelocity = actualVelocity;
+            }
+
+            double timeFuelConsumption = Math.random() / 100;
+            fuelConsumption += timeFuelConsumption;
+
+            fuel.update(timeFuelConsumption, true);
+            oil.update(0.0002, true);
         }
-
-        if (actualVelocity > maxVelocity) {
-            maxVelocity = actualVelocity;
-        }
-
-        double timeFuelConsumption = Math.random() / 100;
-        fuelConsumption += timeFuelConsumption;
-
-        fuel.update(timeFuelConsumption);
-        oil.update(0.001);
     }
 
     /**
@@ -161,6 +163,8 @@ public class Dashboard {
         } else if (0 >= actualVelocity) {
             actualVelocity = 0;
         }
+
+        oil.update(0.0001, false);
     }
 
     /**

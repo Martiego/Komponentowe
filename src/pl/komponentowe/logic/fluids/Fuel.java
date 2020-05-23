@@ -48,7 +48,7 @@ public class Fuel implements Fluid {
      */
     @Override
     public boolean isEnough() {
-        return amount >= maxAmount * 0.1;
+        return amount >= maxAmount * 0.05;
     }
 
     /**
@@ -57,7 +57,7 @@ public class Fuel implements Fluid {
      * @param amount Ilosc spalonego paliwa.
      */
     @Override
-    public void update(double amount) {
+    public void update(double amount, boolean driving) {
         this.amount -= amount;
     }
 
@@ -66,10 +66,7 @@ public class Fuel implements Fluid {
     }
 
     public void setMaxAmount(double maxAmount) {
-        if (amount > maxAmount) {
-            amount = maxAmount;
-        }
-
         this.maxAmount = maxAmount;
+        this.amount = maxAmount;
     }
 }
