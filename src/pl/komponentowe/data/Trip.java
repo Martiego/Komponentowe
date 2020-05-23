@@ -111,11 +111,12 @@ public class Trip implements Serializable {
     @Override
     public String toString() {
         String str = "";
-        str += "Data: " + date + '\n';
+        str += "ID: " + id + '\n';
+        str += "Date: " + date + '\n';
         str += "Average Fuel Consumption: " + avgFuelConsumption + '\n';
         str += "Average Velocity: " + avgVelocity + '\n';
         str += "Max Velocity: " + maxVelocity + '\n';
-        str += "Time: " + time + '\n' + '\n';
+        str += "Time: " + time + '\n';
         return str;
     }
 

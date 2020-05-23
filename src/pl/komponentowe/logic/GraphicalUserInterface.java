@@ -1,0 +1,37 @@
+package pl.komponentowe.logic;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import pl.komponentowe.data.IODataBase;
+import pl.komponentowe.data.Trip;
+
+import java.util.ArrayList;
+
+public class GraphicalUserInterface extends Application {
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../presentation/main.fxml"));
+        Parent root = fxmlLoader.load();
+        stage.setTitle("Brum brum");
+        stage.setResizable(false);
+        Scene scene = new Scene(root, 960, 540);
+        scene.getStylesheets().add(getClass().getResource("../presentation/style.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+
+        stage.setOnCloseRequest(event -> {
+            MainController controller = (MainController) fxmlLoader.getController();
+            Trip trip = controller.makeTrip();
+            IODataBase ioDataBase = new IODataBase("root", "");
+            ArrayList<Trip> arrayList = new ArrayList<>();
+            arrayList.add(trip);
+            ioDataBase.save("trips", arrayList);
+
+            controller.stop();
+        });
+    }
+}
