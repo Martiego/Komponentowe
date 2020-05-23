@@ -15,8 +15,7 @@ public class Settings implements Serializable {
     private double maxOil;
     private double actualOil;
 
-    public
-    Settings() {
+    public Settings() {
     }
 
     /**

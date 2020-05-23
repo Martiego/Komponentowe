@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pl.komponentowe.data.IODataBase;
+import pl.komponentowe.data.IOXml;
+import pl.komponentowe.data.Settings;
 import pl.komponentowe.data.Trip;
 
 import java.util.ArrayList;
@@ -30,6 +32,15 @@ public class GraphicalUserInterface extends Application {
             ArrayList<Trip> arrayList = new ArrayList<>();
             arrayList.add(trip);
             ioDataBase.save("trips", arrayList);
+
+            Settings settings = new Settings();
+            settings.setMileage(controller.getDashboard().getMileage());
+            settings.setMaxFuel(controller.getDashboard().getFuel().getMaxAmount());
+            settings.setActualFuel(controller.getDashboard().getFuel().checkLevel() * settings.getMaxFuel());
+            settings.setMaxOil(controller.getDashboard().getOil().getMaxAmount());
+            settings.setActualOil(controller.getDashboard().getOil().checkLevel() * settings.getMaxOil());
+
+            new IOXml().save("settings.xml", settings);
 
             controller.stop();
         });

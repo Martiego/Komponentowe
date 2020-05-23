@@ -7,8 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -18,8 +16,6 @@ import javafx.stage.Stage;
 import pl.komponentowe.data.IOXml;
 import pl.komponentowe.data.Trip;
 import pl.komponentowe.data.Settings;
-
-import java.io.File;
 
 public class MainController {
 
@@ -31,48 +27,37 @@ public class MainController {
     public ToggleButton fogLights;
     @FXML
     public ToggleButton runningLights;
-
     @FXML
     public ToggleButton cruiseControl;
-
+    @FXML
+    private ToggleButton checkEngine;
     @FXML
     private Polygon leftIndicator;
-
     @FXML
     private Polygon rightIndicator;
-
     @FXML
     private Text speedometer;
-
     @FXML
     private Text avgVelocity;
-
     @FXML
     private Text maxVelocity;
-
     @FXML
     private Text time;
-
     @FXML
     private Text street;
-
     @FXML
     private Text avgFuelConsumption;
-
     @FXML
     private Text mileage;
-
     @FXML
-    private Text odometer;
-
+    private Text odometer1;
+    @FXML
+    private Text odometer2;
     @FXML
     private ProgressBar fuel;
-
     @FXML
     private ProgressBar temperature;
 
-    @FXML
-    private ToggleButton checkEngine;
 
     private boolean isRightHold;
     private boolean isLeftHold;
@@ -84,8 +69,8 @@ public class MainController {
     private Thread indicatorThread;
     private Thread mainThread;
 
-    private String kmPerHour;
-    private String km;
+    private final String kmPerHour;
+    private final String km;
 
     public MainController() {
         Settings settings = (Settings)(new IOXml().load("settings.xml"));
@@ -114,7 +99,7 @@ public class MainController {
                             if (dashboard.getActualVelocity() > actualVelocity) {
                                 dashboard.decelerate(2);
                             } else {
-                                dashboard.getOil().update(0.0002, true);
+                                dashboard.accelerate();
                             }
                         } else {
                             dashboard.decelerate(1);
@@ -127,11 +112,11 @@ public class MainController {
                         street.setText(String.format("%.3f", dashboard.getDistance()) + km);
                         avgFuelConsumption.setText(String.format("%.2f", dashboard.getAvgFuelConsumption()) + " l/km");
                         mileage.setText(String.format("%.1f", dashboard.getMileage()) + km);
-                        odometer.setText(String.format("%.1f", dashboard.getOdometer1()) + km);
+                        odometer1.setText(String.format("%.1f", dashboard.getOdometer1()) + km);
+                        odometer2.setText(String.format("%.1f", dashboard.getOdometer2()) + km);
                         fuel.setProgress(dashboard.getFuel().checkLevel());
                         temperature.setProgress(dashboard.getOil().getTemperature());
-
-                    } catch (Exception ex) {
+                    } catch (Exception ignored) {
                     }
                 }
             }
@@ -178,13 +163,24 @@ public class MainController {
 
     @FXML
     public void openTrips() throws Exception {
-        Trips trips = new Trips();
-        trips.start(new Stage());
+        Stage stage = new Stage();
+        stage.setTitle("Wycieczki");
+        stage.setResizable(false);
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("../presentation/trips.fxml")), 720, 405);
+        scene.getStylesheets().add(getClass().getResource("../presentation/style.css").toExternalForm());
+
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
-    public void reset() {
+    public void resetOdometer1() {
         dashboard.resetOdometer1();
+    }
+
+    @FXML
+    public void resetOdometer2() {
+        dashboard.resetOdometer2();
     }
 
     public void setActualVelocity() {

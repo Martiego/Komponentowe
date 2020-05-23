@@ -123,7 +123,7 @@ public class Dashboard {
      * Maksymalna predkosc do jakiej mozemy przyspieszyc to <b>186 km/h</b>.
      */
     public void accelerate() {
-        if (fuel.isEnough() && oil.isEnough()) {
+        if (fuel.isEnough() && 0.9 > oil.getTemperature()) {
             if (0 <= actualVelocity && 30 >= actualVelocity) {
                 actualVelocity += 0.50;
             } else if (30 < actualVelocity && 60 >= actualVelocity) {
@@ -206,7 +206,7 @@ public class Dashboard {
     }
 
     public double getOdometer2() {
-        return odometer1;
+        return odometer2;
     }
 
     /**

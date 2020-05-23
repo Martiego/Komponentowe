@@ -27,7 +27,7 @@ public class Oil implements Fluid {
      */
     @Override
     public double checkLevel() {
-        return amount / 100;
+        return amount / maxAmount;
     }
 
     /**

@@ -20,8 +20,7 @@
       <ToggleButton fx:id="highBeams" layoutX="405.0" layoutY="80.0" mnemonicParsing="false" onAction="#highBeamsClick" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" prefHeight="50.0" prefWidth="50.0" styleClass="highBeams" />
       <ToggleButton fx:id="fogLights" layoutX="505.0" layoutY="80.0" mnemonicParsing="false" onAction="#fogLightsClick" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" prefHeight="50.0" prefWidth="50.0" styleClass="fogLights" />
       <ToggleButton fx:id="runningLights" layoutX="605.0" layoutY="80.0" mnemonicParsing="false" onAction="#runningLightsClick" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" prefHeight="50.0" prefWidth="50.0" styleClass="runningLights" />
-      <Button layoutX="278.0" layoutY="282.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" text="Zmień" />
-      <Button layoutX="78.0" layoutY="282.0" mnemonicParsing="false" onAction="#reset" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" text="Reset" />
+      <Button layoutX="78.0" layoutY="282.0" mnemonicParsing="false" onAction="#resetOdometer1" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" text="Reset" />
       <MenuBar maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="25.0" prefWidth="960.0">
         <menus>
           <Menu mnemonicParsing="false" text="Plik">
@@ -44,7 +43,7 @@
             <Font size="13.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="148.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przbieg dzienny:" wrappingWidth="112.00000762939453">
+      <Text fill="WHITE" layoutX="148.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przbieg dzienny 1:" wrappingWidth="112.00000762939453">
          <font>
             <Font size="13.0" />
          </font>
@@ -104,7 +103,7 @@
             <Font size="13.0" />
          </font>
       </Text>
-      <Text fx:id="odometer" fill="WHITE" layoutX="148.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km" textAlignment="CENTER" wrappingWidth="112.00000762939453">
+      <Text fx:id="odometer1" fill="WHITE" layoutX="148.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km" textAlignment="CENTER" wrappingWidth="112.00000762939453">
          <font>
             <Font size="13.0" />
          </font>
@@ -122,6 +121,17 @@
       </Text>
       <ProgressBar fx:id="temperature" layoutX="696.0" layoutY="275.0" prefHeight="18.0" prefWidth="112.0" progress="0.0" />
       <ToggleButton fx:id="checkEngine" layoutX="430.0" layoutY="164.0" mnemonicParsing="false" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" prefHeight="100.0" prefWidth="100.0" styleClass="checkEngineOff" />
+      <Button layoutX="78.0" layoutY="331.0" mnemonicParsing="false" onAction="#resetOdometer2" onKeyPressed="#keyPressedController" onKeyReleased="#keyReleasedController" text="Reset" />
+      <Text fill="WHITE" layoutX="148.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Przbieg dzienny 2:" wrappingWidth="112.00000762939453">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="odometer2" fill="WHITE" layoutX="148.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 km" textAlignment="CENTER" wrappingWidth="112.00000762939453">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
    </children>
    <opaqueInsets>
       <Insets />
