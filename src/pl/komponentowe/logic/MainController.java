@@ -64,6 +64,9 @@ public class MainController {
     @FXML
     private ProgressBar fuel;
 
+    @FXML
+    private ProgressBar temperature;
+
     private boolean isRightHold;
     private boolean isLeftHold;
 
@@ -78,7 +81,7 @@ public class MainController {
     private String km;
 
     public MainController() {
-        Settings settings = (Settings)(new IOXml().load("setting.xml"));
+        Settings settings = (Settings)(new IOXml().load("settings.xml"));
 
         if (null == settings) {
             dashboard = new Dashboard(0,30, 30, 5, 5);
@@ -97,13 +100,18 @@ public class MainController {
                 while (dashboard.isRunning()) {
                     try {
                         Thread.sleep(200);
+
                         if (cruiseControl.isSelected()) {
                             if (dashboard.getActualVelocity() > actualVelocity) {
-                                dashboard.decelerate(1);
+                                dashboard.decelerate(2);
+                            } else {
+                                dashboard.getOil().update(0.01, true);
+                                System.out.println(dashboard.getOil().getTemperature());
                             }
                         } else {
                             dashboard.decelerate(1);
                         }
+
                         speedometer.setText(String.format("%.1f", dashboard.getActualVelocity()) + kmPerHour);
                         avgVelocity.setText(String.format("%.1f", dashboard.getAvgVelocity()) + kmPerHour);
                         maxVelocity.setText(String.format("%.1f", dashboard.getMaxVelocity()) + kmPerHour);
@@ -113,6 +121,7 @@ public class MainController {
                         mileage.setText(String.format("%.1f", dashboard.getMileage()) + km);
                         odometer.setText(String.format("%.1f", dashboard.getOdometer1()) + km);
                         fuel.setProgress(dashboard.getFuel().checkLevel());
+                        temperature.setProgress(dashboard.getOil().getTemperature());
                     } catch (Exception ex) {
                     }
                 }

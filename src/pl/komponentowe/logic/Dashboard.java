@@ -142,8 +142,8 @@ public class Dashboard {
         double timeFuelConsumption = Math.random() / 100;
         fuelConsumption += timeFuelConsumption;
 
-        fuel.update(timeFuelConsumption);
-        oil.update(0.001);
+        fuel.update(timeFuelConsumption, true);
+        oil.update(0.01, true);
     }
 
     /**
@@ -161,6 +161,8 @@ public class Dashboard {
         } else if (0 >= actualVelocity) {
             actualVelocity = 0;
         }
+
+        oil.update(0.001, false);
     }
 
     /**

@@ -57,7 +57,7 @@ public class Fuel implements Fluid {
      * @param amount Ilosc spalonego paliwa.
      */
     @Override
-    public void update(double amount) {
+    public void update(double amount, boolean driving) {
         this.amount -= amount;
     }
 

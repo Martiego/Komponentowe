@@ -60,13 +60,26 @@ public class Oil implements Fluid {
      * @param amount Ilosc zuzytego oleju.
      */
     @Override
-    public void update(double amount) {
+    public void update(double amount, boolean driving) {
         this.amount -= amount;
-        temperature += 1;
+
+        if (driving && temperature < 40) {
+            temperature += 0.05;
+        } else if (driving && temperature < 60) {
+            temperature += 0.02;
+        } else if (driving) {
+            temperature += 0.01;
+        } else if (temperature > 20) {
+            temperature -= 0.01;
+        }
     }
 
+    /** Metoda zwracajaca obecna temperature oleju.
+     *
+     * @return Zwraca wartosc w przedziale <b>od 0 do 1</b>.
+     */
     public double getTemperature() {
-        return temperature;
+        return temperature / 100;
     }
 
     public double getMaxAmount() {
