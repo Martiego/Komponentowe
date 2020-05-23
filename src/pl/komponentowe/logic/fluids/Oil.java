@@ -51,7 +51,7 @@ public class Oil implements Fluid {
      */
     @Override
     public boolean isEnough() {
-        return amount >= maxAmount * 0.25 && temperature < 80;
+        return amount >= maxAmount * 0.1 && temperature < 80;
     }
 
     /**
@@ -88,5 +88,6 @@ public class Oil implements Fluid {
 
     public void setMaxAmount(double maxAmount) {
         this.maxAmount = maxAmount;
+        this.amount = maxAmount;
     }
 }
