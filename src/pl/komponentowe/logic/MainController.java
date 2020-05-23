@@ -13,7 +13,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import pl.komponentowe.data.IOXml;
 import pl.komponentowe.data.Trip;
+import pl.komponentowe.data.Settings;
 
 public class MainController {
 
@@ -76,7 +78,13 @@ public class MainController {
     private String km;
 
     public MainController() {
-        dashboard = new Dashboard();
+        Settings settings = (Settings)(new IOXml().load("setting.xml"));
+
+        if (null == settings) {
+            dashboard = new Dashboard(0,30, 30, 5, 5);
+        } else {
+            dashboard = new Dashboard(settings.getMileage(), settings.getMaxFuel(), settings.getActualFuel(), settings.getMaxOil(), settings.getActualOil());
+        }
 
         kmPerHour = " km/h";
         km = " km";
@@ -149,7 +157,7 @@ public class MainController {
 
     @FXML
     public void openSettings() throws Exception {
-        Settings settings = new Settings(this);
+        pl.komponentowe.logic.Settings settings = new pl.komponentowe.logic.Settings(this);
         settings.start(new Stage());
     }
 

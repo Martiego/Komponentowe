@@ -63,15 +63,22 @@ public class Dashboard {
     /**
      * Konstruktor klasy inicjalizuje pola running jako <b>true</b>, oraz zmienne fuel, oil i date.
      * Zostaje utworzony nowy watek odpowiedzialny za aktualizacje pol zwiazanych z przejechanym dystansem w zaleznosci od aktualnej predkosci (milage, odometer1, odmoeter2, distance).
+     *
+     * @param mileagee Przebieg calkowity pojazdu.
+     * @param maxFuel Maksymalna pojemnosc zbiornika paliwa w <b>litrach</b>.
+     * @param actualFuel Obecna ilosc paliwa w <b>litrach</b>.
+     * @param maxOil Maksymalna pojemnosc zbiornika oleju w <b>litrach</b>.
+     * @param actualOil Obecna ilosc oleju w <b>litrach</b>.
      */
-    public Dashboard() {
+    public Dashboard(double mileagee, double maxFuel, double actualFuel, double maxOil, double actualOil) {
+        this.mileage = mileagee;
         running = true;
-        fuel = new Fuel(50);
-        fuel.fill(50);
-        oil = new Oil(5);
-        oil.fill(5);
+        fuel = new Fuel(maxFuel);
+        fuel.fill(actualFuel);
+        oil = new Oil(maxOil);
+        oil.fill(actualOil);
         date = new Date();
-        // droga w km
+
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -228,13 +235,5 @@ public class Dashboard {
 
     public void setMileage(double mileage) {
         this.mileage = mileage;
-    }
-
-    public double getMaxFuel() {
-        return fuel.getMaxAmount();
-    }
-
-    public double getMaxOil() {
-        return oil.getMaxAmount();
     }
 }

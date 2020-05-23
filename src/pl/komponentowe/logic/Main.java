@@ -37,7 +37,7 @@ public class Main extends Application {
         stage.show();
 
         stage.setOnCloseRequest(event -> {
-            MainController controller = (MainController)fxmlLoader.getController();
+            MainController controller = (MainController) fxmlLoader.getController();
             Trip trip = controller.makeTrip();
             IODataBase ioDataBase = new IODataBase("root", "");
             ArrayList<Trip> arrayList = new ArrayList<>();

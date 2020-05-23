@@ -49,7 +49,7 @@ public class IOXml implements Preservation {
      */
     @Override
     public Object load(String path) {
-        Settings result = new Settings();
+        Settings result = null;
 
         try {
             String content = Files.readString(Paths.get(path), StandardCharsets.UTF_16);

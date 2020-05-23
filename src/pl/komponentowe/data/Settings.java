@@ -11,9 +11,12 @@ import java.io.Serializable;
 public class Settings implements Serializable {
     private double mileage;
     private double maxFuel;
+    private double actualFuel;
     private double maxOil;
+    private double actualOil;
 
-    public Settings() {
+    public
+    Settings() {
     }
 
     /**
@@ -21,12 +24,16 @@ public class Settings implements Serializable {
      *
      * @param mileage Przebieg calkowity samochodu w <b>metrach</b>.
      * @param maxFuel Maksymalna pojemnosc paliwa w <b>litrach</b>.
+     * @param actualFuel Obecna ilosc paliwa w <b>litrach</b>.
      * @param maxOil Maksymalna pojmnosc oleju w <b>litrach</b>.
+     * @param actualOil Obecna ilosc oleju w <b>litrach</b>.
      */
-    public Settings(double mileage, double maxFuel, double maxOil) {
+    public Settings(double mileage, double maxFuel, double actualFuel, double maxOil, double actualOil) {
         this.mileage = mileage;
         this.maxFuel = maxFuel;
+        this.actualFuel = actualFuel;
         this.maxOil = maxOil;
+        this.actualOil = actualOil;
     }
 
     public double getMileage() {
@@ -51,5 +58,21 @@ public class Settings implements Serializable {
 
     public void setMaxOil(double maxOil) {
         this.maxOil = maxOil;
+    }
+
+    public double getActualFuel() {
+        return actualFuel;
+    }
+
+    public void setActualFuel(double actualFuel) {
+        this.actualFuel = actualFuel;
+    }
+
+    public double getActualOil() {
+        return actualOil;
+    }
+
+    public void setActualOil(double actualOil) {
+        this.actualOil = actualOil;
     }
 }

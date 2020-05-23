@@ -67,8 +67,10 @@ public class SettingsController {
         if (null != file) {
             Settings settings = new Settings();
             settings.setMileage(mainController.getDashboard().getMileage());
-            settings.setMaxFuel(mainController.getDashboard().getMaxFuel());
-            settings.setMaxOil(mainController.getDashboard().getMaxOil());
+            settings.setMaxFuel(mainController.getDashboard().getFuel().getMaxAmount());
+            settings.setActualFuel(mainController.getDashboard().getFuel().checkLevel() * settings.getMaxFuel());
+            settings.setMaxOil(mainController.getDashboard().getOil().getMaxAmount());
+            settings.setActualOil(mainController.getDashboard().getOil().checkLevel() * settings.getMaxOil());
 
             ioXml.save(file.getAbsolutePath(), settings);
         }
@@ -78,9 +80,15 @@ public class SettingsController {
     public void loadSettings() {
         if (null != file) {
             Settings settings = (Settings) ioXml.load(file.getAbsolutePath());
-            mainController.getDashboard().setMileage(settings.getMileage());
-            mainController.getDashboard().getFuel().setMaxAmount(settings.getMaxFuel());
-            mainController.getDashboard().getOil().setMaxAmount(settings.getMaxOil());
+
+            if (null != settings) {
+                mainController.getDashboard().setMileage(settings.getMileage());
+                mainController.getDashboard().getFuel().setMaxAmount(settings.getMaxFuel());
+                mainController.getDashboard().getFuel().fill(settings.getActualFuel());
+                mainController.getDashboard().getOil().setMaxAmount(settings.getMaxOil());
+                mainController.getDashboard().getOil().fill(settings.getActualOil());
+            }
+
             updateText();
         }
     }
