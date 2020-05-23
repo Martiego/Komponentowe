@@ -1,5 +1,7 @@
 package pl.komponentowe.data;
 
+import pl.komponentowe.logic.exceptions.IDNotFoundException;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -90,7 +92,7 @@ public class IODataBase implements Preservation {
      * @param path Nazwa tabeli w bazie danych.
      * @param id Id rekordu do usuniecia.
      */
-    public void delete(String path, int id) {
+    public void delete(String path, int id) throws IDNotFoundException {
         try (Connection conn = DriverManager.getConnection(url + path, user, password); Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
             if (conn.isValid(5)) {
                 ResultSet resultSet = statement.executeQuery("SELECT * FROM " + path + " WHERE id >= " + id);
@@ -138,7 +140,7 @@ public class IODataBase implements Preservation {
      * @param id1 Id pierwszego rekordu do polaczenia.
      * @param id2 Id drugiego rekordu do polaczenia.
      */
-    public void concatRows(String path, int id1, int id2) {
+    public void concatRows(String path, int id1, int id2) throws IDNotFoundException{
         try (Connection conn = DriverManager.getConnection(url + path, user, password); Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
             if (conn.isValid(5)) {
                 ResultSet resultSet = statement.executeQuery("SELECT * FROM " + path + " WHERE id = " + id1 + " OR id = " + id2);
