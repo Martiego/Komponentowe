@@ -1,7 +1,7 @@
 package pl.komponentowe.logic.exceptions;
 
 /**
- * Klasa odpowiedzialna za wyjatek polegajacy na braku rekordu o podanym numerze id.
+ * Klasa odpowiedzialna za wyjatek polegajacy na podaniu ujemnej wartosci w miejscu niedozwolonym.
  */
 public class NegativeValueException extends Exception {
     @Override

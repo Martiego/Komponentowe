@@ -23,6 +23,7 @@ public class GraphicalUserInterface extends Application {
 
     /**
      * Metoda wymagana przez implementacje interfejsu Application z biblioteki JavaFx.
+     * Umozliwia zainicjalizowanie okna aplikacji.
      *
      * @param stage
      * @throws Exception

@@ -28,6 +28,7 @@ public class Settings extends Application {
 
     /**
      * Metoda wymagana przez implementacje interfejsu Application z biblioteki JavaFX.
+     * Umozliwia zainicjalizowanie okna aplikacji.
      *
      * @param stage
      * @throws Exception

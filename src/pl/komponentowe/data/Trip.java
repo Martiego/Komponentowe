@@ -14,19 +14,19 @@ public class Trip implements Serializable {
     private int id;
 
     /** Data rozpoczecia wycieczki */
-    private Date date;
+    private final Date date;
 
     /** Srednie zuzycie paliwa w <b>l/km</b> */
-    private double avgFuelConsumption;
+    private final double avgFuelConsumption;
 
     /** Sredni predkosc podczas podrozy w <b>km/h</b> */
-    private double avgVelocity;
+    private final double avgVelocity;
 
     /** Maksymalna predkosc podczas podrozy w  <b>km/h</b> */
-    private double maxVelocity;
+    private final double maxVelocity;
 
     /** Czas, ktory uplynal od poczatku podrozy w <b>ms</b> */
-    private long time;
+    private final long time;
 
     /**
      * Konstruktor wykorzystywany do utworzenia wycieczki.
@@ -88,35 +88,14 @@ public class Trip implements Serializable {
         return time;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setAvgFuelConsumption(double avgFuelConsumption) {
-        this.avgFuelConsumption = avgFuelConsumption;
-    }
-
-    public void setAvgVelocity(double avgVelocity) {
-        this.avgVelocity = avgVelocity;
-    }
-
-    public void setMaxVelocity(double maxVelocity) {
-        this.maxVelocity = maxVelocity;
-    }
-
-    public void setTime(long time) {
-        this.time = time;
-    }
-
     @Override
     public String toString() {
-        return "Trip{" +
-                "id=" + id +
-                ", date=" + date +
-                ", avgFuelConsumption=" + avgFuelConsumption +
-                ", avgVelocity=" + avgVelocity +
-                ", maxVelocity=" + maxVelocity +
-                ", time=" + time +
-                '}';
+        String str = "ID: " + id + '\n'
+        + "Date: " + date + '\n'
+        + "Average Fuel Consumption: " + avgFuelConsumption + '\n'
+        + "Average Velocity: " + avgVelocity + '\n'
+        + "Max Velocity: " + maxVelocity + '\n'
+        + "Time: " + time + '\n';
+        return str;
     }
 }

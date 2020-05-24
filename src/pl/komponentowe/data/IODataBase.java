@@ -173,7 +173,4 @@ public class IODataBase implements Preservation {
         }
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
 }

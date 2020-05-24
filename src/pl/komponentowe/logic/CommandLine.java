@@ -15,14 +15,30 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Klasa odpowiada za interfejs tekstowy aplikacji.
+ * Oferuje jedynie ograniczona funkcjonalnosc taka jak przejrzenie i opreacje na wycieczkach oraz ustawieniach pojazdu.
+ * @author Patryk Kolanek
+ * @author Kacper Swiercz
+ */
 public class CommandLine {
+    /**
+     * Pole przechowuje skaner, ktory pobiera dane od uzytkownika z linii polecen.
+     */
     Scanner scanner;
 
+    /**
+     * Konstruktor inicjalizuje skaner oraz otwiera menu glowne aplikacji.
+     */
     public CommandLine() {
         scanner = new Scanner(System.in);
         menu();
     }
 
+    /**
+     * Metoda otwiera menu glowne aplikacji.
+     * Z tego poziomu mozemy dostac sie do wszystkich opcji oferowanych przez tekstowa wersje aplikacji.
+     */
     public void menu() {
         boolean menuInput = false;
         while (!menuInput) {
@@ -47,6 +63,10 @@ public class CommandLine {
         }
         }
 
+    /**
+     * Metoda otwiera menu wycieczek.
+     * Z tego poziomu mozemy operowac na wycieczkach znajdujacych sie w bazie danych.
+     */
     public void trips() {
         boolean tripInput = false;
         ArrayList<Trip> trips;
@@ -134,7 +154,10 @@ public class CommandLine {
         }
 
     }
-
+    /**
+     * Metoda otwiera menu ustawien.
+     * Z tego poziomu mozemy operowac na ustawieniach znajdujacych sie w pliku domyslnym settings.xml.
+     */
     public void settings() {
         boolean settingsInput = false;
         IOXml ioXml = new IOXml();

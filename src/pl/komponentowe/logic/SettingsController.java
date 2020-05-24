@@ -5,15 +5,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import pl.komponentowe.data.IODataBase;
 import pl.komponentowe.data.IOXml;
 import pl.komponentowe.data.Settings;
-import pl.komponentowe.data.Trip;
 import pl.komponentowe.logic.exceptions.NegativeValueException;
 
 import java.io.File;
-import java.util.ArrayList;
-
+/**
+ * Klasa kontrolera dla okna ustawien aplikacji.
+ *
+ * @author Patryk Kolanek
+ * @author Kacper Swiercz
+ */
 public class SettingsController {
     @FXML
     private Text path;
@@ -35,13 +37,22 @@ public class SettingsController {
 
     @FXML
     private Text actualMaxOil;
-
+    /**
+     * Pole przechowuje obiekt reprezentujacy plik, ktory zawiera ustawienia.
+     */
     private File file;
-
-    private IOXml ioXml;
-
+    /**
+     * Pole przechowuje obiekt, ktory sluzy do interakcji z plikiem w formacie xml (zapisywanie, wczytywanie).
+     */
+    private final IOXml ioXml;
+    /**
+     * Pole przechowuje odwolanie do kontrolera glownego okna aplikacji.
+     */
     private MainController mainController;
 
+    /**
+     * Konstruktor inicjalizuje obiekt ioXml.
+     */
     public SettingsController() {
         ioXml = new IOXml();
     }
@@ -50,6 +61,10 @@ public class SettingsController {
         this.mainController = mainController;
     }
 
+    /**
+     * Metoda wywolywana po kliknieciu przycisku "Wybierz plik".
+     * Sluzy wybraniu pliku z urzadzenia, w ktorym zapisane zostana lub z ktorego wczytane zostana ustawienia.
+     */
     @FXML
     public void openFile() {
         FileChooser fileChooser = new FileChooser();
@@ -63,6 +78,11 @@ public class SettingsController {
         }
     }
 
+    /**
+     * Metoda wywolywana po kliknieciu przycisku "Zapisz".
+     * Sluzy zapisaniu aktualnych ustawien w wybranym wczesniej pliku.
+     * Bez wybrania pliku nie mam mozliwosci zapisania ustawien inaczej niz przez zamkniecie aplikacji.
+     */
     @FXML
     public void saveSettings() {
         if (null != file) {
@@ -81,7 +101,11 @@ public class SettingsController {
 
         }
     }
-
+    /**
+     * Metoda wywolywana po kliknieciu przycisku "Wczytaj".
+     * Sluzy wybraniu pliku z urzadzenia, z ktorego wczytane zostana ustawienia.
+     * Bez wybrania pliku nie mam mozliwosci wczytania ustawien inaczej niz przez ponowne otwarcie aplikacji.
+     */
     @FXML
     public void loadSettings() {
         if (null != file) {

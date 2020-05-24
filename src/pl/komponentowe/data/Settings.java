@@ -11,10 +11,25 @@ import java.io.Serializable;
  * @author Kacper Swiercz
  */
 public class Settings implements Serializable {
+    /**
+     * Pole przechowujace wartosc przebiegu calkowitego pojazdu.
+     */
     private double mileage;
+    /**
+     * Pole przechowujące maksymalna ilosc paliwa w pojezdzie.
+     */
     private double maxFuel;
+    /**
+     * Pole przechowujące aktualna ilosc paliwa w pojezdzie.
+     */
     private double actualFuel;
+    /**
+     * Pole przechowujące maksymalna ilosc oleju w pojezdzie.
+     */
     private double maxOil;
+    /**
+     * Pole przechowujące aktualna ilosc oleju w pojezdzie.
+     */
     private double actualOil;
 
     @Override
