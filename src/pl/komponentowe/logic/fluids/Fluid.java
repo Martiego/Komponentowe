@@ -1,6 +1,6 @@
 package pl.komponentowe.logic.fluids;
 /**
- * Intefejs implementowany przez klasy oznaczjące płyny w samochodzie (np. paliwo).
+ * Intefejs implementowany przez klasy oznaczjace plyny w samochodzie (np. paliwo).
  *
  * @author Patryk Kolanek
  * @author Kacper Swiercz
