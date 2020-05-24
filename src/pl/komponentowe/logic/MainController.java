@@ -17,6 +17,15 @@ import pl.komponentowe.data.IOXml;
 import pl.komponentowe.data.Trip;
 import pl.komponentowe.data.Settings;
 
+import java.io.IOException;
+
+/**
+ * Klasa kontrolera dla glownego okna aplikacji, przechowuje obiekty reprezentujace elementy interfejsu graficznego
+ * oraz metody, ktore sa przez nie wywolywane. Interpretuje tez przyciski wciskane przez uzytkownika na klawiaturze.
+ *
+ * @author Patryk Kolanek
+ * @author Kacper Swiercz
+ */
 public class MainController {
 
     @FXML
@@ -58,20 +67,47 @@ public class MainController {
     @FXML
     private ProgressBar temperature;
 
-
+    /**
+     * Pole przechowuje informacje o tym czy prawa strzalka jest wcisnieta.
+     */
     private boolean isRightHold;
+    /**
+     * Pole przechowuje informacje o tym czy lewa strzalka jest wcisnieta.
+     */
     private boolean isLeftHold;
-
+    /**
+     *  Pole przechowuje wartosc predkosci pojazdu z chwili wlaczenia tempomatu w <b>km/h</b>.
+     */
     private double actualVelocity;
-
+    /**
+     * Pole przechowuje obiekt deski rozdzielczej pojazdu.
+     */
     private Dashboard dashboard;
-
+    /**
+     * Pole przechowuje watek odpoiwadajacy za miganie kierunkowskazow.
+     * Zatrzymuje sie z chwila ustawienia pola running w obiekcie dashboard na false.
+     */
     private Thread indicatorThread;
+    /**
+     * Pole przechowuje glowny watek odpowiadajcay za przyspieszanie i spowalnianie pojazdu.
+     * Watek aktualizuje takze informacjie o aktualnej podrozy oraz sprawdza czy tempomat jest wlaczony.
+     * Zatrzymuje sie z chwila ustawienia pola running w obiekcie dashboard na false.
+     */
     private Thread mainThread;
-
+    /**
+     * Zmienna przechowuje String o wartosci " km/h". Zapobiega to kazdorazowemu tworzeniu obiektu typu String.
+     */
     private final String kmPerHour;
+    /**
+     * Zmienna przechowuje String o wartosci " km". Zapobiega to kazdorazowemu tworzeniu obiektu typu String.
+     */
     private final String km;
 
+    /**
+     * Konstruktor inicjalizuje pole dashboard korzystajac z pliku settings.xml, w ktorym zapisane sa ustawienia pojazdu.
+     * Jezeli nie uda sie wczytac pliku, uzwane sa wartosci domyslne.
+     * Inicjalizowany oraz uruchamiany jest mainThread.
+     */
     public MainController() {
         Settings settings = (Settings)(new IOXml().load("settings.xml"));
 
@@ -127,6 +163,10 @@ public class MainController {
         mainThread.start();
     }
 
+    /**
+     * Metoda wczytujaca wcisniety przycisk z klawatury i wywolujaca odpowiednia metode z nim zwiazana.
+     * @param event Zdarzenie wywolane przez wcisniecie przycisku.
+     */
     @FXML
     public void keyPressedController(KeyEvent event) {
 
@@ -147,7 +187,10 @@ public class MainController {
             cruiseControl.setSelected(false);
         }
     }
-
+    /**
+     * Metoda wczytujaca zwolniony przycisk z klawiatury i zminiajaca wartosci pol isRightHold lub isLeftHold.
+     * @param event Zdarzenie wywolane przez zwolnienie przycisku.
+     */
     @FXML
     public void keyReleasedController(KeyEvent event) {
         if (KeyCode.RIGHT == event.getCode()) {
@@ -157,14 +200,21 @@ public class MainController {
         }
     }
 
+    /**
+     * Metoda otwiera okno ustawien po wcisnieciu przycisku Ustawienia z gornego paska aplikacji.
+     * @throws IOException Wyjatek jest rzucony gdy nie mozna znalezc pliku kontrolera ustawien.
+     */
     @FXML
-    public void openSettings() throws Exception {
+    public void openSettings() throws IOException {
         pl.komponentowe.logic.Settings settings = new pl.komponentowe.logic.Settings(this);
         settings.start(new Stage());
     }
-
+    /**
+     * Metoda otwiera okno wycieczek po wcisnieciu przycisku Wycieczki z gornego paska aplikacji.
+     * @throws IOException Wyjatek jest rzucony gdy nie mozna znalezc pliku kontrolera wycieczek.
+     */
     @FXML
-    public void openTrips() throws Exception {
+    public void openTrips() throws IOException {
         Stage stage = new Stage();
         stage.setTitle("Wycieczki");
         stage.setResizable(false);
@@ -175,20 +225,34 @@ public class MainController {
         stage.show();
     }
 
+    /**
+     * Metoda resetuje pierwszy licznik przebiegu dziennego.
+     */
     @FXML
     public void resetOdometer1() {
         dashboard.resetOdometer1();
     }
 
+    /**
+     * Metoda resetuje drugi licznik przebiegu dziennego.
+     */
     @FXML
     public void resetOdometer2() {
         dashboard.resetOdometer2();
     }
-
+    /**
+     * Metoda ustawia pole actualVelocity w momencie wlaczenia tempomatu.
+     */
+    @FXML
     public void setActualVelocity() {
         actualVelocity = dashboard.getActualVelocity();
     }
 
+    /**
+     * Metoda jest wywolywana po wcisniesiu strzalki lewej lub prawej.
+     * Uruchamiany jest watek migania odpowiedniego kierunkowskazu w zaleznosci od kierunku.
+     * @param direction Kierunek w ktorym pojazd skreca.
+     */
     private void turn(char direction) {
         indicatorThread = new Thread(() -> {
 
@@ -223,10 +287,17 @@ public class MainController {
         indicatorThread.start();
     }
 
+    /**
+     * Metoda tworzaca wycieczke na podstawie aktualnych danych.
+     * Wykonywana przy zakonczeniu programu.
+     * @return Zwraca utworzona wycieczke.
+     */
     public Trip makeTrip() {
         return new Trip(dashboard.getDate(), dashboard.getAvgFuelConsumption(), dashboard.getAvgVelocity(), dashboard.getMaxVelocity(), dashboard.getTime());
     }
-
+    /**
+     * Metoda otwiera okno O programie po wcisnieciu przycisku O programie z gornego paska aplikacji.
+     */
     public void aboutProgram() {
         Parent root;
         try {
@@ -243,18 +314,22 @@ public class MainController {
         }
     }
 
+    /**
+     * Metoda wywolywana przy zakonczeniu programu. Zmienia pole running w obiekcie dashboard na false.
+     * Wymagane do poprawnego zakonczenia wszystkich watkow aplikacji.
+     * @see pl.komponentowe.logic.Dashboard
+     */
     public void stop() {
         dashboard.stop();
-    }
-
-    public void setDashboard(Dashboard dashboard) {
-        this.dashboard = dashboard;
     }
 
     public Dashboard getDashboard() {
         return dashboard;
     }
 
+    /**
+     * Metoda wywolywana przy zmianie stanu swiatel mijania.
+     */
     public void headlightsClick(ActionEvent actionEvent) {
         if (headlights.isSelected()) {
             headlights.getStyleClass().clear();
@@ -264,7 +339,9 @@ public class MainController {
             headlights.getStyleClass().add("headlights");
         }
     }
-
+    /**
+     * Metoda wywolywana przy zmianie stanu swiatel drogowych.
+     */
     public void highBeamsClick(ActionEvent actionEvent) {
         if (highBeams.isSelected()) {
             highBeams.getStyleClass().clear();
@@ -274,7 +351,9 @@ public class MainController {
             highBeams.getStyleClass().add("highBeams");
         }
     }
-
+    /**
+     * Metoda wywolywana przy zmianie stanu swiatel przeciwmgielnych.
+     */
     public void fogLightsClick(ActionEvent actionEvent) {
         if (fogLights.isSelected()) {
             fogLights.getStyleClass().clear();
@@ -284,7 +363,9 @@ public class MainController {
             fogLights.getStyleClass().add("fogLights");
         }
     }
-
+    /**
+     * Metoda wywolywana przy zmianie stanu swiatel mijania.
+     */
     public void runningLightsClick(ActionEvent actionEvent) {
         if (runningLights.isSelected()) {
             runningLights.getStyleClass().clear();
@@ -294,7 +375,10 @@ public class MainController {
             runningLights.getStyleClass().add("runningLights");
         }
     }
-
+    /**
+     * Metoda wywolywana przy sprawdzaniu temperatury oraz ilosci oleju w samochodzie.
+     * Gdy zostanie wykryta nieodpowiednia wartosc wyswietlana jest kontrolka silnika.
+     */
     public void checkEngine(boolean turn) {
         if (turn) {
             checkEngine.getStyleClass().clear();

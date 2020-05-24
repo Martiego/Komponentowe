@@ -94,4 +94,5 @@ public class Settings implements Serializable {
 
         this.actualOil = Math.min(actualOil, maxOil);
     }
+
 }

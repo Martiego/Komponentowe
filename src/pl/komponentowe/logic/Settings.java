@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 /**
  * Klasa odpowiedzialna za uruchamianie okna z widokiem ustawien aplikacji.
  *
@@ -31,7 +33,7 @@ public class Settings extends Application {
      * @throws Exception
      */
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../presentation/settings.fxml"));
         Parent root = loader.load();
 
