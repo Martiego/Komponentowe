@@ -107,7 +107,7 @@ public class IODataBase implements Preservation {
                         }
                     }
                 } else {
-                    System.out.println("Tu mozna wstawic exception");
+                    throw new IDNotFoundException();
                 }
 
             }

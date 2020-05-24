@@ -35,6 +35,16 @@ public class Settings implements Serializable {
         this.actualOil = actualOil;
     }
 
+    @Override
+    public String toString() {
+        return "Settings: \n" +
+                " Mileage: " + mileage + '\n' +
+                " Maximum fuel: " + maxFuel + '\n' +
+                " Actual fuel: " + actualFuel + '\n' +
+                " Max oil: " + maxOil + '\n' +
+                " Actual oil: " + actualOil + '\n';
+    }
+
     public double getMileage() {
         return mileage;
     }
@@ -49,6 +59,9 @@ public class Settings implements Serializable {
 
     public void setMaxFuel(double maxFuel) {
         this.maxFuel = maxFuel;
+        if (this.maxFuel < this.actualFuel) {
+            this.actualFuel = this.maxFuel;
+        }
     }
 
     public double getMaxOil() {
@@ -57,6 +70,9 @@ public class Settings implements Serializable {
 
     public void setMaxOil(double maxOil) {
         this.maxOil = maxOil;
+        if (this.maxOil < this.actualOil) {
+            this.actualOil = this.maxOil;
+        }
     }
 
     public double getActualFuel() {
@@ -64,7 +80,7 @@ public class Settings implements Serializable {
     }
 
     public void setActualFuel(double actualFuel) {
-        this.actualFuel = actualFuel;
+        this.actualFuel = Math.min(actualFuel, maxFuel);
     }
 
     public double getActualOil() {
@@ -72,6 +88,6 @@ public class Settings implements Serializable {
     }
 
     public void setActualOil(double actualOil) {
-        this.actualOil = actualOil;
+        this.actualOil = Math.min(actualOil, maxOil);
     }
 }

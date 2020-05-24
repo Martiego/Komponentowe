@@ -88,6 +88,6 @@ public class Oil implements Fluid {
 
     public void setMaxAmount(double maxAmount) {
         this.maxAmount = maxAmount;
-        this.amount = maxAmount;
+        this.amount = Math.min(this.amount, this.maxAmount);
     }
 }
