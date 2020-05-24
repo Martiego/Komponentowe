@@ -11,6 +11,7 @@ import pl.komponentowe.data.Settings;
 import pl.komponentowe.data.Trip;
 import pl.komponentowe.logic.exceptions.NegativeValueException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -25,11 +26,11 @@ public class GraphicalUserInterface extends Application {
      * Metoda wymagana przez implementacje interfejsu Application z biblioteki JavaFx.
      * Umozliwia zainicjalizowanie okna aplikacji.
      *
-     * @param stage
-     * @throws Exception
+     * @param stage Nowy stage aplikacji.
+     * @throws IOException Wyjatek wejscia/wyjscia.
      */
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../presentation/main.fxml"));
         Parent root = fxmlLoader.load();
         stage.setTitle("Brum brum");

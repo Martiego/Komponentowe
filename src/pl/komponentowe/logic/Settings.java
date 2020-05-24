@@ -30,8 +30,8 @@ public class Settings extends Application {
      * Metoda wymagana przez implementacje interfejsu Application z biblioteki JavaFX.
      * Umozliwia zainicjalizowanie okna aplikacji.
      *
-     * @param stage
-     * @throws Exception
+     * @param stage Nowy stage aplikacji.
+     * @throws IOException Wyjatek wejscia/wyjscia.
      */
     @Override
     public void start(Stage stage) throws IOException {

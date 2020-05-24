@@ -12,7 +12,10 @@ public class Fuel implements Fluid {
     /** Maksymalna ilosc paliwa */
     private double maxAmount;
 
-    /** Konstruktor przyjmujacy maskymalna ilosc paliwa */
+    /** Konstruktor przyjmujacy maskymalna ilosc paliwa
+     *
+     * @param maxAmount Maksymalna pojemnosc baku paliwa.
+     */
     public Fuel(double maxAmount) {
         this.maxAmount = maxAmount;
     }

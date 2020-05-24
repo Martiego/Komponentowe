@@ -150,6 +150,8 @@ public class Dashboard {
 
     /**
      * Metoda sluzy do zwalniania pojazdu, im wyzsza aktualna predkosc tym bardziej pojazd zwalnia.
+     *
+     * @param value Wspolczynnik odpowiedzialny za sile hamowania.
      */
     public void decelerate(int value) {
         if (0 < actualVelocity && 30 >= actualVelocity) {

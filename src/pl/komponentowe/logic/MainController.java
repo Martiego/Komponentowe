@@ -129,7 +129,7 @@ public class MainController {
                     try {
                         Thread.sleep(200);
 
-                        checkEngine(!dashboard.getOil().isEnough());
+                        checkEngine();
 
                         if (cruiseControl.isSelected()) {
                             if (dashboard.getActualVelocity() > actualVelocity) {
@@ -330,7 +330,7 @@ public class MainController {
     /**
      * Metoda wywolywana przy zmianie stanu swiatel mijania.
      */
-    public void headlightsClick(ActionEvent actionEvent) {
+    public void headlightsClick() {
         if (headlights.isSelected()) {
             headlights.getStyleClass().clear();
             headlights.getStyleClass().add("headlightsOn");
@@ -342,7 +342,7 @@ public class MainController {
     /**
      * Metoda wywolywana przy zmianie stanu swiatel drogowych.
      */
-    public void highBeamsClick(ActionEvent actionEvent) {
+    public void highBeamsClick() {
         if (highBeams.isSelected()) {
             highBeams.getStyleClass().clear();
             highBeams.getStyleClass().add("highBeamsOn");
@@ -354,7 +354,7 @@ public class MainController {
     /**
      * Metoda wywolywana przy zmianie stanu swiatel przeciwmgielnych.
      */
-    public void fogLightsClick(ActionEvent actionEvent) {
+    public void fogLightsClick() {
         if (fogLights.isSelected()) {
             fogLights.getStyleClass().clear();
             fogLights.getStyleClass().add("fogLightsOn");
@@ -366,7 +366,7 @@ public class MainController {
     /**
      * Metoda wywolywana przy zmianie stanu swiatel mijania.
      */
-    public void runningLightsClick(ActionEvent actionEvent) {
+    public void runningLightsClick() {
         if (runningLights.isSelected()) {
             runningLights.getStyleClass().clear();
             runningLights.getStyleClass().add("runningLightsOn");
@@ -379,8 +379,8 @@ public class MainController {
      * Metoda wywolywana przy sprawdzaniu temperatury oraz ilosci oleju w samochodzie.
      * Gdy zostanie wykryta nieodpowiednia wartosc wyswietlana jest kontrolka silnika.
      */
-    public void checkEngine(boolean turn) {
-        if (turn) {
+    public void checkEngine() {
+        if (!dashboard.getOil().isEnough()) {
             checkEngine.getStyleClass().clear();
             checkEngine.getStyleClass().add("checkEngineOn");
         } else {

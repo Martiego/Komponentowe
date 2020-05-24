@@ -91,6 +91,8 @@ public class IODataBase implements Preservation {
      *
      * @param path Nazwa tabeli w bazie danych.
      * @param id Id rekordu do usuniecia.
+     *
+     * @throws IDNotFoundException Wyrzuca wyjatek polegajacy na braku w bazie danych rekordu o zadanym numerze id.
      */
     public void delete(String path, int id) throws IDNotFoundException {
         try (Connection conn = DriverManager.getConnection(url + path, user, password); Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
@@ -139,6 +141,8 @@ public class IODataBase implements Preservation {
      * @param path Nazwa tabeli w bazie danych.
      * @param id1 Id pierwszego rekordu do polaczenia.
      * @param id2 Id drugiego rekordu do polaczenia.
+     *
+     * @throws IDNotFoundException Wyrzuca wyjatek polegajacy na braku w bazie danych rekordu o zadanym numerze id.
      */
     public void concatRows(String path, int id1, int id2) throws IDNotFoundException{
         try (Connection conn = DriverManager.getConnection(url + path, user, password); Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE)) {

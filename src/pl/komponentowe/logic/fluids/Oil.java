@@ -14,7 +14,10 @@ public class Oil implements Fluid {
     /** Obecna temperatura plynu. */
     private double temperature;
 
-    /** Konstruktor przyjmujacy maskymalna ilosc oleju */
+    /** Konstruktor przyjmujacy maskymalna ilosc oleju
+     *
+     * @param maxAmount Maksymalna pojemnosc baku oleju.
+     */
     public Oil(double maxAmount) {
         this.maxAmount = maxAmount;
         temperature = 20;

@@ -11,7 +11,8 @@ public class Main {
     /**
      * Metoda main sluzy jedynie do podjecia decyzji w zaleznosci od podanych argumentow.
      * Mozliwe jest uruchomienie interfejsu graficznego lub tekstowego a takze wyswietlenie pomocy.
-     * @param args
+     *
+     * @param args Parametry uruchomieniowe programu.
      */
     public static void main(String[] args)  {
         if (0 == args.length) {
