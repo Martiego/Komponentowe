@@ -123,10 +123,13 @@ public class SettingsController {
         }
     }
 
-
+    /**
+     * Metoda wywolywana po kliknieciu przycisku "Zmien" po lewej stronie.
+     * Zmienia maksymalna ilosc paliwa na ta podana w polu tekstowym.
+     */
     public void setMaxFuel() {
         try {
-            mainController.getDashboard().getFuel().setMaxAmount(Integer.parseInt(maxFuel.getText()));
+            mainController.getDashboard().getFuel().setMaxAmount(Double.parseDouble(maxFuel.getText()));
             maxFuel.setText("");
             updateText();
         } catch (NumberFormatException ex) {
@@ -134,9 +137,14 @@ public class SettingsController {
         }
     }
 
+    /**
+     * Metoda wywolywana po kliknieciu przycisku "Zmien" po prawej stronie.
+     * Zmienia maksymalna ilosc oleju na ta podana w polu tekstowym.
+     * Wartosc jest przyjmowana w litrach jako liczba rzeczywista (separator jest kropka).
+     */
     public void setMaxOil() {
         try {
-            mainController.getDashboard().getOil().setMaxAmount(Integer.parseInt(maxOil.getText()));
+            mainController.getDashboard().getOil().setMaxAmount(Double.parseDouble(maxOil.getText()));
             maxOil.setText("");
             updateText();
         } catch (NumberFormatException ex) {
@@ -145,22 +153,35 @@ public class SettingsController {
 
     }
 
+    /**
+     * Metoda wywolywana po kliknieciu przycisku "Zatankuj" po lewej stronie.
+     * Dodaje do aktualnej ilosci paliwa wartosc podana w polu tekstowym.
+     * Wartosc jest przyjmowana w litrach jako liczba rzeczywista (separator jest kropka).
+     */
     public void fillFuel() {
         try {
-            mainController.getDashboard().getFuel().fill(Integer.parseInt(fuelAmount.getText()));
+            mainController.getDashboard().getFuel().fill(Double.parseDouble(fuelAmount.getText()));
         } catch (NumberFormatException ex) {
             System.out.println(ex.getMessage());
         }
     }
 
+    /**
+     * Metoda wywolywana po kliknieciu przycisku "Dolej" po lewej stronie.
+     * Dodaje do aktualnej ilosci oleju wartosc podana w polu tekstowym.
+     * Wartosc jest przyjmowana w litrach jako liczba rzeczywista (separator jest kropka).
+     */
     public void fillOil() {
         try {
-            mainController.getDashboard().getFuel().fill(Integer.parseInt(oilAmount.getText()));
+            mainController.getDashboard().getOil().fill(Double.parseDouble(oilAmount.getText()));
         } catch (NumberFormatException ex) {
             System.out.println(ex.getMessage());
         }
     }
 
+    /**
+     * Metoda aktualizuje tekst ktory wyswietla maksymalna ilosc oleju oraz maksymalna ilosc paliwa.
+     */
     public void updateText() {
         actualMaxFuel.setText(mainController.getDashboard().getFuel().getMaxAmount() + " l");
         actualMaxOil.setText(mainController.getDashboard().getOil().getMaxAmount() + " l");

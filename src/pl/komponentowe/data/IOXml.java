@@ -22,6 +22,9 @@ public class IOXml implements Preservation {
     /** Pole XStream */
     private XStream xStream;
 
+    /**
+     * Konstruktor inicjalizuje pole xStream.
+     */
     public IOXml() {
         this.xStream = new XStream(new DomDriver());
     }

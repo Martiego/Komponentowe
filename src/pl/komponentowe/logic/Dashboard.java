@@ -140,7 +140,7 @@ public class Dashboard {
                 maxVelocity = actualVelocity;
             }
 
-            double timeFuelConsumption = Math.random() / 100;
+            double timeFuelConsumption = (Math.random() * 4 + 5)  / 10000;
             fuelConsumption += timeFuelConsumption;
 
             fuel.update(timeFuelConsumption, true);

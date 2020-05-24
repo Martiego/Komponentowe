@@ -182,7 +182,7 @@ public class CommandLine {
                     System.out.println("Enter value you want to set");
                     String maxFuel = scanner.nextLine();
                     try {
-                        settings.setMaxFuel(Integer.parseInt(maxFuel));
+                        settings.setMaxFuel(Double.parseDouble(maxFuel));
                     } catch (NumberFormatException | NegativeValueException e) {
                         System.out.println("Integer were expected");
                     }
@@ -191,7 +191,7 @@ public class CommandLine {
                     System.out.println("Enter value you want to set");
                     String maxOil = scanner.nextLine();
                     try {
-                        settings.setMaxOil(Integer.parseInt(maxOil));
+                        settings.setMaxOil(Double.parseDouble(maxOil));
                     } catch (NumberFormatException | NegativeValueException e) {
                         System.out.println("Integer were expected");
                     }
@@ -200,7 +200,7 @@ public class CommandLine {
                     System.out.println("Enter value you want to set");
                     String fuel = scanner.nextLine();
                     try {
-                        settings.setActualFuel(Integer.parseInt(fuel));
+                        settings.setActualFuel(Double.parseDouble(fuel));
                     } catch (NumberFormatException | NegativeValueException e) {
                         System.out.println("Integer were expected");
                     }
@@ -209,7 +209,7 @@ public class CommandLine {
                     System.out.println("Enter value you want to set");
                     String oil = scanner.nextLine();
                     try {
-                        settings.setActualOil(Integer.parseInt(oil));
+                        settings.setActualOil(Double.parseDouble(oil));
                     } catch (NumberFormatException | NegativeValueException e) {
                         System.out.println("Integer were expected");
                     }
