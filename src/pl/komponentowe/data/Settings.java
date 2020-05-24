@@ -35,6 +35,16 @@ public class Settings implements Serializable {
         this.actualOil = actualOil;
     }
 
+    @Override
+    public String toString() {
+        return "Settings: \n" +
+                " Mileage: " + mileage + " km" + '\n' +
+                " Maximum fuel: " + maxFuel + " l" + '\n' +
+                " Actual fuel: " + actualFuel + " l" + '\n' +
+                " Max oil: " + maxOil + " l" + '\n' +
+                " Actual oil: " + actualOil + " l" + '\n';
+    }
+
     public double getMileage() {
         return mileage;
     }
