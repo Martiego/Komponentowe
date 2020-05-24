@@ -98,6 +98,8 @@ public class MainController {
                         if (cruiseControl.isSelected()) {
                             if (dashboard.getActualVelocity() > actualVelocity) {
                                 dashboard.decelerate(2);
+                            } else if (!dashboard.getFuel().isEnough()) {
+                                cruiseControl.setSelected(false);
                             } else {
                                 dashboard.accelerate();
                             }
@@ -224,7 +226,7 @@ public class MainController {
     public Trip makeTrip() {
         return new Trip(dashboard.getDate(), dashboard.getAvgFuelConsumption(), dashboard.getAvgVelocity(), dashboard.getMaxVelocity(), dashboard.getTime());
     }
-    
+
     public void aboutProgram() {
         Parent root;
         try {

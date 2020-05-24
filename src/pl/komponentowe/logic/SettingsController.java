@@ -124,7 +124,7 @@ public class SettingsController {
     public void fillFuel() {
         try {
             mainController.getDashboard().getFuel().fill(Integer.parseInt(fuelAmount.getText()));
-        } catch (Exception ex) {
+        } catch (NumberFormatException ex) {
             System.out.println(ex.getMessage());
         }
     }
