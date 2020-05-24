@@ -11,8 +11,13 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="78.0" layoutY="88.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Autorzy:" />
-      <Text fill="WHITE" layoutX="78.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patryk Kolanek 224 333" />
-      <Text fill="WHITE" layoutX="78.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kacper Swiercz 224 443" />
+      <Text fill="WHITE" layoutX="34.0" layoutY="79.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Autorzy:" />
+      <Text fill="WHITE" layoutX="34.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patryk Kolanek 224 333" />
+      <Text fill="WHITE" layoutX="33.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kacper Swiercz 224 443" />
+      <Text fill="WHITE" layoutX="34.0" layoutY="148.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Sterowanie:" />
+      <Text fill="WHITE" layoutX="34.0" layoutY="171.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Strzałka w górę - przyśpieszenie pojazdu." />
+      <Text fill="WHITE" layoutX="34.0" layoutY="188.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Strzałka w dół - spowolnienie pojazdu." />
+      <Text fill="WHITE" layoutX="34.0" layoutY="211.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Strzałka w lewo - włączenie lewego kierunkowskazu." />
+      <Text fill="WHITE" layoutX="34.0" layoutY="228.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Strzałka w prawo - włączenie prawego kierunkowskazu." />
    </children>
 </Pane>
