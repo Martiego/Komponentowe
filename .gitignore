@@ -5,3 +5,4 @@ out/
 *.iml
 *.ipr
 out/
+settings.xml
