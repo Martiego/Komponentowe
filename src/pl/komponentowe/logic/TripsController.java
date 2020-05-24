@@ -5,6 +5,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import pl.komponentowe.data.IODataBase;
 import pl.komponentowe.data.Trip;
+import pl.komponentowe.logic.exceptions.IDNotFoundException;
 
 import java.util.ArrayList;
 
@@ -90,7 +91,7 @@ public class TripsController {
             } else {
                 clean();
             }
-        } catch (Exception ex) {
+        } catch (NumberFormatException | IDNotFoundException ex) {
             System.out.println(ex.getMessage());
         }
     }
@@ -106,7 +107,7 @@ public class TripsController {
             } else {
                 clean();
             }
-        } catch (Exception ex) {
+        } catch (NumberFormatException | IDNotFoundException ex) {
             System.out.println(ex.getMessage());
         }
     }

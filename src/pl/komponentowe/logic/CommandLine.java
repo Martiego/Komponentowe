@@ -18,6 +18,7 @@ import java.util.Scanner;
 
 public class CommandLine {
     Scanner scanner;
+
     public CommandLine() {
         scanner = new Scanner(System.in);
         menu();
@@ -197,6 +198,7 @@ public class CommandLine {
                 default:
                     System.out.println("Wrong input");
             }
+
             ioXml.save("settings.xml", settings);
         }
     }

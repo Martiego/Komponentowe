@@ -7,15 +7,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
+ * Klasa odpowiedzialna za uruchamianie okna z widokiem ustawien aplikacji.
+ *
  * @author Patryk Kolanek
  * @author Kacper Swiercz
- *
- * Klasa odpowiedzialna za uruchamianie okna z widokiem ustawien aplikacji.
  */
 public class Settings extends Application {
-    /**
-     * Pole reprezentuje kontroler glownego okna aplikacji
-     */
+    /** Pole reprezentuje kontroler glownego okna aplikacji. */
     private MainController mainController;
 
     /**
@@ -27,7 +25,8 @@ public class Settings extends Application {
     }
 
     /**
-     * Metoda wymagana przez implementacje interfejsu Application z biblioteki JavaFX
+     * Metoda wymagana przez implementacje interfejsu Application z biblioteki JavaFX.
+     *
      * @param stage
      * @throws Exception
      */

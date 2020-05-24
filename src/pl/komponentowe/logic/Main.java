@@ -18,7 +18,7 @@ public class Main {
             System.out.println("-c - CLI version, no car driving functionality");
             System.out.println("-h - view help (this message)");
         } else {
-        System.out.println("Wrong arguments");
+            System.out.println("Wrong arguments");
         }
     }
 

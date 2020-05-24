@@ -191,6 +191,7 @@ public class Dashboard {
 
     /**
      * Metoda liczy czas, ktory uplynal od inicjalizacji pola date do wywolania tej metody.
+     *
      * @return Czas jest zwracany w <b>ms</b>.
      */
     public long getTime() {
@@ -211,6 +212,7 @@ public class Dashboard {
 
     /**
      * Metoda oblicza srednia predkosc na podstawie czasu i przejechanej odleglosci w aktualnej podrozy.
+     *
      * @return Zwraca predkosc srednia w <b>km/h</b>.
      */
     public double getAvgVelocity() {
@@ -223,6 +225,11 @@ public class Dashboard {
         return date;
     }
 
+    /**
+     * Metoda zwaracjaca srednie zuzycie paliwa.
+     *
+     * @return Srednie zuzycie paliwa w <b>l/km</b>
+     */
     public double getAvgFuelConsumption() {
         if (distance != 0)
             return fuelConsumption / distance;

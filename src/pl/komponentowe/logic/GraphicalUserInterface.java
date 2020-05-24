@@ -12,8 +12,20 @@ import pl.komponentowe.data.Trip;
 
 import java.util.ArrayList;
 
+/**
+ * Klasa odpowiedzialna za uruchamianie okno z graficznym widokiem aplikacji.
+ *
+ * @author Patryk Kolanek
+ * @author Kacper Swiercz
+ */
 public class GraphicalUserInterface extends Application {
 
+    /**
+     * Metoda wymagana przez implementacje interfejsu Application z biblioteki JavaFx.
+     *
+     * @param stage
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../presentation/main.fxml"));
