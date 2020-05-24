@@ -5,15 +5,14 @@ import pl.komponentowe.data.IOXml;
 import pl.komponentowe.data.Settings;
 import pl.komponentowe.data.Trip;
 import pl.komponentowe.logic.exceptions.IDNotFoundException;
+import pl.komponentowe.logic.exceptions.NegativeValueException;
 import pl.komponentowe.logic.sorting.SortByAvgVelocity;
 import pl.komponentowe.logic.sorting.SortByDate;
 import pl.komponentowe.logic.sorting.SortByID;
 import pl.komponentowe.logic.sorting.SortByTime;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class CommandLine {
@@ -161,7 +160,7 @@ public class CommandLine {
                     String maxFuel = scanner.nextLine();
                     try {
                         settings.setMaxFuel(Integer.parseInt(maxFuel));
-                    } catch (NumberFormatException e) {
+                    } catch (NumberFormatException | NegativeValueException e) {
                         System.out.println("Integer were expected");
                     }
                     break;
@@ -170,7 +169,7 @@ public class CommandLine {
                     String maxOil = scanner.nextLine();
                     try {
                         settings.setMaxOil(Integer.parseInt(maxOil));
-                    } catch (NumberFormatException e) {
+                    } catch (NumberFormatException | NegativeValueException e) {
                         System.out.println("Integer were expected");
                     }
                     break;
@@ -179,7 +178,7 @@ public class CommandLine {
                     String fuel = scanner.nextLine();
                     try {
                         settings.setActualFuel(Integer.parseInt(fuel));
-                    } catch (NumberFormatException e) {
+                    } catch (NumberFormatException | NegativeValueException e) {
                         System.out.println("Integer were expected");
                     }
                     break;
@@ -188,7 +187,7 @@ public class CommandLine {
                     String oil = scanner.nextLine();
                     try {
                         settings.setActualOil(Integer.parseInt(oil));
-                    } catch (NumberFormatException e) {
+                    } catch (NumberFormatException | NegativeValueException e) {
                         System.out.println("Integer were expected");
                     }
                     break;

@@ -9,6 +9,7 @@ import pl.komponentowe.data.IODataBase;
 import pl.komponentowe.data.IOXml;
 import pl.komponentowe.data.Settings;
 import pl.komponentowe.data.Trip;
+import pl.komponentowe.logic.exceptions.NegativeValueException;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -65,14 +66,19 @@ public class SettingsController {
     @FXML
     public void saveSettings() {
         if (null != file) {
-            Settings settings = new Settings();
-            settings.setMileage(mainController.getDashboard().getMileage());
-            settings.setMaxFuel(mainController.getDashboard().getFuel().getMaxAmount());
-            settings.setActualFuel(mainController.getDashboard().getFuel().checkLevel() * settings.getMaxFuel());
-            settings.setMaxOil(mainController.getDashboard().getOil().getMaxAmount());
-            settings.setActualOil(mainController.getDashboard().getOil().checkLevel() * settings.getMaxOil());
+            try {
+                Settings settings = new Settings();
+                settings.setMileage(mainController.getDashboard().getMileage());
+                settings.setMaxFuel(mainController.getDashboard().getFuel().getMaxAmount());
+                settings.setActualFuel(mainController.getDashboard().getFuel().checkLevel() * settings.getMaxFuel());
+                settings.setMaxOil(mainController.getDashboard().getOil().getMaxAmount());
+                settings.setActualOil(mainController.getDashboard().getOil().checkLevel() * settings.getMaxOil());
 
-            ioXml.save(file.getAbsolutePath(), settings);
+                ioXml.save(file.getAbsolutePath(), settings);
+            } catch (NegativeValueException ex) {
+                System.out.println(ex.getMessage());
+            }
+
         }
     }
 
@@ -99,7 +105,7 @@ public class SettingsController {
             mainController.getDashboard().getFuel().setMaxAmount(Integer.parseInt(maxFuel.getText()));
             maxFuel.setText("");
             updateText();
-        } catch (Exception ex) {
+        } catch (NumberFormatException ex) {
             System.out.println(ex.getMessage());
         }
     }
@@ -109,7 +115,7 @@ public class SettingsController {
             mainController.getDashboard().getOil().setMaxAmount(Integer.parseInt(maxOil.getText()));
             maxOil.setText("");
             updateText();
-        } catch (Exception ex) {
+        } catch (NumberFormatException ex) {
             System.out.println(ex.getMessage());
         }
 
@@ -126,7 +132,7 @@ public class SettingsController {
     public void fillOil() {
         try {
             mainController.getDashboard().getFuel().fill(Integer.parseInt(oilAmount.getText()));
-        } catch (Exception ex) {
+        } catch (NumberFormatException ex) {
             System.out.println(ex.getMessage());
         }
     }

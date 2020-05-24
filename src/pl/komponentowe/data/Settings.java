@@ -1,5 +1,7 @@
 package pl.komponentowe.data;
 
+import pl.komponentowe.logic.exceptions.NegativeValueException;
+
 import java.io.Serializable;
 
 /**
@@ -15,26 +17,6 @@ public class Settings implements Serializable {
     private double maxOil;
     private double actualOil;
 
-    public Settings() {
-    }
-
-    /**
-     * Konstruktor przyjmujacy jako parametr wszystkie pola.
-     *
-     * @param mileage Przebieg calkowity samochodu w <b>metrach</b>.
-     * @param maxFuel Maksymalna pojemnosc paliwa w <b>litrach</b>.
-     * @param actualFuel Obecna ilosc paliwa w <b>litrach</b>.
-     * @param maxOil Maksymalna pojmnosc oleju w <b>litrach</b>.
-     * @param actualOil Obecna ilosc oleju w <b>litrach</b>.
-     */
-    public Settings(double mileage, double maxFuel, double actualFuel, double maxOil, double actualOil) {
-        this.mileage = mileage;
-        this.maxFuel = maxFuel;
-        this.actualFuel = actualFuel;
-        this.maxOil = maxOil;
-        this.actualOil = actualOil;
-    }
-
     @Override
     public String toString() {
         return "Settings: \n" +
@@ -49,7 +31,11 @@ public class Settings implements Serializable {
         return mileage;
     }
 
-    public void setMileage(double mileage) {
+    public void setMileage(double mileage) throws NegativeValueException {
+        if (mileage < 0) {
+            throw new NegativeValueException();
+        }
+
         this.mileage = mileage;
     }
 
@@ -57,8 +43,13 @@ public class Settings implements Serializable {
         return maxFuel;
     }
 
-    public void setMaxFuel(double maxFuel) {
+    public void setMaxFuel(double maxFuel) throws NegativeValueException {
+        if (maxFuel < 0) {
+            throw new NegativeValueException();
+        }
+
         this.maxFuel = maxFuel;
+
         if (this.maxFuel < this.actualFuel) {
             this.actualFuel = this.maxFuel;
         }
@@ -68,8 +59,13 @@ public class Settings implements Serializable {
         return maxOil;
     }
 
-    public void setMaxOil(double maxOil) {
+    public void setMaxOil(double maxOil) throws NegativeValueException {
+        if (maxOil < 0) {
+            throw new NegativeValueException();
+        }
+
         this.maxOil = maxOil;
+
         if (this.maxOil < this.actualOil) {
             this.actualOil = this.maxOil;
         }
@@ -79,7 +75,11 @@ public class Settings implements Serializable {
         return actualFuel;
     }
 
-    public void setActualFuel(double actualFuel) {
+    public void setActualFuel(double actualFuel) throws NegativeValueException {
+        if (actualFuel < 0) {
+            throw new NegativeValueException();
+        }
+
         this.actualFuel = Math.min(actualFuel, maxFuel);
     }
 
@@ -87,18 +87,11 @@ public class Settings implements Serializable {
         return actualOil;
     }
 
-    public void setActualOil(double actualOil) {
-        this.actualOil = Math.min(actualOil, maxOil);
-    }
+    public void setActualOil(double actualOil) throws NegativeValueException {
+        if (actualOil < 0) {
+            throw new NegativeValueException();
+        }
 
-    @Override
-    public String toString() {
-        return "Settings{" +
-                "mileage=" + mileage +
-                ", maxFuel=" + maxFuel +
-                ", actualFuel=" + actualFuel +
-                ", maxOil=" + maxOil +
-                ", actualOil=" + actualOil +
-                '}';
+        this.actualOil = Math.min(actualOil, maxOil);
     }
 }
