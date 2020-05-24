@@ -38,11 +38,11 @@ public class Settings implements Serializable {
     @Override
     public String toString() {
         return "Settings: \n" +
-                " Mileage: " + mileage + '\n' +
-                " Maximum fuel: " + maxFuel + '\n' +
-                " Actual fuel: " + actualFuel + '\n' +
-                " Max oil: " + maxOil + '\n' +
-                " Actual oil: " + actualOil + '\n';
+                " Mileage: " + mileage + " km" + '\n' +
+                " Maximum fuel: " + maxFuel + " l" + '\n' +
+                " Actual fuel: " + actualFuel + " l" + '\n' +
+                " Max oil: " + maxOil + " l" + '\n' +
+                " Actual oil: " + actualOil + " l" + '\n';
     }
 
     public double getMileage() {
