@@ -1,4 +1,4 @@
-package pl.komponentowe.logic.fluids;
+package pl.komponentowe.data.fluids;
 
 /**
  * Klasa reprezentujaca paliwo pojazdu.

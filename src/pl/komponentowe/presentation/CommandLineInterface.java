@@ -21,7 +21,7 @@ import java.util.Scanner;
  * @author Patryk Kolanek
  * @author Kacper Swiercz
  */
-public class CommandLine {
+public class CommandLineInterface {
     /**
      * Pole przechowuje skaner, ktory pobiera dane od uzytkownika z linii polecen.
      */
@@ -30,7 +30,7 @@ public class CommandLine {
     /**
      * Konstruktor inicjalizuje skaner oraz otwiera menu glowne aplikacji.
      */
-    public CommandLine() {
+    public CommandLineInterface() {
         scanner = new Scanner(System.in);
         menu();
     }

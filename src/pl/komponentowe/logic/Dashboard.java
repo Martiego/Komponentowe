@@ -1,7 +1,7 @@
 package pl.komponentowe.logic;
 
-import pl.komponentowe.logic.fluids.Fuel;
-import pl.komponentowe.logic.fluids.Oil;
+import pl.komponentowe.data.fluids.Fuel;
+import pl.komponentowe.data.fluids.Oil;
 
 import java.util.Date;
 

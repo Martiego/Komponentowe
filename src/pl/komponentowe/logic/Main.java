@@ -1,6 +1,8 @@
 package pl.komponentowe.logic;
 
 import javafx.application.Application;
+import pl.komponentowe.presentation.CommandLineInterface;
+import pl.komponentowe.presentation.GraphicalUserInterface;
 
 /**
  * Klasa glowna aplikacji, zawiera metode main.
@@ -22,7 +24,7 @@ public class Main {
                 e.printStackTrace();
             }
         } else if ("-c".equals(args[0]) && 1 == args.length) {
-            new CommandLine();
+            new CommandLineInterface();
         } else if ("-h".equals(args[0]) && 1 == args.length) {
             System.out.println("No arguments - GUI version, full functionality");
             System.out.println("-c - CLI version, no car driving functionality");

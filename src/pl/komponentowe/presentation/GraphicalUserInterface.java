@@ -1,4 +1,4 @@
-package pl.komponentowe.logic;
+package pl.komponentowe.presentation;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +9,7 @@ import pl.komponentowe.data.IODataBase;
 import pl.komponentowe.data.IOXml;
 import pl.komponentowe.data.Settings;
 import pl.komponentowe.data.Trip;
+import pl.komponentowe.logic.MainController;
 import pl.komponentowe.logic.exceptions.NegativeValueException;
 
 import java.io.IOException;

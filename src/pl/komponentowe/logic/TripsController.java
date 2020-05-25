@@ -15,22 +15,58 @@ import java.util.ArrayList;
  * @author Kacper Swiercz
  */
 public class TripsController {
+
+    /**
+     * Pole reprezentuje tekst oznaczajacy date wycieczki.
+     */
     @FXML
     private Text tripDate;
+
+    /**
+     * Pole reprezentuje tekst oznaczajacy srednie zuzycie paliwa podczas wycieczki.
+     */
     @FXML
     private Text tripAvgFuelConsumption;
+
+    /**
+     * Pole reprezentuje tekst oznaczajacy srednia predkosc podczas wycieczki.
+     */
     @FXML
     private Text tripAvgVelocity;
+
+    /**
+     * Pole reprezentuje tekst oznaczajacy czas trwania wycieczki wycieczki.
+     */
     @FXML
     private Text tripTime;
+
+    /**
+     * Pole reprezentuje tekst oznaczajacy maksymalna predkosc podczas wycieczki.
+     */
     @FXML
     private Text tripMaxVelocity;
+
+    /**
+     * Pole reprezentuje tekst oznaczajacy numer ID wycieczki.
+     */
     @FXML
     private Text tripID;
-    @FXML
-    private TextField concatSecondID;
+
+    /**
+     * Pole reprezentuje pole tekstowe gdzie mozna wprowadzic numer ID pierwszej wycieczki do polaczenia.
+     */
     @FXML
     private TextField concatFirstID;
+
+    /**
+     * Pole reprezentuje pole tekstowe gdzie mozna wprowadzic numer ID drugiej wycieczki do polaczenia.
+     */
+    @FXML
+    private TextField concatSecondID;
+
+    /**
+     * Pole reprezentuje pole tekstowe gdzie mozna wprowadzic numer ID wycieczki do usuniecia.
+     */
     @FXML
     private TextField deleteID;
 

@@ -17,24 +17,45 @@ import java.io.File;
  * @author Kacper Swiercz
  */
 public class SettingsController {
+    /**
+     * Pole reprezentuje tekst oznaczajacy sciezke do pliku wybrana za pomoca przycisku "Wybierz plik".
+     */
     @FXML
     private Text path;
 
+    /**
+     * Pole reprezentuje pole tekstowe gdzie mozna wprowadzic maksymalna ilosc paliwa.
+     */
     @FXML
     private TextField maxFuel;
 
+    /**
+     * Pole reprezentuje pole tekstowe gdzie mozna wprowadzic maksymalna ilosc oleju.
+     */
     @FXML
     private TextField maxOil;
 
+    /**
+     * Pole reprezentuje pole tekstowe gdzie mozna wprowadzic ilosc paliwa do dolania.
+     */
     @FXML
     private TextField fuelAmount;
 
+    /**
+     * Pole reprezentuje pole tekstowe gdzie mozna wprowadzic ilosc oleju do dolania.
+     */
     @FXML
     private TextField oilAmount;
 
+    /**
+     * Pole reprezentuje tekst oznaczajacy maksymalna ilosc paliwa.
+     */
     @FXML
     private Text actualMaxFuel;
 
+    /**
+     * Pole reprezentuje tekst oznaczajacy maksymalna ilosc oleju.
+     */
     @FXML
     private Text actualMaxOil;
     /**

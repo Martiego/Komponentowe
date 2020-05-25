@@ -28,42 +28,99 @@ import java.io.IOException;
  */
 public class MainController {
 
+    /**
+     * Pole reprezentuje przycisk oznaczajacy swiatla mijania.
+     */
     @FXML
-    public ToggleButton headlights;
+    private ToggleButton headlights;
+    /**
+     * Pole reprezentuje przycisk oznaczajacy swiatla drogowe.
+     */
     @FXML
-    public ToggleButton highBeams;
+    private ToggleButton highBeams;
+    /**
+     * Pole reprezentuje przycisk oznaczajacy swiatla przeciwmgielne.
+     */
     @FXML
-    public ToggleButton fogLights;
+    private ToggleButton fogLights;
+    /**
+     * Pole reprezentuje przycisk oznaczajacy swiatla pozycyjne.
+     */
     @FXML
-    public ToggleButton runningLights;
+    private ToggleButton runningLights;
+    /**
+     * Pole reprezentuje przycisk oznaczajacy tempomat.
+     */
     @FXML
-    public ToggleButton cruiseControl;
+    private ToggleButton cruiseControl;
+    /**
+     * Pole reprezentuje przycisk oznaczajacy kontrolke silnika.
+     */
     @FXML
     private ToggleButton checkEngine;
+    /**
+     * Pole reprezentuje wielokat oznaczajacy lewy kierunkowskaz.
+     */
     @FXML
     private Polygon leftIndicator;
+    /**
+     * Pole reprezentuje wielokat oznaczajacy prawy kierunkowskaz.
+     */
     @FXML
     private Polygon rightIndicator;
+    /**
+     * Pole reprezentuje tekst oznaczajacy predkosciomierz.
+     */
     @FXML
     private Text speedometer;
+    /**
+     * Pole reprezentuje tekst oznaczajacy srednia predkosc.
+     */
     @FXML
     private Text avgVelocity;
+    /**
+     * Pole reprezentuje tekst oznaczajacy maksymalna predkosc.
+     */
     @FXML
     private Text maxVelocity;
+    /**
+     * Pole reprezentuje tekst oznaczajacy czas podrozy.
+     */
     @FXML
     private Text time;
+    /**
+     * Pole reprezentuje tekst oznaczajacy przejechana droge.
+     */
     @FXML
     private Text street;
+    /**
+     * Pole reprezentuje tekst oznaczajacy srednie zuzycie paliwa.
+     */
     @FXML
     private Text avgFuelConsumption;
+    /**
+     * Pole reprezentuje tekst oznaczajacy przebieg glowny pojazdu.
+     */
     @FXML
     private Text mileage;
+    /**
+     * Pole reprezentuje tekst oznaczajacy pierwszy przebieg dzienny pojazdu.
+     */
     @FXML
     private Text odometer1;
+    /**
+     * Pole reprezentuje tekst oznaczajacy drugi przebieg dzienny pojazdu.
+     */
     @FXML
     private Text odometer2;
+    /**
+     * Pole reprezentuje pasek postepu oznaczajacy poziom paliwa.
+     */
     @FXML
     private ProgressBar fuel;
+    /**
+     * Pole reprezentuje pasek postepu oznaczajacy poziom temperatury silnika.
+     */
     @FXML
     private ProgressBar temperature;
 
@@ -206,8 +263,22 @@ public class MainController {
      */
     @FXML
     public void openSettings() throws IOException {
-        pl.komponentowe.logic.Settings settings = new pl.komponentowe.logic.Settings(this);
-        settings.start(new Stage());
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../presentation/settings.fxml"));
+        Parent root = loader.load();
+
+        stage.setTitle("Ustawienia");
+        stage.setResizable(false);
+
+        SettingsController settingsController = loader.getController();
+        settingsController.setController(this);
+        settingsController.updateText();
+
+        Scene scene = new Scene(root, 720, 405);
+        scene.getStylesheets().add(getClass().getResource("../presentation/style.css").toExternalForm());
+
+        stage.setScene(scene);
+        stage.show();
     }
     /**
      * Metoda otwiera okno wycieczek po wcisnieciu przycisku Wycieczki z gornego paska aplikacji.
