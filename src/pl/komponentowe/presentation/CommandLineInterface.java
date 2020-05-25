@@ -1,4 +1,4 @@
-package pl.komponentowe.logic;
+package pl.komponentowe.presentation;
 
 import pl.komponentowe.data.IODataBase;
 import pl.komponentowe.data.IOXml;
