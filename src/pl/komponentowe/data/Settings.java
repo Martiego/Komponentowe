@@ -31,6 +31,14 @@ public class Settings implements Serializable {
      * Pole przechowujące aktualna ilosc oleju w pojezdzie.
      */
     private double actualOil;
+    /**
+     * Pole pierwszego dziennego licznika przebiegu.
+     */
+    private double odometer1;
+    /**
+     * Pole drugiego dziennego licznika przebiegu.
+     */
+    private double odometer2;
 
     @Override
     public String toString() {
@@ -39,7 +47,9 @@ public class Settings implements Serializable {
                 " Maximum fuel: " + maxFuel + " l" + '\n' +
                 " Actual fuel: " + actualFuel + " l" + '\n' +
                 " Max oil: " + maxOil + " l" + '\n' +
-                " Actual oil: " + actualOil + " l" + '\n';
+                " Actual oil: " + actualOil + " l" + '\n' +
+                " Odometer 1: " + odometer1 + " km" + '\n' +
+                " Odometer 2: " + odometer2 + " km" + '\n';
     }
 
     public double getMileage() {
@@ -110,4 +120,27 @@ public class Settings implements Serializable {
         this.actualOil = Math.min(actualOil, maxOil);
     }
 
+    public double getOdometer1() {
+        return odometer1;
+    }
+
+    public void setOdometer1(double odometer1) throws NegativeValueException {
+        if (odometer1 < 0) {
+            throw new NegativeValueException();
+        }
+
+        this.odometer1 = odometer1;
+    }
+
+    public double getOdometer2() {
+        return odometer2;
+    }
+
+    public void setOdometer2(double odometer2) throws NegativeValueException {
+        if (odometer2 < 0) {
+            throw new NegativeValueException();
+        }
+
+        this.odometer2 = odometer2;
+    }
 }

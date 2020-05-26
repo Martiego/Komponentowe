@@ -56,6 +56,8 @@ public class GraphicalUserInterface extends Application {
                 settings.setActualFuel(controller.getDashboard().getFuel().checkLevel() * settings.getMaxFuel());
                 settings.setMaxOil(controller.getDashboard().getOil().getMaxAmount());
                 settings.setActualOil(controller.getDashboard().getOil().checkLevel() * settings.getMaxOil());
+                settings.setOdometer1(controller.getDashboard().getOdometer1());
+                settings.setOdometer2(controller.getDashboard().getOdometer2());
 
                 new IOXml().save("settings.xml", settings);
             } catch (NegativeValueException ex) {

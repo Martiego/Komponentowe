@@ -114,6 +114,8 @@ public class SettingsController {
                 settings.setActualFuel(mainController.getDashboard().getFuel().checkLevel() * settings.getMaxFuel());
                 settings.setMaxOil(mainController.getDashboard().getOil().getMaxAmount());
                 settings.setActualOil(mainController.getDashboard().getOil().checkLevel() * settings.getMaxOil());
+                settings.setOdometer1(mainController.getDashboard().getOdometer1());
+                settings.setOdometer2(mainController.getDashboard().getOdometer2());
 
                 ioXml.save(file.getAbsolutePath(), settings);
             } catch (NegativeValueException ex) {
@@ -138,6 +140,8 @@ public class SettingsController {
                 mainController.getDashboard().getFuel().fill(settings.getActualFuel());
                 mainController.getDashboard().getOil().setMaxAmount(settings.getMaxOil());
                 mainController.getDashboard().getOil().fill(settings.getActualOil());
+                mainController.getDashboard().setOdometer1(settings.getOdometer1());
+                mainController.getDashboard().setOdometer2(settings.getOdometer2());
             }
 
             updateText();

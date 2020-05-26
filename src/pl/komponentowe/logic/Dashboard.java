@@ -249,4 +249,12 @@ public class Dashboard {
     public void setMileage(double mileage) {
         this.mileage = mileage;
     }
+
+    public void setOdometer1(double odometer1) {
+        this.odometer1 = odometer1;
+    }
+
+    public void setOdometer2(double odometer2) {
+        this.odometer2 = odometer2;
+    }
 }
