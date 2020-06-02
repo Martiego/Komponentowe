@@ -172,6 +172,8 @@ public class MainController {
             dashboard = new Dashboard(0,30, 30, 5, 5);
         } else {
             dashboard = new Dashboard(settings.getMileage(), settings.getMaxFuel(), settings.getActualFuel(), settings.getMaxOil(), settings.getActualOil());
+            dashboard.setOdometer1(settings.getOdometer1());
+            dashboard.setOdometer2(settings.getOdometer2());
         }
 
         kmPerHour = " km/h";
